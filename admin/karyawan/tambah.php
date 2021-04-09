@@ -1,31 +1,33 @@
 <form method="POST" action="prosestambah.php">
     <div class="row g-3">
         <div class="col-12">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" name="uname" placeholder="Username pengguna" required>
+            <label for="nmkarya" class="form-label">Nama karyawan</label>
+            <input type="text" class="form-control" name="nmkarya" placeholder="Nama karyawan" required>
         </div>
 
         <div class="col-12">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" name="upass" placeholder="Password pengguna" required>
+            <label for="tmptkarya" class="form-label">Tempat lahir karyawan</label>
+            <input type="text" class="form-control" name="tmptkarya" placeholder="Tempat lahir karyawan" required>
         </div>
 
         <div class="col-md-6">
-            <label for="access" class="form-label">Access</label>
-            <select class="form-select" name="uaccess" required>
-                <option value="" hidden>Pilih hak akses user baru</option>
-                <option value="1">Admin</option>
-                <option value="2">Karyawan</option>
+            <label for="jabat" class="form-label">Jabatan</label>
+            <select class="form-select" name="jabat" required>
+                <option value="" hidden>Pilih jabatan karyawan</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
             </select>
         </div>
 
         <div class="col-md-6">
-            <label for="idkarya" class="form-label">ID Karyawan</label>
-            <input type="number" class="form-control" name="idkarya" placeholder="ID Karyawan penerima akun">
+            <label for="tglkarya" class="form-label">Tanggal lahir karyawan</label>
+            <input type="date" class="form-control" name="tglkarya">
         </div>
     </div>
 
     <hr class="my-4">
 
-    <button class="w-100 btn btn-primary btn-lg" type="submit" name="usubmit">Tambah Data Pengguna Baru</button>
+    <button class="w-100 btn btn-primary btn-lg" type="submit" name="usubmit">Tambah Data Karyawan</button>
 </form>

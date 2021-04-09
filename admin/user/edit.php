@@ -73,7 +73,7 @@
 
                                     <hr class="my-4">
 
-                                    <button class="w-100 btn btn-primary btn-lg" type="submit" name="usubmit">Tambah Data Pengguna Baru</button>
+                                    <button class="w-100 btn btn-primary btn-lg" type="submit" name="usubmit">Update Data Pengguna Baru</button>
                                 </form>
                             </div>
                         </div>

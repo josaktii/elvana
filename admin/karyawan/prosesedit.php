@@ -3,18 +3,18 @@
 include_once('../../config/connect.php');
 
 if (isset($_POST['usubmit'])) {
-    $idu = $_POST['idu'];
-    $uname = $_POST['uname'];
-    $upass = $_POST['upass'];
-    $uaccess = $_POST['uaccess'];
-    $idkarya = $_POST['idkarya'];
+    $idk = $_POST['idk'];
+    $nmkarya = $_POST['nmkarya'];
+    $tmpt = $_POST['tmptkarya'];
+    $tgl = $_POST['tglkarya'];
+    $jabat = $_POST['jabat'];
 
-    $qu=$connect->query("UPDATE user SET username = '$uname', password = '$upass', access = '$uaccess', id_karyawan = '$idkarya' WHERE id_user = '$idu'");
+    $qk=$connect->query("UPDATE karyawan SET jabatan = '$jabat', nm_karyawan = '$nmkarya', tempat_lahirk = '$tmpt', tgl_lahirk = '$tgl' WHERE id_karyawan = '$idk'");
 
-    if ($qu) {
-        echo "<script>alert('Data user berhasil diubah'); window.location.href='data.php'</script>";
+    if ($qk) {
+        echo "<script>alert('Data karyawan berhasil diubah'); window.location.href='data.php'</script>";
     } else {
-        echo "<script>alert('Data user gagal diubah'); window.location.href='data.php'</script>";
+        echo "<script>alert('Data karyawan gagal diubah'); window.location.href='data.php'</script>";
     }
 } else {
     header('Location : data.php');

@@ -81,7 +81,7 @@
                             <div class="p-5 bg-light border rounded-3">
                                 <h2>Tambah Pengguna</h2>
                                 <hr class="my-4">
-                                <?php include_once('tambah.php'); ?>
+                                <?php include 'tambah.php'; ?>
                             </div>
                         </div>
                     </div>

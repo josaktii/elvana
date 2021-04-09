@@ -3,17 +3,17 @@
 include_once('../../config/connect.php');
 
 if (isset($_POST['usubmit'])) {
-    $uname = $_POST['uname'];
-    $upass = $_POST['upass'];
-    $uaccess = $_POST['uaccess'];
-    $idkarya = $_POST['idkarya'];
+    $nmkarya = $_POST['nmkarya'];
+    $tmpt = $_POST['tmptkarya'];
+    $tgl = $_POST['tglkarya'];
+    $jabat = $_POST['jabat'];
 
-    $qu=$connect->query("INSERT INTO user VALUES (NULL, '$uname', '$upass', '$uaccess', '$idkarya')");
+    $qk=$connect->query("INSERT INTO karyawan VALUES (NULL, '$jabat', '$nmkarya', '$tmpt', '$tgl')");
 
-    if ($qu) {
-        echo "<script>alert('Data user berhasil ditambahkan'); window.location.href='data.php'</script>";
+    if ($qk) {
+        echo "<script>alert('Data karyawan berhasil ditambahkan'); window.location.href='data.php'</script>";
     } else {
-        echo "<script>alert('Data user gagal ditambahkan'); window.location.href='data.php'</script>";
+        echo "<script>alert('Data karyawan gagal ditambahkan'); window.location.href='data.php'</script>";
     }
 } else {
     header('Location : data.php');
