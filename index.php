@@ -14,25 +14,24 @@
     <div class="container d-flex w-100 h-100 p-3 flex-column">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-auto">
             <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-light text-decoration-none">
-                <h3 class="float-md-start mb-0">Cover</h3>
+                <h3 class="float-md-start mb-0">Elvana</h3>
             </a>
 
             <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-primary me-2">Login</button>
-                <button type="button" class="btn btn-primary">Sign-up</button>
+                <a href="login.php" type="button" class="btn btn-outline-primary me-2">Login</a>
             </div>
         </header>
 
         <main class="px-3 cover-container mx-auto">
-            <h1>Cover your page.</h1>
-            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+            <h1>Project Elvana v2</h1>
+            <p class="lead">Ini adalah halaman utama dari project dari Elvana Firdha Aldianato versi-2 karena yang kemarin gagal.</p>
             <p class="lead">
-                <a href="login.php" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+                <a href="login.php" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Data Rekam Medis</a>
             </p>
         </main>
 
         <footer class="mt-auto text-white-50">
-            <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+            <p>Project by <a href="https://getbootstrap.com/" class="text-white">Elvana Firdha Aldianato</a>, and <a href="https://twitter.com/mdo" class="text-white">Pujo</a>.</p>
         </footer>
     </div>
 </body>

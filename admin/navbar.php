@@ -6,7 +6,7 @@
     <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="btn btn-danger mx-0" href="#">Sign out</a>
+            <a class="btn btn-danger mx-0" href="../../config/logout.php">Sign out</a>
         </li>
     </ul>
 </header>
