@@ -2,7 +2,7 @@
 
 include_once('../../config/connect.php');
 
-if (isset($_POST['usubmit'])) {
+if (isset($_POST['ksubmit'])) {
     $nmkarya = $_POST['nmkarya'];
     $tmpt = $_POST['tmptkarya'];
     $tgl = $_POST['tglkarya'];

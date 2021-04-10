@@ -29,5 +29,5 @@
 
     <hr class="my-4">
 
-    <button class="w-100 btn btn-primary btn-lg" type="submit" name="usubmit">Tambah Data Karyawan</button>
+    <button class="w-100 btn btn-primary btn-lg" type="submit" name="ksubmit">Tambah Data Karyawan</button>
 </form>
