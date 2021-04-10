@@ -17,8 +17,8 @@ if (isset($_POST['pasubmit'])) {
     if ($qk) {
         echo "<script>alert('Data pasien berhasil ditambahkan'); window.location.href='data.php'</script>";
     } else {
-        // echo "<script>alert('Data pasien gagal ditambahkan'); window.location.href='data.php'</script>";
-        echo "Error :".$qk."<br>".mysqli_error($connect);
+        echo "<script>alert('Data pasien gagal ditambahkan'); window.location.href='data.php'</script>";
+        // echo "Error :".$qk."<br>".mysqli_error($connect);
     }
 } else {
     header('Location : data.php');

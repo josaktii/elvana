@@ -14,9 +14,9 @@ if (isset($_POST['dsubmit'])) {
     $qd=$connect->query("INSERT INTO dokter VALUES (NULL, '$kdp', '$nmdokter', '$sip', '$tmd', '$tgd','$notelp', '$almt')");
 
     if ($qd) {
-        echo "<script>alert('Data pasien berhasil ditambahkan'); window.location.href='data.php'</script>";
+        echo "<script>alert('Data dokter berhasil ditambahkan'); window.location.href='data.php'</script>";
     } else {
-        echo "<script>alert('Data pasien gagal ditambahkan'); window.location.href='data.php'</script>";
+        echo "<script>alert('Data dokter gagal ditambahkan'); window.location.href='data.php'</script>";
     }
 } else {
     header('Location : data.php');
