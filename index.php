@@ -26,11 +26,11 @@
             <h1>Project Elvana v2</h1>
             <p class="lead">Ini adalah halaman utama dari project dari Elvana Firdha Aldianato versi-2 karena yang kemarin gagal.</p>
             <p class="lead">
-                <a href="login.php" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Data Rekam Medis</a>
+                <a href="guest/view.php" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Data Rekam Medis</a>
             </p>
         </main>
 
-        <footer class="mt-auto text-white-50">
+        <footer class="mt-auto text-white-50 sticky-top">
             <p>Project by <a href="https://getbootstrap.com/" class="text-white">Elvana Firdha Aldianato</a>, and <a href="https://twitter.com/mdo" class="text-white">Pujo</a>.</p>
         </footer>
     </div>

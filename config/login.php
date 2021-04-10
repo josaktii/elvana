@@ -17,9 +17,9 @@ if ($check > 0) {
         $_SESSION['status'] = "login";
         header("location:../admin/dashboard.php");
     } else if ($data['access'] == "2") {
-        $_SESSION['username'] = $username;
+        $_SESSION['username'] = $user;
         $_SESSION['status'] = "login";
-        header("location:../nonadmin/home.php");
+        header("location:../nonadmin/data.php");
     } else {
         header("location:../login.php?pesan=gagal");
     }
