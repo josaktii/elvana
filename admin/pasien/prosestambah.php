@@ -13,13 +13,28 @@ if (isset($_POST['pasubmit'])) {
     $almt = $_POST['alamat'];
     $rand = rand(0,999999999);
 
-    $qk=$connect->query("INSERT INTO pasien VALUES ('$rand', '$nmpas', '$jk', '$jalur', '$almt', '$tmpas','$tgpas', '$nopas', '$tgdaf')");
 
-    if ($qk) {
-        echo "<script>alert('Data pasien berhasil ditambahkan'); window.location.href='data.php'</script>";
+    $tglSekarang  = new DateTime();
+    $interlahir = date_diff(new DateTime($tgpas), $tglSekarang);
+    $interdaftar = date_diff(new DateTime($tgdaf), $tglSekarang);
+
+    $lahir = $interlahir->format("%R%a");
+    $daftar = $interdaftar->format("%R%a");
+
+    if ($lahir >= 1 && $daftar >= 1) {
+        if ($lahir >= $daftar) {
+            $qk=$connect->query("INSERT INTO pasien VALUES ('$rand', '$nmpas', '$jk', '$jalur', '$almt', '$tmpas','$tgpas', '$nopas', '$tgdaf')");
+
+            if ($qk) {
+                echo "<script>alert('Data pasien berhasil diubah'); window.location.href='data.php'</script>";
+            } else {
+                echo "<script>alert('Data pasien gagal diubah'); window.location.href='data.php'</script>";
+            }
+        } else {
+            echo "<script>alert('Input kembali tanggal anda dengan benar'); window.location.href='edit.php?id=$idpa'</script>";
+        }
     } else {
-        echo "<script>alert('Data pasien gagal ditambahkan'); window.location.href='data.php'</script>";
-        // echo "Error :".$qk."<br>".mysqli_error($connect);
+        echo "<script>alert('Input kembali tanggal anda dengan benar'); window.location.href='edit.php?id=$idpa'</script>";
     }
 } else {
     header('Location : data.php');

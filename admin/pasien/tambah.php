@@ -53,14 +53,11 @@
 
                                 <div class="col-6">
                                     <label for="notlpp" class="form-label">Jenis Kelamin</label>
-                                    <div class="input-group">
-                                        <div class="input-group-text">
-                                            <input type="radio" class="form-check-input mt-0 mx-2" name="jkel" value="1">Laki - laki
-                                        </div>
-                                        <div class="input-group-text">
-                                            <input type="radio" class="form-check-input mt-0 mx-2" name="jkel" value="2">Perempuan
-                                        </div>
-                                    </div>
+                                    <select class="form-select" name="jkel">
+                                                <option hidden>Jenis Kelamin</option>
+                                                <option value="1">Perempuan</option>
+                                                <option value="2">Laki-laki</option>
+                                            </select>
                                 </div>
 
                                 <div class="col-md-6">
