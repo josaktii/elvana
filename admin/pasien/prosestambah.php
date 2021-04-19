@@ -26,9 +26,9 @@ if (isset($_POST['pasubmit'])) {
             $qk=$connect->query("INSERT INTO pasien VALUES ('$rand', '$nmpas', '$jk', '$jalur', '$almt', '$tmpas','$tgpas', '$nopas', '$tgdaf')");
 
             if ($qk) {
-                echo "<script>alert('Data pasien berhasil diubah'); window.location.href='data.php'</script>";
+                echo "<script>alert('Data pasien berhasil ditambah'); window.location.href='data.php'</script>";
             } else {
-                echo "<script>alert('Data pasien gagal diubah'); window.location.href='data.php'</script>";
+                echo "<script>alert('Data pasien gagal ditambah'); window.location.href='data.php'</script>";
             }
         } else {
             echo "<script>alert('Input kembali tanggal anda dengan benar'); window.location.href='edit.php?id=$idpa'</script>";
