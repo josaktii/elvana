@@ -2,10 +2,10 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 10, 2021 at 07:34 PM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 19, 2021 at 08:31 AM
 -- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,6 +38,14 @@ CREATE TABLE `dokter` (
   `alamatd` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `dokter`
+--
+
+INSERT INTO `dokter` (`id_dokter`, `kd_poli`, `nm_dokter`, `sip`, `tempat_lahird`, `tgl_lahird`, `telp_dokter`, `alamatd`) VALUES
+(1, 112, 'Hartono', 'Malam', 'Tajor', '2001-03-10', '085654475756', 'Rumahnya sendiri'),
+(2, 112, 'Kartoyono', 'Malam', 'Rumah', '2001-01-20', '02179187676', 'Rumahnya');
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +58,28 @@ CREATE TABLE `karyawan` (
   `nm_karyawan` varchar(50) NOT NULL,
   `tempat_lahirk` varchar(30) NOT NULL,
   `tgl_lahirk` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `karyawan`
+--
+
+INSERT INTO `karyawan` (`id_karyawan`, `jabatan`, `nm_karyawan`, `tempat_lahirk`, `tgl_lahirk`) VALUES
+(1, '2', 'Josaktii', 'Tajos', '1999-02-20'),
+(2, '3', 'Elvana', 'Tajos', '2000-01-20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kb`
+--
+
+CREATE TABLE `kb` (
+  `kd_kunjungan` int(9) NOT NULL,
+  `id_pasien` int(9) NOT NULL,
+  `kd_poli` int(3) NOT NULL,
+  `tgl_kunjungan` date NOT NULL,
+  `status` enum('1','2') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -70,6 +100,13 @@ CREATE TABLE `pasien` (
   `tgl_daftar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `pasien`
+--
+
+INSERT INTO `pasien` (`id_pasien`, `nm_pasien`, `jen_kelamin`, `jalur`, `alamatp`, `tempat_lahirp`, `tgl_lahirp`, `telp_pasien`, `tgl_daftar`) VALUES
+(402353452, 'Joshua', '2', '4', 'Rumahnya', 'rumah', '2000-02-20', '02179187676', '2001-02-20');
+
 -- --------------------------------------------------------
 
 --
@@ -80,6 +117,13 @@ CREATE TABLE `poli` (
   `kd_poli` int(3) NOT NULL,
   `nm_poli` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `poli`
+--
+
+INSERT INTO `poli` (`kd_poli`, `nm_poli`) VALUES
+(112, 'Umum');
 
 -- --------------------------------------------------------
 
@@ -101,6 +145,13 @@ CREATE TABLE `rm` (
   `id_karyawan` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `rm`
+--
+
+INSERT INTO `rm` (`kd_rekammedis`, `id_pasien`, `id_dokter`, `tinggi_badan`, `berat_badan`, `tensi`, `anamnesa`, `diagnose`, `tindak_lanjut`, `terapi`, `id_karyawan`) VALUES
+(1, 402353452, 1, '255', '168', '140/88', 'Anda sakit', 'Anda Sakit lho tapi bohong', '2', '2', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -112,7 +163,8 @@ CREATE TABLE `user` (
   `username` varchar(25) NOT NULL,
   `password` varchar(25) NOT NULL,
   `access` enum('1','2') NOT NULL,
-  `id_karyawan` int(3) NOT NULL
+  `id_karyawan` int(3) NOT NULL,
+  `kd_poli` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -131,6 +183,14 @@ ALTER TABLE `dokter`
 --
 ALTER TABLE `karyawan`
   ADD PRIMARY KEY (`id_karyawan`);
+
+--
+-- Indexes for table `kb`
+--
+ALTER TABLE `kb`
+  ADD PRIMARY KEY (`kd_kunjungan`),
+  ADD KEY `id_pasien` (`id_pasien`,`kd_poli`),
+  ADD KEY `kd_poli` (`kd_poli`);
 
 --
 -- Indexes for table `pasien`
@@ -159,7 +219,8 @@ ALTER TABLE `rm`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`),
   ADD UNIQUE KEY `id_karyawan_2` (`id_karyawan`),
-  ADD KEY `id_karyawan` (`id_karyawan`);
+  ADD KEY `id_karyawan` (`id_karyawan`),
+  ADD KEY `kd_poli` (`kd_poli`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -169,31 +230,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `dokter`
 --
 ALTER TABLE `dokter`
-  MODIFY `id_dokter` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dokter` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `pasien`
+-- AUTO_INCREMENT for table `kb`
 --
-ALTER TABLE `pasien`
-  MODIFY `id_pasien` int(9) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `kb`
+  MODIFY `kd_kunjungan` int(9) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `rm`
 --
 ALTER TABLE `rm`
-  MODIFY `kd_rekammedis` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `kd_rekammedis` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -206,18 +267,26 @@ ALTER TABLE `dokter`
   ADD CONSTRAINT `dokter_ibfk_1` FOREIGN KEY (`kd_poli`) REFERENCES `poli` (`kd_poli`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `kb`
+--
+ALTER TABLE `kb`
+  ADD CONSTRAINT `kb_ibfk_1` FOREIGN KEY (`kd_poli`) REFERENCES `poli` (`kd_poli`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `kb_ibfk_2` FOREIGN KEY (`id_pasien`) REFERENCES `pasien` (`id_pasien`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `rm`
 --
 ALTER TABLE `rm`
-  ADD CONSTRAINT `rm_ibfk_1` FOREIGN KEY (`id_pasien`) REFERENCES `pasien` (`id_pasien`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `rm_ibfk_2` FOREIGN KEY (`id_dokter`) REFERENCES `dokter` (`id_dokter`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `rm_ibfk_3` FOREIGN KEY (`id_karyawan`) REFERENCES `karyawan` (`id_karyawan`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rm_ibfk_3` FOREIGN KEY (`id_karyawan`) REFERENCES `karyawan` (`id_karyawan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rm_ibfk_4` FOREIGN KEY (`id_pasien`) REFERENCES `pasien` (`id_pasien`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_karyawan`) REFERENCES `karyawan` (`id_karyawan`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_karyawan`) REFERENCES `karyawan` (`id_karyawan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`kd_poli`) REFERENCES `poli` (`kd_poli`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
