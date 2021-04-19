@@ -1,3 +1,4 @@
+<?php require_once '../../config/connect.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -42,8 +43,17 @@
                                 </div>
 
                                 <div class="col-4">
-                                    <label for="kdpoli" class="form-label">Kode Poli</label>
-                                    <input type="number" class="form-control" name="kdpoli" placeholder="Kode poli">
+                                    <?php
+                                    $qkdp = $connect->query("SELECT * FROM poli"); ?>
+                                    <label for="kdpoli" class="form-label">Nama Poli</label>
+                                    <select name="kdpoli" class="form-select" id="">
+                                        <option hidden>Pilih Poli</option>
+                                        <?php
+                                        while ($dkdp = $qkdp->fetch_assoc()) :
+                                        ?>
+                                            <option value="<?= $dkdp['kd_poli']; ?>"><?= $dkdp['nm_poli']; ?></option>
+                                        <?php endwhile; ?>
+                                    </select>
                                 </div>
 
                                 <div class="col-4">

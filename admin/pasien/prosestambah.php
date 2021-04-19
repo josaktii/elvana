@@ -11,8 +11,9 @@ if (isset($_POST['pasubmit'])) {
     $jk = $_POST['jkel'];
     $jalur = $_POST['jalur'];
     $almt = $_POST['alamat'];
+    $rand = rand(0,999999999);
 
-    $qk=$connect->query("INSERT INTO pasien VALUES (NULL, '$nmpas', '$jk', '$jalur', '$almt', '$tmpas','$tgpas', '$nopas', '$tgdaf')");
+    $qk=$connect->query("INSERT INTO pasien VALUES ('$rand', '$nmpas', '$jk', '$jalur', '$almt', '$tmpas','$tgpas', '$nopas', '$tgdaf')");
 
     if ($qk) {
         echo "<script>alert('Data pasien berhasil ditambahkan'); window.location.href='data.php'</script>";

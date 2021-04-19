@@ -34,7 +34,7 @@
                                     <table class="table table table-m">
                                         <thead>
                                             <tr>
-                                                <th>ID Karyawan</th>
+                                                <th>No.</th>
                                                 <th>Jabatan</th>
                                                 <th>Nama Karyawan</th>
                                                 <th>Tempat Lahir Karyawan</th>
@@ -43,12 +43,13 @@
                                             </tr>
                                         </thead>
                                         <?php
+                                        $no = 1;
                                         $qu = $connect->query("SELECT * FROM karyawan");
                                         while ($du = $qu->fetch_assoc()) :
                                         ?>
                                             <tbody>
                                                 <tr>
-                                                    <td><?= $du['id_karyawan'] ?></td>
+                                                    <td><?= $no ?></td>
                                                     <td><?= $du['jabatan'] ?></td>
                                                     <td><?= $du['nm_karyawan'] ?></td>
                                                     <td><?= $du['tempat_lahirk'] ?></td>
@@ -61,7 +62,9 @@
                                                     </td>
                                                 </tr>
                                             </tbody>
-                                        <?php endwhile; ?>
+                                        <?php
+                                            $no++;
+                                        endwhile; ?>
                                     </table>
                                 </div>
                             </div>

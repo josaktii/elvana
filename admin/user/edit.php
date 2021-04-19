@@ -28,7 +28,8 @@
                 if (isset($_GET['id'])) {
                     $id = $_GET['id'];
 
-                    $qu = $connect->query("SELECT * FROM user WHERE id_user = '$id'");
+                    $qu = $connect->query("SELECT * FROM user JOIN karyawan USING(id_karyawan) WHERE id_user = '$id'");
+                    $qidk = $connect->query("SELECT * FROM karyawan");
 
                     foreach ($qu as $du) :
                 ?>
@@ -67,7 +68,15 @@
 
                                         <div class="col-md-6">
                                             <label for="idkarya" class="form-label">ID Karyawan</label>
-                                            <input type="number" class="form-control" name="idkarya" value="<?= $du['id_karyawan'] ?>">
+                                            <select name="idkarya" class="form-select" id="">
+                                                <option value="<?= $du['id_karyawan']; ?>" hidden><?= $du['nm_karyawan']; ?></option>
+                                                <?php
+                                                while ($didk = $qidk->fetch_assoc()) :
+                                                ?>
+                                                    <option value="<?= $didk['id_karyawan']; ?>"><?= $didk['nm_karyawan']; ?></option>
+                                                <?php endwhile; ?>
+                                            </select>
+                                            <!-- <input type="number" class="form-control" name="idkarya" placeholder="ID Karyawan penerima akun"> -->
                                         </div>
                                     </div>
 

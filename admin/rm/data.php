@@ -38,9 +38,10 @@
                                     <table class="table table table-m">
                                         <thead>
                                             <tr>
-                                                <th>Kode Rekam Medis</th>
-                                                <th>ID Pasien</th>
-                                                <th>ID Dokter</th>
+                                                <th>No.</th>
+                                                <th>Nama Pasien</th>
+                                                <th>Nama Dokter</th>
+                                                <th>Nama Karyawan</th>
                                                 <th>Tinggi Badan</th>
                                                 <th>Berat Badan</th>
                                                 <th>Tensi</th>
@@ -48,27 +49,47 @@
                                                 <th>Diagnosa</th>
                                                 <th>Tindak Lanjut</th>
                                                 <th>Terapi</th>
-                                                <th>ID Karyawan</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <?php
-                                        $qpa = $connect->query("SELECT * FROM rm");
+                                        $qpa = $connect->query("SELECT * FROM rm JOIN pasien USING(id_pasien) JOIN dokter USING(id_dokter) JOIN karyawan USING(id_karyawan)");
+                                        $no = 1;
                                         while ($dpa = $qpa->fetch_assoc()) :
                                         ?>
                                             <tbody>
                                                 <tr>
-                                                    <td><?= $dpa['kd_rekammedis'] ?></td>
-                                                    <td><?= $dpa['id_pasien'] ?></td>
-                                                    <td><?= $dpa['id_dokter'] ?></td>
+                                                    <td><?= $no ?></td>
+                                                    <td><?= $dpa['nm_pasien'] ?></td>
+                                                    <td><?= $dpa['nm_dokter'] ?></td>
+                                                    <td><?= $dpa['nm_karyawan'] ?></td>
                                                     <td><?= $dpa['tinggi_badan'] ?></td>
                                                     <td><?= $dpa['berat_badan'] ?></td>
                                                     <td><?= $dpa['tensi'] ?></td>
                                                     <td><?= $dpa['anamnesa'] ?></td>
                                                     <td><?= $dpa['diagnose'] ?></td>
-                                                    <td><?= $dpa['tindak_lanjut'] ?></td>
-                                                    <td><?= $dpa['terapi'] ?></td>
-                                                    <td><?= $dpa['id_karyawan'] ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($dpa['tindak_lanjut'] == '1') {
+                                                            echo "Pulang sehat";
+                                                        } elseif ($dpa['tindak_lanjut'] == '2') {
+                                                            echo "Rawat jalan";
+                                                        } elseif ($dpa['tindak_lanjut'] == '3') {
+                                                            echo "Pemeriksaan berjangka";
+                                                        } else {
+                                                            echo "Rujukan";
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php
+                                                        if ($dpa['terapi'] == '1') {
+                                                            echo "Obat";
+                                                        } else {
+                                                            echo "Tindak";
+                                                        }
+                                                        ?>
+                                                    </td>
                                                     <td>
                                                         <div class="input-group">
                                                             <a href="edit.php?id=<?= $dpa['kd_rekammedis'] ?>" class="btn btn-sm btn-info">Edit</a>
@@ -77,7 +98,10 @@
                                                     </td>
                                                 </tr>
                                             </tbody>
-                                        <?php endwhile; ?>
+                                        <?php
+                                            $no++;
+                                        endwhile;
+                                        ?>
                                     </table>
                                 </div>
                             </div>

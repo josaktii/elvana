@@ -34,18 +34,19 @@
                                     <table class="table table table-m">
                                         <thead>
                                             <tr>
-                                                <th>Kode Poli</th>
+                                                <th>No.</th>
                                                 <th>Nama Poli</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <?php
+                                        $no = 1;
                                         $qu = $connect->query("SELECT * FROM poli");
                                         while ($du = $qu->fetch_assoc()) :
                                         ?>
                                             <tbody>
                                                 <tr>
-                                                    <td><?= $du['kd_poli'] ?></td>
+                                                    <td><?= $no ?></td>
                                                     <td><?= $du['nm_poli'] ?></td>
                                                     <td>
                                                         <div class="input-group">
@@ -55,7 +56,9 @@
                                                     </td>
                                                 </tr>
                                             </tbody>
-                                        <?php endwhile; ?>
+                                        <?php
+                                            $no++;
+                                        endwhile; ?>
                                     </table>
                                 </div>
                             </div>

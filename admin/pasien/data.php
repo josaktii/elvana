@@ -38,7 +38,7 @@
                                     <table class="table table table-m">
                                         <thead>
                                             <tr>
-                                                <th>ID Pasien</th>
+                                                <th>No.</th>
                                                 <th>Nama Pasien</th>
                                                 <th>Tempat Lahir</th>
                                                 <th>Tanggal Lahir</th>
@@ -51,19 +51,40 @@
                                             </tr>
                                         </thead>
                                         <?php
+                                        $no = 1;
                                         $qpa = $connect->query("SELECT * FROM pasien");
                                         while ($dpa = $qpa->fetch_assoc()) :
                                         ?>
                                             <tbody>
                                                 <tr>
-                                                    <td><?= $dpa['id_pasien'] ?></td>
+                                                    <td><?= $no ?></td>
                                                     <td><?= $dpa['nm_pasien'] ?></td>
                                                     <td><?= $dpa['tempat_lahirp'] ?></td>
                                                     <td><?= $dpa['tgl_lahirp'] ?></td>
                                                     <td><?= $dpa['tgl_daftar'] ?></td>
                                                     <td><?= $dpa['telp_pasien'] ?></td>
-                                                    <td><?= $dpa['jen_kelamin'] ?></td>
-                                                    <td><?= $dpa['jalur'] ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($dpa['jen_kelamin'] == '2') {
+                                                            echo "Laki-laki";
+                                                        } else {
+                                                            echo "Perempuan";
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php
+                                                        if ($dpa['jalur'] == '1') {
+                                                            echo "Mandiri";
+                                                        } elseif ($dpa['jalur'] == '2') {
+                                                            echo "BPJS";
+                                                        } elseif ($dpa['jalur'] == '3') {
+                                                            echo "Inhealth";
+                                                        } else {
+                                                            echo "Buma";
+                                                        }
+                                                        ?>
+                                                    </td>
                                                     <td><?= $dpa['alamatp'] ?></td>
                                                     <td>
                                                         <div class="input-group">
@@ -73,7 +94,9 @@
                                                     </td>
                                                 </tr>
                                             </tbody>
-                                        <?php endwhile; ?>
+                                        <?php
+                                            $no++;
+                                        endwhile; ?>
                                     </table>
                                 </div>
                             </div>

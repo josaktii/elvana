@@ -15,6 +15,7 @@ if (isset($_POST['usubmit'])) {
         echo "<script>alert('Data user berhasil diubah'); window.location.href='data.php'</script>";
     } else {
         echo "<script>alert('Data user gagal diubah'); window.location.href='data.php'</script>";
+        // echo "Error :".$qk."<br>".mysqli_error($connect);
     }
 } else {
     header('Location : data.php');

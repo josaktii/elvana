@@ -38,8 +38,8 @@
                                     <table class="table table table-m">
                                         <thead>
                                             <tr>
-                                                <th>ID Dokter</th>
-                                                <th>Kode Poli</th>
+                                                <th>No.</th>
+                                                <th>Nama Poli</th>
                                                 <th>Nama Dokter</th>
                                                 <th>Sip</th>
                                                 <th>Tempat Lahir</th>
@@ -50,13 +50,14 @@
                                             </tr>
                                         </thead>
                                         <?php
-                                        $qpa = $connect->query("SELECT * FROM dokter");
+                                        $no = 1;
+                                        $qpa = $connect->query("SELECT * FROM dokter JOIN poli USING(kd_poli)");
                                         while ($dpa = $qpa->fetch_assoc()) :
                                         ?>
                                             <tbody>
                                                 <tr>
-                                                    <td><?= $dpa['id_dokter'] ?></td>
-                                                    <td><?= $dpa['kd_poli'] ?></td>
+                                                    <td><?= $no ?></td>
+                                                    <td><?= $dpa['nm_poli'] ?></td>
                                                     <td><?= $dpa['nm_dokter'] ?></td>
                                                     <td><?= $dpa['sip'] ?></td>
                                                     <td><?= $dpa['tempat_lahird'] ?></td>
@@ -71,7 +72,9 @@
                                                     </td>
                                                 </tr>
                                             </tbody>
-                                        <?php endwhile; ?>
+                                        <?php
+                                            $no++;
+                                        endwhile; ?>
                                     </table>
                                 </div>
                             </div>

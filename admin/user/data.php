@@ -37,21 +37,22 @@
                                     <table class="table table table-m">
                                         <thead>
                                             <tr>
-                                                <th>ID User</th>
+                                                <th>No.</th>
                                                 <th>Username</th>
                                                 <th>Password</th>
                                                 <th>Access</th>
-                                                <th>ID Karyawan</th>
+                                                <th>Nama Karyawan</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <?php
-                                        $qu = $connect->query("SELECT * FROM user");
+                                        $no = 1;
+                                        $qu = $connect->query("SELECT * FROM user JOIN karyawan USING(id_karyawan) ORDER BY id_user ASC");
                                         while ($du = $qu->fetch_assoc()) :
                                         ?>
                                             <tbody>
                                                 <tr>
-                                                    <td><?= $du['id_user'] ?></td>
+                                                    <td><?= $no ?></td>
                                                     <td><?= $du['username'] ?></td>
                                                     <td><?= $du['password'] ?></td>
                                                     <td>
@@ -63,7 +64,7 @@
                                                         }
                                                         ?>
                                                     </td>
-                                                    <td><?= $du['id_karyawan'] ?></td>
+                                                    <td><?= $du['nm_karyawan'] ?></td>
                                                     <td>
                                                         <div class="input-group">
                                                             <a href="edit.php?id=<?= $du['id_user'] ?>" class="btn btn-sm btn-info">Edit</a>
@@ -72,7 +73,9 @@
                                                     </td>
                                                 </tr>
                                             </tbody>
-                                        <?php endwhile; ?>
+                                        <?php
+                                            $no++;
+                                        endwhile; ?>
                                     </table>
                                 </div>
                             </div>

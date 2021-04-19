@@ -28,7 +28,7 @@
                 if (isset($_GET['id'])) {
                     $id = $_GET['id'];
 
-                    $qd = $connect->query("SELECT * FROM dokter WHERE id_dokter = '$id'");
+                    $qd = $connect->query("SELECT * FROM dokter JOIN poli USING(kd_poli) WHERE id_dokter = '$id'");
 
                     foreach ($qd as $dd) :
                 ?>
@@ -50,12 +50,21 @@
 
                                         <div class="col-md-4">
                                             <label for="tgldokter" class="form-label">Tanggal lahir</label>
-                                            <input type="date" class="form-control" name="tgldokter" value="<?= $dd['tgl_lahird']; ?>">
+                                            <input type="date" class="form-control" name="tgldokter" value="<?= $dd['tgl_lahird']; ?>" max="<?php date('Y-m-d'); ?>">
                                         </div>
 
                                         <div class="col-4">
-                                            <label for="kdpoli" class="form-label">Kode Poli</label>
-                                            <input type="number" class="form-control" name="kdpoli" value="<?= $dd['kd_poli']; ?>">
+                                            <?php
+                                            $qkdp = $connect->query("SELECT * FROM poli"); ?>
+                                            <label for="kdpoli" class="form-label">Nama Poli</label>
+                                            <select name="kdpoli" class="form-select" id="">
+                                                <option value="<?= $dd['kd_poli']; ?>" hidden><?= $dd['nm_poli']; ?></option>
+                                                <?php
+                                                while ($dkdp = $qkdp->fetch_assoc()) :
+                                                ?>
+                                                    <option value="<?= $dkdp['kd_poli']; ?>"><?= $dkdp['nm_poli']; ?></option>
+                                                <?php endwhile; ?>
+                                            </select>
                                         </div>
 
                                         <div class="col-4">

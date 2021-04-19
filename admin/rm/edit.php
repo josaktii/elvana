@@ -28,7 +28,7 @@
                 if (isset($_GET['id'])) {
                     $id = $_GET['id'];
 
-                    $qd = $connect->query("SELECT * FROM rm WHERE kd_rekammedis = '$id'");
+                    $qd = $connect->query("SELECT * FROM rm JOIN pasien USING(id_pasien) JOIN dokter USING(id_dokter) JOIN karyawan USING(id_karyawan) WHERE kd_rekammedis = '$id'");
 
                     foreach ($qd as $dd) :
                 ?>
@@ -39,18 +39,45 @@
                                     <div class="row g-3">
                                         <div class="col-4">
                                             <input type="text" class="form-control" name="kdrm" value="<?= $dd['kd_rekammedis'] ?>" hidden>
-                                            <label for="idpasien" class="form-label">ID Pasien</label>
-                                            <input type="number" class="form-control" name="idpasien" value="<?= $dd['id_pasien']; ?>">
+                                            <?php
+                                            $qpasien = $connect->query("SELECT * FROM pasien"); ?>
+                                            <label for="idpasien" class="form-label">Nama Pasien</label>
+                                            <select name="idpasien" class="form-select">
+                                                <option value="<?= $dd['id_pasien']; ?>" hidden><?= $dd['nm_pasien']; ?></option>
+                                                <?php
+                                                while ($dpasien = $qpasien->fetch_assoc()) :
+                                                ?>
+                                                    <option value="<?= $dpasien['id_pasien']; ?>"><?= $dpasien['nm_pasien']; ?></option>
+                                                <?php endwhile; ?>
+                                            </select>
                                         </div>
 
                                         <div class="col-4">
-                                            <label for="iddokter" class="form-label">ID Dokter</label>
-                                            <input type="number" class="form-control" name="iddokter" value="<?= $dd['id_dokter']; ?>">
+                                            <?php
+                                            $qdokter = $connect->query("SELECT * FROM dokter"); ?>
+                                            <label for="iddokter" class="form-label">Nama Dokter</label>
+                                            <select name="iddokter" class="form-select">
+                                                <option hidden value="<?= $dd['id_dokter']; ?>"><?= $dd['nm_dokter']; ?></option>
+                                                <?php
+                                                while ($ddokter = $qdokter->fetch_assoc()) :
+                                                ?>
+                                                    <option value="<?= $ddokter['id_dokter']; ?>"><?= $ddokter['nm_dokter']; ?></option>
+                                                <?php endwhile; ?>
+                                            </select>
                                         </div>
 
                                         <div class="col-md-4">
-                                            <label for="idkarya" class="form-label">ID Karyawan</label>
-                                            <input type="number" class="form-control" name="idkarya" value="<?= $dd['id_karyawan']; ?>">
+                                            <?php
+                                            $qkarya = $connect->query("SELECT * FROM karyawan"); ?>
+                                            <label for="idkarya" class="form-label">Nama Karyawan</label>
+                                            <select name="idkarya" class="form-select">
+                                                <option hidden value="<?= $dd['id_karyawan']; ?>"><?= $dd['nm_karyawan']; ?></option>
+                                                <?php
+                                                while ($dkarya = $qkarya->fetch_assoc()) :
+                                                ?>
+                                                    <option value="<?= $dkarya['id_karyawan']; ?>"><?= $dkarya['nm_karyawan']; ?></option>
+                                                <?php endwhile; ?>
+                                            </select>
                                         </div>
 
                                         <div class="col-4">
@@ -81,23 +108,40 @@
                                         <div class="col-md-6">
                                             <label for="tindak" class="form-label">Tindak Lanjut</label>
                                             <select class="form-select" name="tindak">
-                                                <option hidden>
-                                                    <?= $dd['tindak_lanjut']; ?> </option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
+                                                <option value="<?= $dd['tindak_lanjut']; ?>" hidden>
+                                                    <?php
+                                                    if ($dd['tindak_lanjut'] == '1') {
+                                                        echo "Pulang sehat";
+                                                    } elseif ($dd['tindak_lanjut'] == '2') {
+                                                        echo "Rawat jalan";
+                                                    } elseif ($dd['tindak_lanjut'] == '3') {
+                                                        echo "Pemeriksaan berjangka";
+                                                    } else {
+                                                        echo "Rujukan";
+                                                    }
+                                                    ?>
+                                                </option>
+                                                <option value="1">Pulang sehat</option>
+                                                <option value="2">Rawat jalan</option>
+                                                <option value="3">Pemeriksaan berkala</option>
+                                                <option value="4">Rujukan</option>
                                             </select>
                                         </div>
 
                                         <div class="col-md-6">
                                             <label for="terapi" class="form-label">Terapi</label>
                                             <select class="form-select" name="terapi">
-                                                <option hidden>
-                                                    <?= $dd['tindak_lanjut']; ?>
+                                                <option value="<?= $dd['terapi']; ?>" hidden>
+                                                    <?php
+                                                        if ($dd['terapi'] == '1') {
+                                                            echo "Obat";
+                                                        } else {
+                                                            echo "Tindak";
+                                                        }
+                                                        ?>
                                                 </option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
+                                                <option value="1">Obat</option>
+                                                <option value="2">Tindak</option>
                                             </select>
                                         </div>
                                     </div>

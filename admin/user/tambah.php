@@ -20,8 +20,18 @@
         </div>
 
         <div class="col-md-6">
+        <?php
+        $qidk = $connect->query("SELECT * FROM karyawan");
+        ?>
             <label for="idkarya" class="form-label">ID Karyawan</label>
-            <input type="number" class="form-control" name="idkarya" placeholder="ID Karyawan penerima akun">
+            <select name="idkarya" class="form-select" id="">
+            <?php
+            while($didk = $qidk->fetch_assoc()):
+            ?>
+                <option value="<?= $didk['id_karyawan']; ?>"><?= $didk['nm_karyawan']; ?></option>
+            <?php endwhile; ?>
+            </select>
+            <!-- <input type="number" class="form-control" name="idkarya" placeholder="ID Karyawan penerima akun"> -->
         </div>
     </div>
 

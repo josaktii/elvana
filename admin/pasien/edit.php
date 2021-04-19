@@ -64,25 +64,42 @@
                                         </div>
 
                                         <div class="col-6">
-                                            <label for="notlpp" class="form-label">Jenis Kelamin</label>
-                                            <div class="input-group">
-                                                <div class="input-group-text">
-                                                    <input type="radio" class="form-check-input mt-0 mx-2" name="jkel" value="1">Laki - laki
-                                                </div>
-                                                <div class="input-group-text">
-                                                    <input type="radio" class="form-check-input mt-0 mx-2" name="jkel" value="2">Perempuan
-                                                </div>
-                                            </div>
+                                            <label for="jkel" class="form-label">Jenis Kelamin</label>
+                                            <select class="form-select" name="jkel">
+                                                <option value="<?= $dpa['jen_kelamin']; ?>" hidden>
+                                                    <?php
+                                                    if ($dpa['jen_kelamin'] == '2') {
+                                                        echo "Laki-laki";
+                                                    } else {
+                                                        echo "Perempuan";
+                                                    }
+                                                    ?>
+                                                </option>
+                                                <option value="1">Perempuan</option>
+                                                <option value="2">Laki-laki</option>
+                                            </select>
                                         </div>
 
                                         <div class="col-md-6">
                                             <label for="jalur" class="form-label">Jalur</label>
                                             <select class="form-select" name="jalur">
-                                                <option value="" hidden><?= $dpa['jalur']; ?></option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
+                                                <option value="<?= $dpa['jalur']; ?>" hidden>
+                                                    <?php
+                                                    if ($dpa['jalur'] == '1') {
+                                                        echo "Mandiri";
+                                                    } elseif ($dpa['jalur'] == '2') {
+                                                        echo "BPJS";
+                                                    } elseif ($dpa['jalur'] == '3') {
+                                                        echo "Inhealth";
+                                                    } else {
+                                                        echo "Buma";
+                                                    }
+                                                    ?>
+                                                </option>
+                                                <option value="1">Mandiri</option>
+                                                <option value="2">BPJS</option>
+                                                <option value="3">Inhealth</option>
+                                                <option value="4">Buma</option>
                                             </select>
                                         </div>
 

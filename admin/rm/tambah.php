@@ -1,3 +1,4 @@
+<?php require_once '../../config/connect.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -27,18 +28,45 @@
                         <form method="POST" action="prosestambah.php">
                             <div class="row g-3">
                                 <div class="col-4">
-                                    <label for="idpasien" class="form-label">ID Pasien</label>
-                                    <input type="number" class="form-control" name="idpasien" placeholder="ID Pasien">
+                                    <?php
+                                    $qpasien = $connect->query("SELECT * FROM pasien"); ?>
+                                    <label for="idpasien" class="form-label">Nama Pasien</label>
+                                    <select name="idpasien" class="form-select" id="">
+                                        <option hidden>Pilih Pasien</option>
+                                        <?php
+                                        while ($dpasien = $qpasien->fetch_assoc()) :
+                                        ?>
+                                            <option value="<?= $dpasien['id_pasien']; ?>"><?= $dpasien['nm_pasien']; ?></option>
+                                        <?php endwhile; ?>
+                                    </select>
                                 </div>
 
                                 <div class="col-4">
-                                    <label for="iddokter" class="form-label">ID Dokter</label>
-                                    <input type="number" class="form-control" name="iddokter" placeholder="ID Dokter">
+                                    <?php
+                                    $qdokter = $connect->query("SELECT * FROM dokter"); ?>
+                                    <label for="iddokter" class="form-label">Nama Dokter</label>
+                                    <select name="iddokter" class="form-select" id="">
+                                        <option hidden>Pilih Dokter</option>
+                                        <?php
+                                        while ($ddokter = $qdokter->fetch_assoc()) :
+                                        ?>
+                                            <option value="<?= $ddokter['id_dokter']; ?>"><?= $ddokter['nm_dokter']; ?></option>
+                                        <?php endwhile; ?>
+                                    </select>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="idkarya" class="form-label">ID Karyawan</label>
-                                    <input type="number" class="form-control" name="idkarya" placeholder="ID Karyawan">
+                                    <?php
+                                    $qkarya = $connect->query("SELECT * FROM karyawan"); ?>
+                                    <label for="idkarya" class="form-label">Nama Karyawan</label>
+                                    <select name="idkarya" class="form-select" id="">
+                                        <option hidden>Pilih Dokter</option>
+                                        <?php
+                                        while ($dkarya = $qkarya->fetch_assoc()) :
+                                        ?>
+                                            <option value="<?= $dkarya['id_karyawan']; ?>"><?= $dkarya['nm_karyawan']; ?></option>
+                                        <?php endwhile; ?>
+                                    </select>
                                 </div>
 
                                 <div class="col-4">
@@ -70,10 +98,10 @@
                                     <label for="tindak" class="form-label">Tindak Lanjut</label>
                                     <select class="form-select" name="tindak">
                                         <option hidden>Tindak lanjut</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
+                                        <option value="1">Pulang sehat</option>
+                                        <option value="2">Rawat jalan</option>
+                                        <option value="3">Pemeriksaan berkala</option>
+                                        <option value="4">Rujukan</option>
                                     </select>
                                 </div>
 
@@ -81,8 +109,8 @@
                                     <label for="terapi" class="form-label">Terapi</label>
                                     <select class="form-select" name="terapi">
                                         <option value="" hidden>Terapi</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
+                                        <option value="1">Obat</option>
+                                        <option value="2">Tindak</option>
                                     </select>
                                 </div>
                             </div>
