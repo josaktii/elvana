@@ -17,19 +17,19 @@ if (isset($_POST['dsubmit'])) {
 
     $intervalHari = $interval->format("%R%a");
 
-    if ($intervalHari >= 7304) {
+    if ($intervalHari >= 8036) {
         // echo $intervalHari;
         $qd=$connect->query("INSERT INTO dokter VALUES (NULL, '$kdp', '$nmdokter', '$sip', '$tmd', '$tgd','$notelp', '$almt')");
 
         if ($qd) {
-            echo "<script>alert('Data dokter berhasil diubah'); window.location.href='data.php'</script>";
+            echo "<script>alert('Data dokter berhasil ditambah'); window.location.href='data.php'</script>";
         } else {
-            echo "<script>alert('Data dokter gagal diubah'); window.location.href='data.php'</script>";
+            echo "<script>alert('Data dokter gagal ditambah'); window.location.href='data.php'</script>";
         }
     } elseif ($intervalHari < 1) {
-        echo "<script>alert('Tidak mungkin anda lahir pada tanggal ini'); window.location.href='tambah.php'</script>";
+        echo "<script>alert('Input tanggal tidak valid.'); window.location.href='tambah.php'</script>";
     } else {
-        echo "<script>alert('Anda terlalu muda untuk menjadi dokter'); window.location.href='tambah.php'</script>";
+        echo "<script>alert('Input tanggal tidak valid.'); window.location.href='tambah.php'</script>";
         // echo $intervalHari;
         // echo "Gagal";
     }

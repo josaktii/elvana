@@ -3,7 +3,7 @@
 include_once('../../config/connect.php');
 
 if (isset($_POST['psubmit'])) {
-    $kdp = $_POST['kdp'];
+    $kdp = rand(0, 999);
     $nmpoli = $_POST['nmpoli'];
 
     $qp=$connect->query("INSERT INTO poli VALUES ('$kdp', '$nmpoli')");

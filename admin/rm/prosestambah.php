@@ -14,15 +14,18 @@ if (isset($_POST['rmsubmit'])) {
     $terapi = $_POST['terapi'];
     $idk = $_POST['idkarya'];
 
-    $qd=$connect->query("INSERT INTO rm VALUES (NULL, '$idp', '$idd', '$tb', '$bb', '$tensi','$anam', '$diag', '$tindak','$terapi', '$idk')");
+    if ($tb > 0 && $bb > 0) {
+        $qd = $connect->query("INSERT INTO rm VALUES (NULL, '$idp', '$idd', '$tb', '$bb', '$tensi','$anam', '$diag', '$tindak','$terapi', '$idk')");
 
-    if ($qd) {
-        echo "<script>alert('Data rekam medis berhasil ditambahkan'); window.location.href='data.php'</script>";
+        if ($qd) {
+            echo "<script>alert('Data rekam medis berhasil ditambahkan'); window.location.href='data.php'</script>";
+        } else {
+            echo "<script>alert('Data rekam medis gagal ditambahkan'); window.location.href='data.php'</script>";
+            // echo "Error :".$qd."<br>".mysqli_error($connect);
+        }
     } else {
-        echo "<script>alert('Data rekam medis gagal ditambahkan'); window.location.href='data.php'</script>";
-        // echo "Error :".$qd."<br>".mysqli_error($connect);
+        echo "<script>alert('Input data tidak valid'); window.location.href='tambah.php'</script>";
     }
 } else {
     header('Location : data.php');
 }
-?>

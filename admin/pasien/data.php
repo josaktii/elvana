@@ -39,6 +39,7 @@
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
+                                                <th>ID Pasien</th>
                                                 <th>Nama Pasien</th>
                                                 <th>Tempat Lahir</th>
                                                 <th>Tanggal Lahir</th>
@@ -58,6 +59,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td><?= $no ?></td>
+                                                    <td><?= $dpa['id_pasien'] ?></td>
                                                     <td><?= $dpa['nm_pasien'] ?></td>
                                                     <td><?= $dpa['tempat_lahirp'] ?></td>
                                                     <td><?= $dpa['tgl_lahirp'] ?></td>

@@ -42,11 +42,6 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="tgldaftar" class="form-label">Tanggal daftar</label>
-                                    <input type="date" class="form-control" name="tgldaftar">
-                                </div>
-
-                                <div class="col-12">
                                     <label for="notlpp" class="form-label">No. Telepon</label>
                                     <input type="text" class="form-control" name="notlpp" placeholder="Nomor telepon pasien">
                                 </div>

@@ -15,15 +15,19 @@ if (isset($_POST['rmsubmit'])) {
     $terapi = $_POST['terapi'];
     $idk = $_POST['idkarya'];
 
-    $qd=$connect->query("UPDATE rm SET id_pasien = '$idp', id_dokter = '$idd', tinggi_badan = '$tb', berat_badan = '$bb', tensi = '$tensi', anamnesa = '$anam', diagnose = '$diag', tindak_lanjut = '$tindak', terapi = '$terapi', id_karyawan = '$idk' WHERE kd_rekammedis = '$kdrm'");
 
-    if ($qd) {
-        echo "<script>alert('Data rekam medis berhasil diubah'); window.location.href='data.php'</script>";
+    if ($tb > 0 && $bb > 0) {
+        $qd = $connect->query("UPDATE rm SET id_pasien = '$idp', id_dokter = '$idd', tinggi_badan = '$tb', berat_badan = '$bb', tensi = '$tensi', anamnesa = '$anam', diagnose = '$diag', tindak_lanjut = '$tindak', terapi = '$terapi', id_karyawan = '$idk' WHERE kd_rekammedis = '$kdrm'");
+
+        if ($qd) {
+            echo "<script>alert('Data rekam medis berhasil ditambahkan'); window.location.href='data.php'</script>";
+        } else {
+            echo "<script>alert('Data rekam medis gagal ditambahkan'); window.location.href='data.php'</script>";
+            // echo "Error :".$qd."<br>".mysqli_error($connect);
+        }
     } else {
-        // echo "Error :".$qd."<br>".mysqli_error($connect);
-        echo "<script>alert('Data rekam medis gagal diubah'); window.location.href='data.php'</script>";
+        echo "<script>alert('Input data tidak valid'); window.location.href='edit.php?id=$kdrm'</script>";
     }
 } else {
     header('Location : data.php');
 }
-?>

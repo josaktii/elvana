@@ -51,7 +51,7 @@
                                         <div class="col-md-6">
                                             <label for="jabat" class="form-label">Jabatan</label>
                                             <select class="form-select" name="jabat" required>
-                                                <option value="" hidden><?= $dk['jabatan']; ?></option>
+                                                <option value="<?= $dk['jabatan']; ?>" hidden><?= $dk['jabatan']; ?></option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
