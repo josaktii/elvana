@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2021 at 08:31 AM
+-- Generation Time: Apr 21, 2021 at 11:08 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -44,7 +44,8 @@ CREATE TABLE `dokter` (
 
 INSERT INTO `dokter` (`id_dokter`, `kd_poli`, `nm_dokter`, `sip`, `tempat_lahird`, `tgl_lahird`, `telp_dokter`, `alamatd`) VALUES
 (1, 112, 'Hartono', 'Malam', 'Tajor', '2001-03-10', '085654475756', 'Rumahnya sendiri'),
-(2, 112, 'Kartoyono', 'Malam', 'Rumah', '2001-01-20', '02179187676', 'Rumahnya');
+(2, 112, 'Kartoyono', 'Malam', 'Rumah', '2001-01-20', '02179187676', 'Rumahnya'),
+(3, 112, 'Josa', 'gatau', 'wooooo', '1997-02-15', '0257945545454', 'Gataulah aku ');
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,8 @@ CREATE TABLE `karyawan` (
 
 INSERT INTO `karyawan` (`id_karyawan`, `jabatan`, `nm_karyawan`, `tempat_lahirk`, `tgl_lahirk`) VALUES
 (1, '2', 'Josaktii', 'Tajos', '1999-02-20'),
-(2, '3', 'Elvana', 'Tajos', '2000-01-20');
+(2, '3', 'Elvana', 'Tajos', '2000-01-20'),
+(3, '2', 'Wandi', 'rumahnya lah', '2003-12-20');
 
 -- --------------------------------------------------------
 
@@ -79,7 +81,7 @@ CREATE TABLE `kb` (
   `id_pasien` int(9) NOT NULL,
   `kd_poli` int(3) NOT NULL,
   `tgl_kunjungan` date NOT NULL,
-  `status` enum('1','2') NOT NULL
+  `status` enum('1','2','3') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -105,7 +107,10 @@ CREATE TABLE `pasien` (
 --
 
 INSERT INTO `pasien` (`id_pasien`, `nm_pasien`, `jen_kelamin`, `jalur`, `alamatp`, `tempat_lahirp`, `tgl_lahirp`, `telp_pasien`, `tgl_daftar`) VALUES
-(402353452, 'Joshua', '2', '4', 'Rumahnya', 'rumah', '2000-02-20', '02179187676', '2001-02-20');
+(97980281, 'Numayey', '2', '3', 'Rumah numanuma', 'rimbajuga', '2013-02-15', '08451222365', '2015-07-06'),
+(259750121, 'Numanuma', '1', '1', 'Rumahnya', 'rimba', '2003-05-20', '02179187676', '2020-05-04'),
+(402353452, 'Joshua', '2', '4', 'Rumahnya', 'rumah', '2005-02-20', '02179187676', '2006-02-20'),
+(871697534, 'Numanuma', '1', '1', 'Rumahnya', 'rimba', '2010-06-15', '0256441252315', '2021-04-20');
 
 -- --------------------------------------------------------
 
@@ -123,7 +128,8 @@ CREATE TABLE `poli` (
 --
 
 INSERT INTO `poli` (`kd_poli`, `nm_poli`) VALUES
-(112, 'Umum');
+(112, 'Umum'),
+(454, 'Khusus');
 
 -- --------------------------------------------------------
 
@@ -142,6 +148,7 @@ CREATE TABLE `rm` (
   `diagnose` varchar(30) NOT NULL,
   `tindak_lanjut` enum('1','2','3','4') NOT NULL,
   `terapi` enum('1','2') NOT NULL,
+  `tanggal` date NOT NULL,
   `id_karyawan` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -149,8 +156,8 @@ CREATE TABLE `rm` (
 -- Dumping data for table `rm`
 --
 
-INSERT INTO `rm` (`kd_rekammedis`, `id_pasien`, `id_dokter`, `tinggi_badan`, `berat_badan`, `tensi`, `anamnesa`, `diagnose`, `tindak_lanjut`, `terapi`, `id_karyawan`) VALUES
-(1, 402353452, 1, '255', '168', '140/88', 'Anda sakit', 'Anda Sakit lho tapi bohong', '2', '2', 1);
+INSERT INTO `rm` (`kd_rekammedis`, `id_pasien`, `id_dokter`, `tinggi_badan`, `berat_badan`, `tensi`, `anamnesa`, `diagnose`, `tindak_lanjut`, `terapi`, `tanggal`, `id_karyawan`) VALUES
+(3, 97980281, 2, '180', '55', '140/45', 'Sakit co', 'Iya sakit bujuran', '1', '2', '2021-04-21', 1);
 
 -- --------------------------------------------------------
 
@@ -166,6 +173,13 @@ CREATE TABLE `user` (
   `id_karyawan` int(3) NOT NULL,
   `kd_poli` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `username`, `password`, `access`, `id_karyawan`, `kd_poli`) VALUES
+(4, 'josaktii', 'asdasd', '', 1, 454);
 
 --
 -- Indexes for dumped tables
@@ -230,13 +244,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `dokter`
 --
 ALTER TABLE `dokter`
-  MODIFY `id_dokter` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_dokter` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `kb`
@@ -248,13 +262,13 @@ ALTER TABLE `kb`
 -- AUTO_INCREMENT for table `rm`
 --
 ALTER TABLE `rm`
-  MODIFY `kd_rekammedis` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `kd_rekammedis` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
