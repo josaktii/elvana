@@ -10,7 +10,7 @@
             <input type="password" class="form-control" name="upass" placeholder="Password pengguna" required>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <label for="access" class="form-label">Access</label>
             <select class="form-select" name="uaccess" required>
                 <option value="" hidden>Pilih hak akses user baru</option>
@@ -19,19 +19,32 @@
             </select>
         </div>
 
-        <div class="col-md-6">
-        <?php
-        $qidk = $connect->query("SELECT * FROM karyawan");
-        ?>
+        <div class="col-md-4">
+            <?php
+            $qidk = $connect->query("SELECT * FROM karyawan");
+            ?>
             <label for="idkarya" class="form-label">ID Karyawan</label>
             <select name="idkarya" class="form-select" id="">
-            <?php
-            while($didk = $qidk->fetch_assoc()):
-            ?>
-                <option value="<?= $didk['id_karyawan']; ?>"><?= $didk['nm_karyawan']; ?></option>
-            <?php endwhile; ?>
+                <?php
+                while ($didk = $qidk->fetch_assoc()) :
+                ?>
+                    <option value="<?= $didk['id_karyawan']; ?>"><?= $didk['nm_karyawan']; ?></option>
+                <?php endwhile; ?>
             </select>
-            <!-- <input type="number" class="form-control" name="idkarya" placeholder="ID Karyawan penerima akun"> -->
+        </div>
+
+        <div class="col-md-4">
+            <?php
+            $qkp = $connect->query("SELECT * FROM poli");
+            ?>
+            <label for="kdpol" class="form-label">Poli</label>
+            <select name="kdpol" class="form-select" id="">
+                <?php
+                while ($dkp = $qkp->fetch_assoc()) :
+                ?>
+                    <option value="<?= $dkp['kd_poli']; ?>"><?= $dkp['nm_poli']; ?></option>
+                <?php endwhile; ?>
+            </select>
         </div>
     </div>
 

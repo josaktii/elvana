@@ -8,8 +8,9 @@ if (isset($_POST['usubmit'])) {
     $upass = $_POST['upass'];
     $uaccess = $_POST['uaccess'];
     $idkarya = $_POST['idkarya'];
+    $kdpol = $_POST['kdpol'];
 
-    $qu=$connect->query("UPDATE user SET username = '$uname', password = '$upass', access = '$uaccess', id_karyawan = '$idkarya' WHERE id_user = '$idu'");
+    $qu=$connect->query("UPDATE user SET username = '$uname', password = '$upass', access = '$uaccess', id_karyawan = '$idkarya', kd_poli = '$kdpol' WHERE id_user = '$idu'");
 
     if ($qu) {
         echo "<script>alert('Data user berhasil diubah'); window.location.href='data.php'</script>";

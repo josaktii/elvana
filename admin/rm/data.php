@@ -49,6 +49,7 @@
                                                 <th>Diagnosa</th>
                                                 <th>Tindak Lanjut</th>
                                                 <th>Terapi</th>
+                                                <th>Tanggal</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -90,6 +91,7 @@
                                                         }
                                                         ?>
                                                     </td>
+                                                    <td><?= $dpa['tanggal'] ?></td>
                                                     <td>
                                                         <div class="input-group">
                                                             <a href="edit.php?id=<?= $dpa['kd_rekammedis'] ?>" class="btn btn-sm btn-info">Edit</a>

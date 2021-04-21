@@ -14,8 +14,10 @@ if (isset($_POST['rmsubmit'])) {
     $terapi = $_POST['terapi'];
     $idk = $_POST['idkarya'];
 
+    $tglnow = date('Y-m-d');
+
     if ($tb > 0 && $bb > 0) {
-        $qd = $connect->query("INSERT INTO rm VALUES (NULL, '$idp', '$idd', '$tb', '$bb', '$tensi','$anam', '$diag', '$tindak','$terapi', '$idk')");
+        $qd = $connect->query("INSERT INTO rm VALUES (NULL, '$idp', '$idd', '$tb', '$bb', '$tensi','$anam', '$diag', '$tindak','$terapi', '$tglnow', '$idk')");
 
         if ($qd) {
             echo "<script>alert('Data rekam medis berhasil ditambahkan'); window.location.href='data.php'</script>";

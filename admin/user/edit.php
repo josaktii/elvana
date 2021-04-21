@@ -28,7 +28,8 @@
                 if (isset($_GET['id'])) {
                     $id = $_GET['id'];
 
-                    $qu = $connect->query("SELECT * FROM user JOIN karyawan USING(id_karyawan) WHERE id_user = '$id'");
+                    $qu = $connect->query("SELECT * FROM user JOIN karyawan USING(id_karyawan) JOIN poli USING(kd_poli) WHERE id_user = '$id'");
+                    $qkp = $connect->query("SELECT * FROM poli");
                     $qidk = $connect->query("SELECT * FROM karyawan");
 
                     foreach ($qu as $du) :
@@ -49,7 +50,7 @@
                                             <input type="password" class="form-control" name="upass" value="<?= $du['password'] ?>">
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <label for="access" class="form-label">Access</label>
                                             <select class="form-select" name="uaccess">
                                                 <option value="" hidden>
@@ -66,7 +67,7 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <label for="idkarya" class="form-label">ID Karyawan</label>
                                             <select name="idkarya" class="form-select" id="">
                                                 <option value="<?= $du['id_karyawan']; ?>" hidden><?= $du['nm_karyawan']; ?></option>
@@ -76,7 +77,16 @@
                                                     <option value="<?= $didk['id_karyawan']; ?>"><?= $didk['nm_karyawan']; ?></option>
                                                 <?php endwhile; ?>
                                             </select>
-                                            <!-- <input type="number" class="form-control" name="idkarya" placeholder="ID Karyawan penerima akun"> -->
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="kdpol" class="form-label">Poli</label>
+                                            <select name="kdpol" class="form-select" id="">
+                                                <?php
+                                                while ($dkp = $qkp->fetch_assoc()) :
+                                                ?>
+                                                    <option value="<?= $dkp['kd_poli']; ?>"><?= $dkp['nm_poli']; ?></option>
+                                                <?php endwhile; ?>
+                                            </select>
                                         </div>
                                     </div>
 

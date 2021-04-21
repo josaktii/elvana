@@ -10,7 +10,7 @@ if (isset($_POST['pasubmit'])) {
     $jk = $_POST['jkel'];
     $jalur = $_POST['jalur'];
     $almt = $_POST['alamat'];
-    $rand = rand(0, 999999999);
+    $rand = rand(0, 1000000000);
 
     $tglSekarang = new DateTime();
     $tglnow = date('Y-m-d');
