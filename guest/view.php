@@ -32,10 +32,10 @@
         <input type="text" class="form-control mb-3" id="floatingInput" placeholder="ID pasien" name="idpas">
         <label for="floatingInput">ID pasien</label>
       </div>
-      <!-- <div class="form-floating">
-        <input type="date" class="form-control mb-3 mt-1" id="floatingPassword" placeholder="Tanggal lahir" name="tgl">
+      <div class="form-floating">
+        <input type="date" class="form-control mb-3 mt-1" id="floatingPassword" name="tgl">
         <label for="floatingPassword">Tanggal lahir</label>
-      </div> -->
+      </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit" name="csubmit">Cari rekam medis</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2021–2021</p>
     </form>

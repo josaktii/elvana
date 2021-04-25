@@ -1,7 +1,6 @@
 <?php
 include 'config/connect.php';
-$quer = $connect->query("SELECT COUNT(kd_kunjungan) AS hitung FROM kb GROUP BY kd_poli");
-$hitung = $quer->fetch_assoc();
-foreach ($hitung as $bla) {
-    echo "Yang terdaftar : " . $bla['hitung'];
+$q = $connect->query("SELECT * FROM rm JOIN pasien USING(id_pasien) WHERE id_pasien = '97980281' AND tgl_lahirp = '2013-02-15' ");
+foreach ($q as $bla) {
+    echo "Yang terdaftar : " . $bla;
 }
