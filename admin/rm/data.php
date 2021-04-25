@@ -34,6 +34,18 @@
                                 <div class="table-responsive">
                                     <h2>Data Rekam Medis</h2>
 
+                                    <form action="" method="get">
+                                        <input type="search" name="cari" id="">
+                                        <button type="submit">Cari</button>
+                                    </form>
+                                    <?php
+
+                                    if (isset($_GET['cari'])) {
+                                        $cari = $_GET['cari'];
+                                        echo "<b>Hasil pencarian : " . $cari . "</b>";
+                                    }
+
+                                    ?>
                                     <hr class="my-4">
                                     <table class="table table table-m">
                                         <thead>
@@ -54,7 +66,12 @@
                                             </tr>
                                         </thead>
                                         <?php
-                                        $qpa = $connect->query("SELECT * FROM rm JOIN pasien USING(id_pasien) JOIN dokter USING(id_dokter) JOIN karyawan USING(id_karyawan)");
+                                        if (isset($_GET['cari'])) {
+                                            $cari = $_GET['cari'];
+                                            $qpa = $connect->query("SELECT * FROM rm JOIN pasien USING(id_pasien) JOIN dokter USING(id_dokter) JOIN karyawan USING(id_karyawan) WHERE CONCAT(nm_pasien, '', nm_dokter, '', tinggi_badan, '', berat_badan, '', tensi, '', anamnesa, '', diagnose, '', nm_karyawan, '') LIKE '%".$cari."%'");
+                                        } else {
+                                            $qpa = $connect->query("SELECT * FROM rm JOIN pasien USING(id_pasien) JOIN dokter USING(id_dokter) JOIN karyawan USING(id_karyawan)");
+                                        }
                                         $no = 1;
                                         while ($dpa = $qpa->fetch_assoc()) :
                                         ?>

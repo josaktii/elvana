@@ -30,6 +30,18 @@
                             <div class="h-100 p-5 bg-light border rounded-3">
                                 <div class="table-responsive">
                                     <h2>Data Karyawan</h2>
+                                    <form action="" method="get">
+                                        <input type="search" name="cari" id="">
+                                        <button type="submit">Cari</button>
+                                    </form>
+                                    <?php
+
+                                    if (isset($_GET['cari'])) {
+                                        $cari = $_GET['cari'];
+                                        echo "<b>Hasil pencarian : " . $cari . "</b>";
+                                    }
+
+                                    ?>
                                     <hr class="my-4">
                                     <table class="table table table-m">
                                         <thead>
@@ -43,8 +55,13 @@
                                             </tr>
                                         </thead>
                                         <?php
+                                        if (isset($_GET['cari'])) {
+                                            $cari = $_GET['cari'];
+                                            $qu = $connect->query("SELECT * FROM karyawan WHERE CONCAT(nm_karyawan, '', tempat_lahirk, '', tgl_lahirk, '') LIKE '%".$cari."%'");
+                                        } else {
+                                            $qu = $connect->query("SELECT * FROM karyawan");
+                                        }
                                         $no = 1;
-                                        $qu = $connect->query("SELECT * FROM karyawan");
                                         while ($du = $qu->fetch_assoc()) :
                                         ?>
                                             <tbody>
