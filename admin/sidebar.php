@@ -43,6 +43,12 @@
                     Rekam Medis
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../kb/home.php">
+                    <span data-feather="layers"></span>
+                    Kunjungan Berobat
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
