@@ -1,6 +1,99 @@
-<?php
-include 'config/connect.php';
-$q = $connect->query("SELECT * FROM rm JOIN pasien USING(id_pasien) WHERE id_pasien = '97980281' AND tgl_lahirp = '2013-02-15' ");
-foreach ($q as $bla) {
-    echo "Yang terdaftar : " . $bla;
-}
+<ul class="sidebar-menu" data-widget="tree">
+                    <li class="">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Dashboard</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="header nav-small-cap">DATA MASTER</li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-heart"></i>
+                            <span>Poli</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-wheelchair"></i>
+                            <span>Pasien</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-briefcase"></i> <span>Karyawan</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                    <li class="header nav-small-cap">DATA TURUNAN</li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-user"></i> <span>User</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-book"></i> <span>Dokter</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-folder"></i> <span>Rekam Medis</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-calendar"></i> <span>Kunjungan</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                </ul>

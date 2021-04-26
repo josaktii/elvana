@@ -9,9 +9,9 @@ if (isset($_POST['psubmit'])) {
     $qp=$connect->query("INSERT INTO poli VALUES ('$kdp', '$nmpoli')");
 
     if ($qp) {
-        echo "<script>alert('Data poli berhasil ditambahkan'); window.location.href='data.php'</script>";
+        echo "<script>window.location.href='data.php'</script>";
     } else {
-        echo "<script>alert('Data poli gagal ditambahkan'); window.location.href='data.php'</script>";
+        echo "<script>window.location.href='data.php'</script>";
     }
 } else {
     header('Location : data.php');

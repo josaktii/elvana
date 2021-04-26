@@ -22,12 +22,12 @@ if (isset($_POST['pasubmit'])) {
         $qk = $connect->query("INSERT INTO pasien VALUES ('$rand', '$nmpas', '$jk', '$jalur', '$almt', '$tmpas','$tgpas', '$nopas', '$tglnow')");
 
         if ($qk) {
-            echo "<script>alert('Data pasien berhasil ditambah'); window.location.href='data.php'</script>";
+            echo "<script>window.location.href='data.php'</script>";
         } else {
-            echo "<script>alert('Data pasien gagal ditambah'); window.location.href='data.php'</script>";
+            echo "<script>window.location.href='data.php'</script>";
         }
     } else {
-        echo "<script>alert('Input tanggal anda tidak valid'); window.location.href='tambah.php'</script>";
+        echo "<script>window.location.href='tambah.php'</script>";
     }
 } else {
     header('Location : data.php');

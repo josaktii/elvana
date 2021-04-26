@@ -21,9 +21,9 @@ if (isset($_POST['pasubmit'])) {
         $qpa = $connect->query("UPDATE pasien SET nm_pasien = '$nmpas', jen_kelamin = '$jk', jalur = '$jalur', alamatp = '$almt', tempat_lahirp = '$tmpas', tgl_lahirp = '$tgpas', telp_pasien = '$nopas' WHERE id_pasien = '$idpa'");
 
         if ($qpa) {
-            echo "<script>alert('Data pasien berhasil diubah'); window.location.href='data.php'</script>";
+            echo "<script>window.location.href='data.php'</script>";
         } else {
-            echo "<script>alert('Data pasien gagal diubah'); window.location.href='data.php'</script>";
+            echo "<script>window.location.href='data.php'</script>";
         }
     } else {
         echo "<script>alert('Input tanggal tidak valid'); window.location.href='edit.php?id=$idpa'</script>";

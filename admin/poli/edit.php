@@ -1,65 +1,279 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Poli</title>
-    <link href="../../style/bootstrap.css" rel="stylesheet">
-    <link href="../../style/dashboard.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../images/favicon.ico">
+
+    <title>Fab Admin - Dashboard Fixed</title>
+
+    <!-- Bootstrap 4.0-->
+    <link rel="stylesheet" href="../../style/bootstrap.min.css">
+
+    <!-- Bootstrap extend-->
+    <link rel="stylesheet" href="../../style/bootstrap-extend.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../style/master_style.css">
+
+    <!-- Fab Admin skins -->
+    <link rel="stylesheet" href="../../style/_all-skins.css">
+
 </head>
 
-<body>
+<body class="hold-transition skin-green sidebar-mini">
+    <div class="wrapper">
 
-    <?php include_once('../navbar.php'); ?>
-
-    <div class="container-fluid">
-        <div class="row">
-            <?php include_once('../sidebar.php'); ?>
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Edit Data Poli</h1>
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <!-- mini logo -->
+                <b class="logo-mini">
+                    <span class="light-logo">Admin</span>
+                </b>
+            </a>
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <div>
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
                 </div>
 
-                <?php
-                require_once '../../config/connect.php';
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
 
-                if (isset($_GET['id'])) {
-                    $id = $_GET['id'];
-
-                    $qp = $connect->query("SELECT * FROM poli WHERE kd_poli = '$id'");
-
-                    foreach ($qp as $dp) :
-                ?>
-
-                        <div class="px-5 col-lg-8 mx-auto my-5 bg-light rounded-3">
-                            <div class="container-fluid py-5">
-                                <form method="POST" action="prosesedit.php">
-                                    <div class="row g-3">
-                                        <div class="col-12">
-                                            <label for="kdp" class="form-label">Kode Poli</label>
-                                            <input type="number" class="form-control" name="kdp" value="<?= $dp['kd_poli'] ?>" require>
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="nmpoli" class="form-label">Nama Poli</label>
-                                            <input type="text" class="form-control" name="nmpoli" value="<?= $dp['nm_poli']; ?>" required>
+                        <!-- User Account-->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">USERNAME</a>
+                            <ul class="dropdown-menu scale-up">
+                                <li class="user-body">
+                                    <div class="row no-gutters">
+                                        <div class="col-12 text-left">
+                                            <a href="#"><i class="fa fa-power-off"></i> Logout</a>
                                         </div>
                                     </div>
+                                    <!-- /.row -->
+                                </li>
+                            </ul>
+                        </li>
+                        <li>&nbsp;&nbsp;</li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
-                                    <hr class="my-4">
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar-->
+            <section class="sidebar">
 
-                                    <button class="w-100 btn btn-primary btn-lg" type="submit" name="psubmit">Update Data Poli</button>
-                                </form>
+                <!-- sidebar menu-->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="">
+                        <a href="../dashboard.php">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Dashboard</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="header nav-small-cap">DATA MASTER</li>
+                    <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-heart"></i>
+                            <span>Poli</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-wheelchair"></i>
+                            <span>Pasien</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-briefcase"></i> <span>Karyawan</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                    <li class="header nav-small-cap">DATA TURUNAN</li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-user"></i> <span>User</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-book"></i> <span>Dokter</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-folder"></i> <span>Rekam Medis</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-calendar"></i> <span>Kunjungan</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                            <li><a href="tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Poli
+                    <small>Data</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="breadcrumb-item">Poli</li>
+                    <li class="breadcrumb-item active">Edit</li>
+                </ol>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Basic Forms -->
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Form ubah data poli</h3>
+                        <h6 class="box-subtitle">Form yang digunakan untuk mengubah data poli di Rumah Sakit XXX</h6>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col">
+                                <?php
+                                require_once '../../config/connect.php';
+
+                                if (isset($_GET['id'])) {
+                                    $id = $_GET['id'];
+
+                                    $q = $connect->query("SELECT * FROM poli WHERE kd_poli = '$id'");
+
+                                    foreach ($q as $dp) :
+                                ?>
+                                        <form method="POST" action="prosesedit.php">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-12">
+                                                    <div class="form-group">
+                                                        <h5>Nama Poli <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="number" class="form-control" name="kdp" value="<?= $dp['kd_poli'] ?>" hidden>
+                                                            <input type="text" name="nmpoli" class="form-control" required data-validation-required-message="This field is required" value="<?= $dp['nm_poli'] ?>">
+                                                        </div>
+                                                        <div class="form-control-feedback"><small><i>Nama poli tidak boleh sama</i> - <small>Nama poli tidak boleh kurang dari 3 huruf</small></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-xs-right">
+                                                <button type="submit" class="btn btn-info" name="psubmit">Submit</button>
+                                            </div>
+                                        </form>
+                                <?php
+                                    endforeach;
+                                }
+                                ?>
                             </div>
+                            <!-- /.col -->
                         </div>
-                <?php
-                    endforeach;
-                }
-                ?>
-            </main>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+            </section>
+            <!-- /.content -->
         </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            &copy; 2018 <a href="https://www.multipurposethemes.com/">Multi-Purpose Themes</a>. All Rights Reserved.
+        </footer>
     </div>
+
+    <script src="../../js/jquery.min.js"></script>
+
+    <!-- popper -->
+    <script src="../../js/popper.min.js"></script>
+
+    <!-- Bootstrap 4.0-->
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <!-- FastClick -->
+    <script src="../../js/fastclick.js"></script>
+
+    <!-- Fab Admin App -->
+    <script src="../../js/template.js"></script>
+    <script src="../../js/validation.js"></script>
+    <script>
+        ! function(window, document, $) {
+            "use strict";
+            $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+        }(window, document, jQuery);
+    </script>
+
 </body>
 
 </html>

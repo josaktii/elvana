@@ -9,9 +9,9 @@ if (isset($_POST['psubmit'])) {
     $qp=$connect->query("UPDATE poli SET nm_poli = '$nmpoli' WHERE kd_poli = '$kdp'");
 
     if ($qp) {
-        echo "<script>alert('Data poli berhasil diubah'); window.location.href='data.php'</script>";
+        echo "<script>window.location.href='data.php'</script>";
     } else {
-        echo "<script>alert('Data poli gagal diubah'); window.location.href='data.php'</script>";
+        echo "<script>window.location.href='data.php'</script>";
     }
 } else {
     header('Location : data.php');
