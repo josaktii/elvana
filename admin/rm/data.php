@@ -31,153 +31,9 @@
 <body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
 
-        <header class="main-header">
-            <!-- Logo -->
-            <a href="index.html" class="logo">
-                <!-- mini logo -->
-                <b class="logo-mini">
-                    <span class="light-logo">Admin</span>
-                </b>
-            </a>
-            <!-- Header Navbar -->
-            <nav class="navbar navbar-static-top">
-                <!-- Sidebar toggle button-->
-                <div>
-                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                        <span class="sr-only">Toggle navigation</span>
-                    </a>
-                </div>
+        <?php include_once('navbar.php'); ?>
 
-                <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
-
-                        <!-- User Account-->
-                        <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">USERNAME</a>
-                            <ul class="dropdown-menu scale-up">
-                                <li class="user-body">
-                                    <div class="row no-gutters">
-                                        <div class="col-12 text-left">
-                                            <a href="#"><i class="fa fa-power-off"></i> Logout</a>
-                                        </div>
-                                    </div>
-                                    <!-- /.row -->
-                                </li>
-                            </ul>
-                        </li>
-                        <li>&nbsp;&nbsp;</li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-
-        <!-- Left side column. contains the logo and sidebar -->
-        <aside class="main-sidebar">
-            <!-- sidebar-->
-            <section class="sidebar">
-
-                <!-- sidebar menu-->
-                <ul class="sidebar-menu" data-widget="tree">
-                    <li class="">
-                        <a href="../dashboard.php">
-                            <i class="fa fa-dashboard"></i>
-                            <span>Dashboard</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="header nav-small-cap">DATA MASTER</li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-heart"></i>
-                            <span>Poli</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="../poli/data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
-                            <li><a href="../poli/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview ">
-                        <a href="#">
-                            <i class="fa fa-wheelchair"></i>
-                            <span>Pasien</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="../pasien/data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
-                            <li><a href="../pasien/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-briefcase"></i> <span>Karyawan</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="../karyawan/data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
-                            <li><a href="../karyawan/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
-                        </ul>
-                    </li>
-                    <li class="header nav-small-cap">DATA TURUNAN</li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-user"></i> <span>User</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="../user/data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
-                            <li><a href="../user/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview ">
-                        <a href="#">
-                            <i class="fa fa-book"></i> <span>Dokter</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="../dokter/data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
-                            <li><a href="../dokter/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview active">
-                        <a href="#">
-                            <i class="fa fa-folder"></i> <span>Rekam Medis</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="../rm/data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
-                            <li><a href="../rm/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview ">
-                        <a href="#">
-                            <i class="fa fa-calendar"></i> <span>Kunjungan</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="../kb/data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
-                            <li><a href="../kb/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
-        </aside>
+        <?php include_once('sidebar.php'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -209,7 +65,7 @@
                                 <div class="table-responsive">
                                     <table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
                                         <thead>
-                                        <tr>
+                                            <tr>
                                                 <th>No.</th>
                                                 <th>Nama Pasien</th>
                                                 <th>Nama Dokter</th>
@@ -258,7 +114,7 @@
                                                         <?php
                                                         if ($d['terapi'] == '1') {
                                                             echo "Obat";
-                                                        } else {    
+                                                        } else {
                                                             echo "Tindak";
                                                         }
                                                         ?>

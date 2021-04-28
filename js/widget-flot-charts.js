@@ -122,7 +122,7 @@ $(function () {
       data : cos,
       color: '#fc4b6c'
     }
-    $.plot('#line-chart', [line_data1, line_data2], {
+    $.plot('#line-chart', [line_data1], {
       grid  : {
         hoverable  : true,
         borderColor: '#f3f3f3',
