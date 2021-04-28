@@ -2,7 +2,7 @@
 
 include_once('../../config/connect.php');
 
-if (isset($_POST['rmsubmit'])) {
+if (isset($_POST['submit'])) {
     $kdrm = $_POST['kdrm'];
     $idp = $_POST['idpasien'];
     $idd = $_POST['iddokter'];
@@ -20,9 +20,9 @@ if (isset($_POST['rmsubmit'])) {
         $qd = $connect->query("UPDATE rm SET id_pasien = '$idp', id_dokter = '$idd', tinggi_badan = '$tb', berat_badan = '$bb', tensi = '$tensi', anamnesa = '$anam', diagnose = '$diag', tindak_lanjut = '$tindak', terapi = '$terapi', id_karyawan = '$idk' WHERE kd_rekammedis = '$kdrm'");
 
         if ($qd) {
-            echo "<script>alert('Data rekam medis berhasil ditambahkan'); window.location.href='data.php'</script>";
+            echo "<script>alert('Data rekam medis berhasil diubah'); window.location.href='data.php'</script>";
         } else {
-            echo "<script>alert('Data rekam medis gagal ditambahkan'); window.location.href='data.php'</script>";
+            echo "<script>alert('Data rekam medis gagal diubah'); window.location.href='data.php'</script>";
             // echo "Error :".$qd."<br>".mysqli_error($connect);
         }
     } else {

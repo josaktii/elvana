@@ -2,7 +2,7 @@
 
 include_once('../../config/connect.php');
 
-if (isset($_POST['dsubmit'])) {
+if (isset($_POST['submit'])) {
     $idd = $_POST['idd'];
     $nmdokter = $_POST['nmdokter'];
     $tmd = $_POST['tmptdokter'];

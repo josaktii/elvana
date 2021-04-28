@@ -2,7 +2,7 @@
 
 include_once('../../config/connect.php');
 
-if (isset($_POST['ksubmit'])) {
+if (isset($_POST['submit'])) {
     $nmkarya = $_POST['nmkarya'];
     $tmpt = $_POST['tmptkarya'];
     $tgl = $_POST['tglkarya'];
@@ -17,14 +17,14 @@ if (isset($_POST['ksubmit'])) {
         $qk = $connect->query("INSERT INTO karyawan VALUES (NULL, '$jabat', '$nmkarya', '$tmpt', '$tgl')");
 
         if ($qk) {
-            echo "<script>alert('Data karyawan berhasil ditambahkan'); window.location.href='data.php'</script>";
+            echo "<script>window.location.href='data.php'</script>";
         } else {
-            echo "<script>alert('Data karyawan gagal ditambahkan'); window.location.href='data.php'</script>";
+            echo "<script>window.location.href='data.php'</script>";
         }
     } elseif ($intervalHari < 1) {
-        echo "<script>alert('Input tanggal tidak valid.'); window.location.href='data.php'</script>";
+        echo "<script>window.location.href='data.php'</script>";
     } else {
-        echo "<script>alert('Input tanggal tidak valid.'); window.location.href='data.php'</script>";
+        echo "<script>window.location.href='data.php'</script>";
     }
 } else {
     header('Location : data.php');
