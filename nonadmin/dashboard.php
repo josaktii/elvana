@@ -8,10 +8,13 @@ if ($_SESSION['status'] != "login") {
     header("location:../login.php?pesan=belum_login");
 }
 
-$qc = $connect->query("SELECT COUNT(*) AS hitung FROM pasien");
-$qk = $connect->query("SELECT COUNT(*) AS hitung FROM poli");
-$qd = $connect->query("SELECT COUNT(*) AS hitung FROM dokter");
-$qkb = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
+$poli = $_SESSION['poli'];
+$namapoli = $_SESSION['namapoli'];
+$tglnow = date('Y-m-d');
+
+$qk = $connect->query("SELECT COUNT(*) AS hitung FROM kb WHERE kd_poli = '$poli'");
+$qd = $connect->query("SELECT COUNT(*) AS hitung FROM kb WHERE tgl_kunjungan = '$tglnow'");
+$qt = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +69,7 @@ $qkb = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
 
                         <!-- User Account-->
                         <li class="dropdown user user-menu">
-                        <?php echo $_SESSION[''] ?>
+                            <?php echo $_SESSION[''] ?>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Halo, <?= $_SESSION['username'] ?></a>
                             <ul class="dropdown-menu scale-up">
                                 <li class="user-body">
@@ -115,56 +118,7 @@ $qkb = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
                             <li><a href="poli/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
                         </ul>
                     </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-wheelchair"></i>
-                            <span>Pasien</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="pasien/data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
-                            <li><a href="pasien/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-briefcase"></i> <span>Karyawan</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="karyawan/data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
-                            <li><a href="karyawan/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
-                        </ul>
-                    </li>
                     <li class="header nav-small-cap">DATA TURUNAN</li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-user"></i> <span>User</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="user/data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
-                            <li><a href="user/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-book"></i> <span>Dokter</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-right pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="dokter/data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
-                            <li><a href="dokter/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
-                        </ul>
-                    </li>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-folder"></i> <span>Rekam Medis</span>
@@ -210,50 +164,38 @@ $qkb = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
             <!-- Main content -->
             <section class="content">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-12">
                         <div class="info-box">
-                            <span class="info-box-icon bg-primary rounded"><i class="fa fa-wheelchair"></i></span>
+                            <span class="info-box-icon bg-warning rounded"><i class="fa fa-file"></i></span>
 
                             <div class="info-box-content">
-                                <?php $hitungd = $qd->fetch_assoc(); ?>
-                                <span class="info-box-number"><?= $hitungd['hitung'] ?></span>
-                                <span class="info-box-text">Dokter</span>
+                                <?php $hitungtotal = $qt->fetch_assoc(); ?>
+                                <span class="info-box-number"><?= $hitungtotal['hitung'] ?></span>
+                                <span class="info-box-text">Total Kunjungan</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-info rounded"><i class="fa fa-calendar"></i></span>
+
+                            <div class="info-box-content">
+                                <?php $hitungkb = $qd->fetch_assoc(); ?>
+                                <span class="info-box-number"><?= $hitungkb['hitung'] ?></span>
+                                <span class="info-box-text">Kunjungan hari ini</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
                         <div class="info-box">
                             <span class="info-box-icon bg-warning rounded"><i class="fa fa-file"></i></span>
 
                             <div class="info-box-content">
                                 <?php $hitungpoli = $qk->fetch_assoc(); ?>
                                 <span class="info-box-number"><?= $hitungpoli['hitung'] ?></span>
-                                <span class="info-box-text">Poli</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info rounded"><i class="fa fa-calendar"></i></span>
-
-                            <div class="info-box-content">
-                                <?php $hitungkb = $qkb->fetch_assoc(); ?>
-                                <span class="info-box-number"><?= $hitungkb['hitung'] ?></span>
-                                <span class="info-box-text">Kunjungan</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-success rounded"><i class="fa fa-heartbeat"></i></span>
-
-                            <div class="info-box-content">
-                                <?php $hitungpasien = $qc->fetch_assoc(); ?>
-                                <span class="info-box-number"><?= $hitungpasien['hitung'] ?></span>
-                                <span class="info-box-text">Pasien</span>
+                                <span class="info-box-text">Kunjungan ke poli <?= $namapoli ?></span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>

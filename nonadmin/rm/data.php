@@ -1,4 +1,4 @@
-<?php require_once('../../config/connect.php'); ?>
+<?php require_once '../../config/connect.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +31,6 @@
 <body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
 
-
         <?php include_once('navbar.php'); ?>
 
         <?php include_once('sidebar.php'); ?>
@@ -41,12 +40,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Poli
+                    kunjungan berobat
                     <small>Data</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="breadcrumb-item active">Poli</li>
+                    <li class="breadcrumb-item active">kunjungan berobat</li>
                 </ol>
             </section>
 
@@ -58,8 +57,8 @@
 
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Tabel data poli</h3>
-                                <h6 class="box-subtitle">Tabel berisi data poli di Rumah Sakit XXX</h6>
+                                <h3 class="box-title">Tabel data kunjungan berobat</h3>
+                                <h6 class="box-subtitle">Tabel berisi data kunjungan berobat di Rumah Sakit XXX</h6>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -67,24 +66,64 @@
                                     <table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
                                         <thead>
                                             <tr>
-                                                <th>Number</th>
-                                                <th>Name</th>
-                                                <th>Action</th>
+                                                <th>No.</th>
+                                                <th>Nama Pasien</th>
+                                                <th>Nama Dokter</th>
+                                                <th>Nama Karyawan</th>
+                                                <th>Tinggi Badan</th>
+                                                <th>Berat Badan</th>
+                                                <th>Tensi</th>
+                                                <th>Anamnesa</th>
+                                                <th>Diagnosa</th>
+                                                <th>Tindak Lanjut</th>
+                                                <th>Terapi</th>
+                                                <th>Tanggal</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $q = $connect->query("SELECT * FROM poli WHERE kd_poli = '$poli'");
+                                            $q = $connect->query("SELECT * FROM rm JOIN pasien USING(id_pasien) JOIN dokter USING(id_dokter) JOIN karyawan USING(id_karyawan)");
                                             $no = 1;
-                                            foreach ($q as $du) :
+                                            foreach ($q as $d) :
                                             ?>
                                                 <tr>
                                                     <td><?= $no ?></td>
-                                                    <td><?= $du['nm_poli'] ?></td>
+                                                    <td><?= $d['nm_pasien'] ?></td>
+                                                    <td><?= $d['nm_dokter'] ?></td>
+                                                    <td><?= $d['nm_karyawan'] ?></td>
+                                                    <td><?= $d['tinggi_badan'] ?></td>
+                                                    <td><?= $d['berat_badan'] ?></td>
+                                                    <td><?= $d['tensi'] ?></td>
+                                                    <td><?= $d['anamnesa'] ?></td>
+                                                    <td><?= $d['diagnose'] ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($d['tindak_lanjut'] == '1') {
+                                                            echo "Pulang sehat";
+                                                        } elseif ($d['tindak_lanjut'] == '2') {
+                                                            echo "Rawat jalan";
+                                                        } elseif ($d['tindak_lanjut'] == '3') {
+                                                            echo "Pemeriksaan berjangka";
+                                                        } else {
+                                                            echo "Rujukan";
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php
+                                                        if ($d['terapi'] == '1') {
+                                                            echo "Obat";
+                                                        } else {
+                                                            echo "Tindak";
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                    <td><?= $d['tanggal'] ?></td>
                                                     <td>
                                                         <div class="input-group">
-                                                            <a href="edit.php?id=<?= $du['kd_poli'] ?>" class="btn btn-success fa fa-edit"></a>
-                                                            <a href="hapus.php?id=<?= $du['kd_poli'] ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')" class="btn btn-danger fa fa-trash"></a>
+                                                            <a href="edit.php?id=<?= $d['kd_rekammedis'] ?>" class="btn btn-success fa fa-edit"></a>
+                                                            <a href="hapus.php?id=<?= $d['kd_rekammedis'] ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')" class="btn btn-danger fa fa-trash"></a>
                                                         </div>
                                                     </td>
                                                 </tr>

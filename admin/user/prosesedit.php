@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $kdpol = $_POST['kdpol'];
     $q = $connect->query("SELECT * FROM user JOIN karyawan USING(id_karyawan) WHERE id_karyawan = '$idkarya'");
     $d = $q->fetch_assoc();
-    if ($d['id_karyawan'] == null) {
+    if ($d['id_karyawan'] == $idkarya) {
         $qu = $connect->query("UPDATE user SET username = '$uname', password = '$upass', access = '$uaccess', id_karyawan = '$idkarya', kd_poli = '$kdpol' WHERE id_user = '$idu'");
 
         if ($qu) {
@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
             // echo "Error :".$qk."<br>".mysqli_error($connect);
         }
     } else {
-        echo "<script>alert('Karyawan sudah memiliki akun'); window.location.href='tambah.php'</script>";
+        echo "<script>alert('Karyawan sudah memiliki akun'); window.location.href='edit.php?id=$idu'</script>";
     }
 } else {
     header('Location : data.php');

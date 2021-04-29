@@ -1,6 +1,6 @@
 <?php
 
-include_once('../config/connect.php');
+include_once('../../config/connect.php');
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

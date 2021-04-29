@@ -1,5 +1,6 @@
-<?php session_start(); 
-$poli = $_SESSION['poli'];
+<?php
+session_start();
+include_once('../../config/connect.php');
 ?>
 
 <header class="main-header">

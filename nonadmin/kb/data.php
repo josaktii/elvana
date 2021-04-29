@@ -1,5 +1,3 @@
-<?php require_once('../../config/connect.php'); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +29,6 @@
 <body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
 
-
         <?php include_once('navbar.php'); ?>
 
         <?php include_once('sidebar.php'); ?>
@@ -41,12 +38,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Poli
+                    kunjungan berobat
                     <small>Data</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="breadcrumb-item active">Poli</li>
+                    <li class="breadcrumb-item active">kunjungan berobat</li>
                 </ol>
             </section>
 
@@ -58,8 +55,8 @@
 
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Tabel data poli</h3>
-                                <h6 class="box-subtitle">Tabel berisi data poli di Rumah Sakit XXX</h6>
+                                <h3 class="box-title">Tabel data kunjungan berobat</h3>
+                                <h6 class="box-subtitle">Tabel berisi data kunjungan berobat di Rumah Sakit XXX</h6>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
@@ -67,24 +64,41 @@
                                     <table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
                                         <thead>
                                             <tr>
-                                                <th>Number</th>
-                                                <th>Name</th>
+                                                <th>No.</th>
+                                                <th>Nama Pasien</th>
+                                                <th>Poli</th>
+                                                <th>Tanggal Kunjungan</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $q = $connect->query("SELECT * FROM poli WHERE kd_poli = '$poli'");
+                                            $polis = $_SESSION['poli'];
+                                            $q = $connect->query("SELECT * FROM kb JOIN pasien USING(id_pasien) JOIN poli USING(kd_poli) WHERE kd_poli = '$polis'");
                                             $no = 1;
-                                            foreach ($q as $du) :
+                                            foreach ($q as $d) :
                                             ?>
                                                 <tr>
                                                     <td><?= $no ?></td>
-                                                    <td><?= $du['nm_poli'] ?></td>
+                                                    <td><?= $d['nm_pasien'] ?></td>
+                                                    <td><?= $d['nm_poli'] ?></td>
+                                                    <td><?= $d['tgl_kunjungan'] ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($d['status'] == '1') {
+                                                            echo "Menunggu";
+                                                        } elseif ($d['status'] == '2') {
+                                                            echo "Tertangani";
+                                                        } else {
+                                                            echo "-";
+                                                        }
+                                                        ?>
+                                                    </td>
                                                     <td>
                                                         <div class="input-group">
-                                                            <a href="edit.php?id=<?= $du['kd_poli'] ?>" class="btn btn-success fa fa-edit"></a>
-                                                            <a href="hapus.php?id=<?= $du['kd_poli'] ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')" class="btn btn-danger fa fa-trash"></a>
+                                                            <a href="edit.php?id=<?= $d['kd_kunjungan'] ?>" class="btn btn-success fa fa-edit"></a>
+                                                            <a href="hapus.php?id=<?= $d['kd_kunjungan'] ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')" class="btn btn-danger fa fa-trash"></a>
                                                         </div>
                                                     </td>
                                                 </tr>

@@ -1,25 +1,30 @@
 <?php
 session_start();
 
-include 'connect.php';
+include_once('connect.php');
 
 $user = $_POST['username'];
 $pass = $_POST['password'];
 
-$ql = $connect->query("SELECT * FROM user WHERE username = '$user' and password = '$pass'");
-$check = mysqli_num_rows($ql);
+$ql = $connect->query("SELECT * FROM user JOIN poli USING(kd_poli) WHERE username = '$user' and password = '$pass'");
 
-if ($check > 0) {
-    $data = mysqli_fetch_assoc($ql);
+if ($ql->num_rows > 0) {
+    $data = $ql->fetch_assoc();
 
-    if ($data['access'] == 1) {
-        $_SESSION['username'] = $user;
+    $_SESSION['username'] = $data['username'];
+    $_SESSION['password'] = $data['password'];
+    $_SESSION['akses'] = $data['access'];
+    $_SESSION['karyawan'] = $data['id_karyawan'];
+    $_SESSION['poli'] = $data['kd_poli'];
+    $_SESSION['namapoli'] = $data['nm_poli'];
+    if ($_SESSION['akses'] = $data['access'] == 1 && $_SESSION['kd_poli'] = $data['kd_poli'] == 744 ) {
         $_SESSION['status'] = "login";
         header("location:../admin/dashboard.php");
-    } else if ($data['access'] == "2") {
-        $_SESSION['username'] = $user;
+        die;
+    } else if ($_SESSION['akses'] = $data['access'] == "2") {
         $_SESSION['status'] = "login";
-        header("location:../nonadmin/data.php");
+        header("location:../nonadmin/dashboard.php");
+        die;
     } else {
         header("location:../login.php?pesan=gagal");
     }
