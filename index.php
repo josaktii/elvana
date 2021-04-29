@@ -1,38 +1,67 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Elvana v2</title>
-    <link rel="stylesheet" href="style/bootstrap.css">
-    <link rel="stylesheet" href="style/cover.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Coming Soon - Start Bootstrap Theme</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link href="style/styles.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="style/master_style.css">
+
+    <link rel="stylesheet" href="style/themify-icons.css">
 </head>
 
-<body class="d-flex h-100 text-center text-white bg-dark">
-    <div class="container d-flex w-100 h-100 p-3 flex-column">
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-auto">
-            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-light text-decoration-none">
-                <h3 class="float-md-start mb-0">Elvana</h3>
-            </a>
-
-            <div class="col-md-3 text-end">
-                <a href="login.php" type="button" class="btn btn-outline-primary me-2">Login</a>
+<body style="background:url('assets/bg.jpg') no-repeat center center fixed; background-size: cover;">
+    <div class="masthead">
+        <div class="masthead-bg"></div>
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-12 my-auto">
+                    <div class="masthead-content text-white py-5 py-md-0">
+                        <h1 class="mb-3 h3">Selamat Datang</h1>
+                        <p class="mb-5">
+                            Anda dapat melihat rekam medis anda melalui
+                            <strong>Halaman ini.</strong>
+                            isi form dibawah ini dengan ID Pasien dan
+                            tanggal lahir anda untuk melakukan pengecekan.
+                        </p>
+                        <form action="guest/dataguest.php" method="POST">
+                            <div class="input-group input-group-newsletter">
+                                <input class="form-control" type="text" name="idpas" placeholder="Masukkan ID.."> &nbsp;
+                                <input class="form-control" type="date" name="tgl">&nbsp;&nbsp;
+                                <div class="input-group-append"><button class="btn btn-secondary" id="submit-button" type="button" name="csubmit">Cek Data!</button></div>
+                            </div>
+                            <br>
+                            <div class="form-control-feedback">
+                                <h5>
+                                    Jika anda sudah mempunyai akun, silakan <strong><a href="login.php" class="h5">klik disini!</a></strong> untuk melanjutkan
+                                </h5>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </header>
-
-        <main class="px-3 cover-container mx-auto">
-            <h1>Project Elvana v2</h1>
-            <p class="lead">Ini adalah halaman utama dari project dari Elvana Firdha Aldianato versi-2 karena yang kemarin gagal.</p>
-            <p class="lead">
-                <a href="guest/view.php" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Data Rekam Medis</a>
-            </p>
-        </main>
-
-        <footer class="mt-auto text-white-50 sticky-top">
-            <p>Project by <a href="https://getbootstrap.com/" class="text-white">Elvana Firdha Aldianato</a>, and <a href="https://twitter.com/mdo" class="text-white">Pujo</a>.</p>
-        </footer>
+        </div>
+    </div>
+    <div class="social-icons">
+        <ul class="list-unstyled text-center mb-0">
+            <li class="list-unstyled-item">
+                <a href="#!"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li class="list-unstyled-item">
+                <a href="#!"><i class="fa fa-facebook-f"></i></a>
+            </li>
+            <li class="list-unstyled-item">
+                <a href="#!"><i class="fa fa-instagram"></i></a>
+            </li>
+        </ul>
     </div>
 </body>
 

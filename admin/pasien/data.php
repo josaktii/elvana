@@ -159,10 +159,8 @@
     <!-- Fab Admin App -->
     <script src="../../js/template.js"></script>
 
-    <script src="../../assets/Flot/jquery.flot.js"></script>
     <script src="../../assets/datatable/datatables.min.js"></script>
 
-    <script src="../../js/widget-flot-charts.js"></script>
     <script src="../../js/data-table.js"></script>
 
 </body>

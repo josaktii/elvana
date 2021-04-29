@@ -17,7 +17,7 @@ if ($ql->num_rows > 0) {
     $_SESSION['karyawan'] = $data['id_karyawan'];
     $_SESSION['poli'] = $data['kd_poli'];
     $_SESSION['namapoli'] = $data['nm_poli'];
-    if ($_SESSION['akses'] = $data['access'] == 1 && $_SESSION['kd_poli'] = $data['kd_poli'] == 744 ) {
+    if ($_SESSION['akses'] = $data['access'] == 1 && $_SESSION['namapoli'] = $data['nm_poli'] == "klinik" || $_SESSION['akses'] = $data['access'] == 1 && $_SESSION['namapoli'] = $data['nm_poli'] == "Klinik" ) {
         $_SESSION['status'] = "login";
         header("location:../admin/dashboard.php");
         die;
