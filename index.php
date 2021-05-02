@@ -36,7 +36,7 @@
                             <div class="input-group input-group-newsletter">
                                 <input class="form-control" type="text" name="idpas" placeholder="Masukkan ID.."> &nbsp;
                                 <input class="form-control" type="date" name="tgl">&nbsp;&nbsp;
-                                <div class="input-group-append"><button class="btn btn-secondary" id="submit-button" type="button" name="csubmit">Cek Data!</button></div>
+                                <div class="input-group-append"><input class="btn btn-secondary" id="submit-button" type="submit" name="csubmit"></div>
                             </div>
                             <br>
                             <div class="form-control-feedback">

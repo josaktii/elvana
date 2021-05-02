@@ -8,7 +8,7 @@ include_once('../../config/connect.php');
     <a href="index.html" class="logo">
         <!-- mini logo -->
         <b class="logo-mini">
-            <span class="light-logo">Admin</span>
+            <span class="light-logo">MEDIS 1</span>
         </b>
     </a>
     <!-- Header Navbar -->
@@ -28,6 +28,11 @@ include_once('../../config/connect.php');
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Halo, <?= $_SESSION['username'] ?></a>
                     <ul class="dropdown-menu scale-up">
                         <li class="user-body">
+                            <div class="row no-gutters">
+                                <div class="col-12 text-left">
+                                    <a href="../ubahpassword.php"><i class="fa fa-lock"></i> Ubah Password</a>
+                                </div>
+                            </div>
                             <div class="row no-gutters">
                                 <div class="col-12 text-left">
                                     <a href="../../config/logout.php"><i class="fa fa-power-off"></i> Logout</a>

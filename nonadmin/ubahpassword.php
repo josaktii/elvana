@@ -8,13 +8,34 @@ if ($_SESSION['status'] != "login") {
     header("location:../login.php?pesan=belum_login");
 }
 
-$poli = $_SESSION['poli'];
-$namapoli = $_SESSION['namapoli'];
-$tglnow = date('Y-m-d');
+if ($_POST['submit']) {
+    $password_lama    = $_POST['password_lama'];
+    $password_baru    = $_POST['password_baru'];
+    $konfirmasi_password = $_POST['konfirmasi_password'];
 
-$qk = $connect->query("SELECT COUNT(*) AS hitung FROM kb WHERE kd_poli = '$poli'");
-$qd = $connect->query("SELECT COUNT(*) AS hitung FROM kb WHERE tgl_kunjungan = '$tglnow'");
-$qt = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
+    $cek = $connect->query("SELECT password FROM user WHERE password='$password_lama'");
+
+    if ($cek->num_rows) {
+        if (strlen($password_baru) >= 5) {
+            if ($password_baru == $konfirmasi_password) {
+                $id_user = $_SESSION['id_user'];
+
+                $update = $connect->query("UPDATE user SET password='$password_baru' WHERE id_user='$id_user'");
+                if ($update) {
+                    echo "<script>alert('Password berhasil diubah');</script>";
+                } else {
+                    echo "<script>alert('Password gagal diubah');</script>";
+                }
+            } else {
+                echo "<script>alert('Password tidak cocok');</script>";
+            }
+        } else {
+            echo "<script>alert('Password harus lebih dari 5 karakter');</script>";
+        }
+    } else {
+        echo "<script>alert('Password lama tidak ditemukan');</script>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +47,6 @@ $qt = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../images/favicon.ico">
 
     <title>Fab Admin - Dashboard Fixed</title>
 
@@ -100,7 +120,7 @@ $qt = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
                 <!-- sidebar menu-->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="active">
-                        <a href="#">
+                        <a href="dashboard.php">
                             <i class="fa fa-dashboard"></i>
                             <span>Dashboard</span>
                             <span class="pull-right-container">
@@ -150,72 +170,53 @@ $qt = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
 
             <!-- Main content -->
             <section class="content">
-                <div class="row">
-                    <div class="col-lg-4 col-md-12">
-                        <div class="info-box">
-                            <a href="kb/data.php">
-                                <span class="info-box-icon bg-warning rounded"><i class="fa fa-calendar"></i></span>
-                            </a>
-
-                            <div class="info-box-content">
-                                <?php $hitungtotal = $qt->fetch_assoc(); ?>
-                                <span class="info-box-number"><?= $hitungtotal['hitung'] ?></span>
-                                <span class="info-box-text">Total Kunjungan</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
+                <div class="box col-6 mx-auto">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Form ubah password</h3>
+                        <h6 class="box-subtitle">Form yang digunakan untuk mengubah password user</h6>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="info-box">
-                            <a href="kb/data.php">
-                                <span class="info-box-icon bg-info rounded"><i class="fa fa-calendar"></i></span>
-                            </a>
+                    <!-- /.box-header -->
+                    <div class="box-body px-30 py-20">
+                        <div class="row">
+                            <div class="col">
 
-                            <div class="info-box-content">
-                                <?php $hitungkb = $qd->fetch_assoc(); ?>
-                                <span class="info-box-number"><?= $hitungkb['hitung'] ?></span>
-                                <span class="info-box-text">Kunjungan hari ini</span>
+                                <form method="POST">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <h5>Password lama<span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <input type="password" class="form-control" name="password_lama">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <h5>Password baru<span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <input type="password" class="form-control" name="password_baru">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <h5>Konfirmasi password baru<span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <input type="password" class="form-control" name="konfirmasi_password">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-xs-right">
+                                        <input type="submit" class="btn btn-info" name="submit" value="Submit"></button>
+                                    </div>
+                                </form>
                             </div>
-                            <!-- /.info-box-content -->
+                            <!-- /.col -->
                         </div>
+                        <!-- /.row -->
                     </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="info-box">
-                            <a href="kb/data.php">
-                                <span class="info-box-icon bg-primary rounded"><i class="fa fa-calendar"></i></span>
-                            </a>
-
-                            <div class="info-box-content">
-                                <?php $hitungpoli = $qk->fetch_assoc(); ?>
-                                <span class="info-box-number"><?= $hitungpoli['hitung'] ?></span>
-                                <span class="info-box-text">Kunjungan ke poli <?= $namapoli ?></span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                    </div>
-                </div>
-                <div class="callout callout-info">
-                    <h4>Tip!</h4>
-
-                    <p>Gunakan website di komputer untuk pengalaman pengguna yang lebih baik.</p>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <!-- LINE CHART -->
-                        <div class="box">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Analatics</h3>
-
-                                <ul class="box-controls pull-right">
-                                </ul>
-                            </div>
-                            <div class="box-body chart-responsive">
-                                <div class="chart" id="line-chart" style="height: 300px;"></div>
-                            </div>
-                            <!-- /.box-body -->
-                        </div>
-                        <!-- /.box -->
-                    </div>
+                    <!-- /.box-body -->
                 </div>
             </section>
         </div>
@@ -238,10 +239,6 @@ $qt = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
 
     <!-- Fab Admin App -->
     <script src="../js/template.js"></script>
-
-    <script src="../assets/raphael/raphael.min.js"></script>
-    <script src="../assets/morris.js/morris.min.js"></script>
-    <script src="../js/widget-morris-charts.js"></script>
 
 </body>
 

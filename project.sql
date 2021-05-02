@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 29, 2021 at 01:06 PM
+-- Generation Time: May 03, 2021 at 12:20 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -175,7 +175,8 @@ CREATE TABLE `rm` (
 
 INSERT INTO `rm` (`kd_rekammedis`, `id_pasien`, `id_dokter`, `tinggi_badan`, `berat_badan`, `tensi`, `anamnesa`, `diagnose`, `tindak_lanjut`, `terapi`, `tanggal`, `id_karyawan`) VALUES
 (3, 97980281, 2, '180', '55', '140/45', 'Sakit co', 'Iya sakit', '1', '2', '2021-04-21', 1),
-(4, 444960275, 4, '155', '211', '144/88', 'Sakit cuy', 'Serius deh sakit', '1', '1', '2021-04-28', 3);
+(4, 444960275, 4, '155', '211', '144/88', 'Sakit cuy', 'Serius deh sakit', '1', '1', '2021-04-28', 3),
+(5, 259750121, 3, '112', '21', '140', 'Sakit', 'Sakit je', '1', '2', '2021-05-02', 2);
 
 -- --------------------------------------------------------
 
@@ -197,9 +198,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `access`, `id_karyawan`, `kd_poli`) VALUES
-(4, 'josaktii', 'admin', '1', 1, 744),
+(4, 'josaktii', 'semangka', '1', 1, 744),
 (5, 'blabla', 'semangka', '2', 2, 112),
-(17, 'kandungan', 'admin', '1', 3, 347);
+(17, 'kandungan', 'kandungan', '2', 3, 347);
 
 --
 -- Indexes for dumped tables
@@ -282,7 +283,7 @@ ALTER TABLE `kb`
 -- AUTO_INCREMENT for table `rm`
 --
 ALTER TABLE `rm`
-  MODIFY `kd_rekammedis` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kd_rekammedis` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`

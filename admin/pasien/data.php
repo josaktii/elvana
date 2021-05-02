@@ -78,7 +78,7 @@
                                                 <th>Alamat</th>
                                                 <th>Action</th>
                                             </tr>
-                                        </thead>
+                                        </thead>    
                                         <tbody>
                                             <?php
                                             $q = $connect->query("SELECT * FROM pasien");

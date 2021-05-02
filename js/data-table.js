@@ -36,13 +36,18 @@ $(function () {
 	//--------Individual column searching
 	
     // Setup - add a text input to each footer cell
-    $('#example5 tfoot th').each( function () {
+    $('#example7 tfoot th').each( function () {
         var title = $(this).text();
         $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
     } );
  
     // DataTable
-    var table = $('#example5').DataTable();
+    var table = $('#example7').DataTable({
+		dom: 'Bfrtip',
+		buttons: [
+			'copy', 'pdf', 'print'
+		]
+	} );
  
     // Apply the search
     table.columns().every( function () {

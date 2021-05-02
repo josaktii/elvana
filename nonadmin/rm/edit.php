@@ -61,8 +61,11 @@
                         <div class="row">
                             <div class="col">
                                 <?php
-                                require_once '../../config/connect.php';
 
+                                session_start();
+                                include_once('../../config/connect.php');
+
+                                $dpoli = $_SESSION['poli'];
                                 if (isset($_GET['id'])) {
                                     $id = $_GET['id'];
 
@@ -91,7 +94,7 @@
                                                     <div class="form-group">
                                                         <h5>Dokter <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <?php $qdokter = $connect->query("SELECT * FROM dokter"); ?>
+                                                            <?php $qdokter = $connect->query("SELECT * FROM dokter WHERE kd_poli ='$dpoli'"); ?>
                                                             <select name="iddokter" class="form-control">
                                                                 <option hidden value="<?= $d['id_dokter']; ?>"><?= $d['nm_dokter']; ?></option>
                                                                 <?php while ($dokter = $qdokter->fetch_assoc()) :                                                ?>

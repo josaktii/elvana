@@ -65,6 +65,7 @@
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
+                                                <th>ID Pasien</th>
                                                 <th>Nama Pasien</th>
                                                 <th>Poli</th>
                                                 <th>Tanggal Kunjungan</th>
@@ -81,6 +82,7 @@
                                             ?>
                                                 <tr>
                                                     <td><?= $no ?></td>
+                                                    <td><input type="text" value="<?= $d['id_pasien'];?>" id="myID" readonly></td>
                                                     <td><?= $d['nm_pasien'] ?></td>
                                                     <td><?= $d['nm_poli'] ?></td>
                                                     <td><?= $d['tgl_kunjungan'] ?></td>
@@ -99,6 +101,7 @@
                                                         <div class="input-group">
                                                             <a href="edit.php?id=<?= $d['kd_kunjungan'] ?>" class="btn btn-success fa fa-edit"></a>
                                                             <a href="hapus.php?id=<?= $d['kd_kunjungan'] ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')" class="btn btn-danger fa fa-trash"></a>
+                                                            <a href="" onclick="myFunction()" class="btn btn-warning fa fa-copy"></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -143,6 +146,22 @@
 
     <script src="../../js/widget-flot-charts.js"></script>
     <script src="../../js/data-table.js"></script>
+    <script>
+        function myFunction() {
+            /* Get the text field */
+            var copyText = document.getElementById("myID");
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+
+            /* Alert the copied text */
+            alert("Copied the text: " + copyText.value);
+        }
+    </script>
 
 </body>
 
