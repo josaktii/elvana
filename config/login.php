@@ -11,6 +11,7 @@ $ql = $connect->query("SELECT * FROM user JOIN poli USING(kd_poli) WHERE usernam
 if ($ql->num_rows > 0) {
     $data = $ql->fetch_assoc();
 
+    $_SESSION['id_user'] = $data['id_user'];
     $_SESSION['username'] = $data['username'];
     $_SESSION['password'] = $data['password'];
     $_SESSION['akses'] = $data['access'];
@@ -20,11 +21,9 @@ if ($ql->num_rows > 0) {
     if ($_SESSION['akses'] = $data['access'] == 1 && $_SESSION['namapoli'] = $data['nm_poli'] == "klinik" || $_SESSION['akses'] = $data['access'] == 1 && $_SESSION['namapoli'] = $data['nm_poli'] == "Klinik" ) {
         $_SESSION['status'] = "login";
         header("location:../admin/dashboard.php");
-        die;
     } else if ($_SESSION['akses'] = $data['access'] == "2") {
         $_SESSION['status'] = "login";
         header("location:../nonadmin/dashboard.php");
-        die;
     } else {
         header("location:../login.php?pesan=gagal");
     }

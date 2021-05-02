@@ -96,11 +96,23 @@
                                                         <h5>Jabatan <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <select class="form-control" name="jabat" required>
-                                                                <option value="<?= $dk['jabatan'] ?>" hidden><?= $dk['jabatan'] ?></option>
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
+                                                                <option value="<?= $dk['jabatan'] ?>" hidden>
+                                                                    <?php
+                                                                        if ($dk['jabatan']==1) {
+                                                                            echo 'Admin';
+                                                                        } elseif ($dk['jabatan']==2) {
+                                                                            echo 'Medis 1';
+                                                                        } elseif ($dk['jabatan']==3) {
+                                                                            echo 'Auditor BPJS';
+                                                                        } elseif ($dk['jabatan']==4) {
+                                                                            echo 'Auditor Inhealth/Buma';
+                                                                        }
+                                                                    ?>
+                                                                </option>
+                                                                <option value="1">Admin</option>
+                                                                <option value="2">Medis 1</option>
+                                                                <option value="3">Auditor BPJS</option>
+                                                                <option value="4">Auditor Inhealth/Buma</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -129,7 +141,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            &copy; 2018 <a href="https://www.multipurposethemes.com/">Multi-Purpose Themes</a>. All Rights Reserved.
+            &copy; 2021 <a href="">Elvan Firdha Aldianto</a>. All Rights Reserved.
         </footer>
     </div>
 

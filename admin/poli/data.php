@@ -74,7 +74,7 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $q = $connect->query("SELECT * FROM poli WHERE kd_poli = '$poli'");
+                                            $q = $connect->query("SELECT * FROM poli");
                                             $no = 1;
                                             foreach ($q as $du) :
                                             ?>

@@ -11,17 +11,25 @@ if (isset($_POST['submit'])) {
     $kdpol = $_POST['kdpol'];
     $q = $connect->query("SELECT * FROM user JOIN karyawan USING(id_karyawan) WHERE id_karyawan = '$idkarya'");
     $d = $q->fetch_assoc();
-    if ($d['id_karyawan'] == $idkarya) {
-        $qu = $connect->query("UPDATE user SET username = '$uname', password = '$upass', access = '$uaccess', id_karyawan = '$idkarya', kd_poli = '$kdpol' WHERE id_user = '$idu'");
-
-        if ($qu) {
-            echo "<script>alert('Data user berhasil diubah'); window.location.href='data.php'</script>";
-        } else {
-            echo "<script>alert('Data user gagal diubah'); window.location.href='data.php'</script>";
-            // echo "Error :".$qk."<br>".mysqli_error($connect);
+    if (strlen($uname) > 5) {
+        if (strlen($upass) > 5) {
+            if ($d['id_karyawan'] == $idkarya) {
+                $qu = $connect->query("UPDATE user SET username = '$uname', password = '$upass', access = '$uaccess', id_karyawan = '$idkarya', kd_poli = '$kdpol' WHERE id_user = '$idu'");
+    
+                if ($qu) {
+                    echo "<script>alert('Data user berhasil diubah'); window.location.href='data.php'</script>";
+                } else {
+                    echo "<script>alert('Data user gagal diubah'); window.location.href='data.php'</script>";
+                    // echo "Error :".$qk."<br>".mysqli_error($connect);
+                }
+            } else {
+                echo "<script>alert('Karyawan sudah memiliki akun'); window.location.href='edit.php?id=$idu'</script>";
+            }
+        }else {
+            echo "<script>alert('Password harus lebih dari 5 huruf'); window.location.href='edit.php?id=$idu'</script>";
         }
     } else {
-        echo "<script>alert('Karyawan sudah memiliki akun'); window.location.href='edit.php?id=$idu'</script>";
+        echo "<script>alert('Username harus lebih dari 5 huruf'); window.location.href='edit.php?id=$idu'</script>";
     }
 } else {
     header('Location : data.php');

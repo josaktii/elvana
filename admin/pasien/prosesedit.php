@@ -23,7 +23,7 @@ if (isset($_POST['pasubmit'])) {
         if ($qpa) {
             echo "<script>window.location.href='data.php'</script>";
         } else {
-            echo "<script>window.location.href='data.php'</script>";
+            echo "<script>alert('Data tidak berhasil di ubah');window.location.href='data.php'</script>";
         }
     } else {
         echo "<script>alert('Input tanggal tidak valid'); window.location.href='edit.php?id=$idpa'</script>";

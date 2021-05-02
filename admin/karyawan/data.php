@@ -13,16 +13,12 @@
 
     <title>Fab Admin - Dashboard Fixed</title>
 
-    <!-- Bootstrap 4.0-->
     <link rel="stylesheet" href="../../style/bootstrap.min.css">
 
-    <!-- Bootstrap extend-->
     <link rel="stylesheet" href="../../style/bootstrap-extend.css">
 
-    <!-- Theme style -->
     <link rel="stylesheet" href="../../style/master_style.css">
 
-    <!-- Fab Admin skins -->
     <link rel="stylesheet" href="../../style/_all-skins.css">
     <link rel="stylesheet" href="../../assets/datatable/datatables.min.css">
 
@@ -35,9 +31,7 @@
 
         <?php include_once('sidebar.php'); ?>
 
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
                     Pasien
@@ -48,8 +42,6 @@
                     <li class="breadcrumb-item active">Pasien</li>
                 </ol>
             </section>
-
-            <!-- Main content -->
             <section class="content">
                 <div class="row">
 
@@ -60,7 +52,6 @@
                                 <h3 class="box-title">Tabel data karyawan</h3>
                                 <h6 class="box-subtitle">Tabel berisi data karyawan di Rumah Sakit XXX</h6>
                             </div>
-                            <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
                                     <table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
@@ -82,7 +73,19 @@
                                             ?>
                                                 <tr>
                                                     <td><?= $no ?></td>
-                                                    <td><?= $du['jabatan'] ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($du['jabatan'] == 1) {
+                                                            echo 'Admin';
+                                                        } elseif ($du['jabatan'] == 2) {
+                                                            echo 'Medis 1';
+                                                        } elseif ($du['jabatan'] == 3) {
+                                                            echo 'Auditor BPJS';
+                                                        } elseif ($du['jabatan'] == 4) {
+                                                            echo 'Auditor Inhealth/Buma';
+                                                        }
+                                                        ?>
+                                                    </td>
                                                     <td><?= $du['nm_karyawan'] ?></td>
                                                     <td><?= $du['tempat_lahirk'] ?></td>
                                                     <td><?= $du['tgl_lahirk'] ?></td>
@@ -100,33 +103,24 @@
                                     </table>
                                 </div>
                             </div>
-                            <!-- /.box-body -->
                         </div>
-                        <!-- /.box -->
                     </div>
                 </div>
-                <!-- /.row -->
             </section>
-            <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
         <footer class="main-footer">
-            &copy; 2018 <a href="https://www.multipurposethemes.com/">Multi-Purpose Themes</a>. All Rights Reserved.
+            &copy; 2021 <a href="">Elvan Firdha Aldianto</a>. All Rights Reserved.
         </footer>
     </div>
 
     <script src="../../js/jquery.min.js"></script>
 
-    <!-- popper -->
     <script src="../../js/popper.min.js"></script>
 
-    <!-- Bootstrap 4.0-->
     <script src="../../js/bootstrap.min.js"></script>
 
-    <!-- FastClick -->
     <script src="../../js/fastclick.js"></script>
 
-    <!-- Fab Admin App -->
     <script src="../../js/template.js"></script>
 
     <script src="../../assets/Flot/jquery.flot.js"></script>

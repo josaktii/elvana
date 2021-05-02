@@ -17,14 +17,14 @@ if (isset($_POST['submit'])) {
         $qk = $connect->query("INSERT INTO karyawan VALUES (NULL, '$jabat', '$nmkarya', '$tmpt', '$tgl')");
 
         if ($qk) {
-            echo "<script>window.location.href='data.php'</script>";
+            echo "<script>alert('Data karyawan berhasil ditambahkan'); window.location.href='data.php'</script>";
         } else {
-            echo "<script>window.location.href='data.php'</script>";
+            echo "<script>alert('Data karyawan gagal ditambahkan'); window.location.href='data.php'</script>";
         }
     } elseif ($intervalHari < 1) {
-        echo "<script>window.location.href='data.php'</script>";
+        echo "<script>alert('Input tanggal tidak valid.'); window.location.href='tambah.php'</script>";
     } else {
-        echo "<script>window.location.href='data.php'</script>";
+        echo "<script>alert('Input tanggal tidak valid.'); window.location.href='tambah.php'</script>";
     }
 } else {
     header('Location : data.php');

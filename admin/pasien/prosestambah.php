@@ -24,10 +24,10 @@ if (isset($_POST['pasubmit'])) {
         if ($qk) {
             echo "<script>window.location.href='data.php'</script>";
         } else {
-            echo "<script>window.location.href='data.php'</script>";
+            echo "<script>alert('Data tidak berhasil di tambah');window.location.href='data.php'</script>";
         }
     } else {
-        echo "<script>window.location.href='tambah.php'</script>";
+        echo "<script>alert('Input tanggal tidak valid');window.location.href='tambah.php'</script>";
     }
 } else {
     header('Location : data.php');

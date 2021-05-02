@@ -8,10 +8,12 @@ if ($_SESSION['status'] != "login") {
     header("location:../login.php?pesan=belum_login");
 }
 
+$tglnow = date('Y-m-d');
 $qc = $connect->query("SELECT COUNT(*) AS hitung FROM pasien");
 $qk = $connect->query("SELECT COUNT(*) AS hitung FROM poli");
 $qd = $connect->query("SELECT COUNT(*) AS hitung FROM dokter");
 $qkb = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
+$qkbini = $connect->query("SELECT COUNT(*) AS hitung FROM kb WHERE tgl_kunjungan = '$tglnow'");
 ?>
 
 <!DOCTYPE html>
@@ -26,17 +28,14 @@ $qkb = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
 
     <title>Fab Admin - Dashboard Fixed</title>
 
-    <!-- Bootstrap 4.0-->
     <link rel="stylesheet" href="../style/bootstrap.min.css">
 
-    <!-- Bootstrap extend-->
     <link rel="stylesheet" href="../style/bootstrap-extend.css">
 
-    <!-- Theme style -->
     <link rel="stylesheet" href="../style/master_style.css">
 
-    <!-- Fab Admin skins -->
     <link rel="stylesheet" href="../style/_all-skins.css">
+    <link rel="stylesheet" href="../assets/morris.js/morris.css">
 
 </head>
 
@@ -68,6 +67,11 @@ $qkb = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Halo, <?= $_SESSION['username'] ?></a>
                             <ul class="dropdown-menu scale-up">
                                 <li class="user-body">
+                                    <div class="row no-gutters">
+                                        <div class="col-12 text-left">
+                                            <a href="ubahpassword.php"><i class="fa fa-lock"></i> Ubah Password</a>
+                                        </div>
+                                    </div>
                                     <div class="row no-gutters">
                                         <div class="col-12 text-left">
                                             <a href="../config/logout.php"><i class="fa fa-power-off"></i> Logout</a>
@@ -210,8 +214,9 @@ $qkb = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="info-box">
-                            <span class="info-box-icon bg-primary rounded"><i class="fa fa-wheelchair"></i></span>
-
+                            <a href="dokter/data.php">
+                                <span class="info-box-icon bg-primary rounded"><i class="fa fa-book"></i></span>
+                            </a>
                             <div class="info-box-content">
                                 <?php $hitungd = $qd->fetch_assoc(); ?>
                                 <span class="info-box-number"><?= $hitungd['hitung'] ?></span>
@@ -220,10 +225,11 @@ $qkb = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
                             <!-- /.info-box-content -->
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-2 col-md-6">
                         <div class="info-box">
-                            <span class="info-box-icon bg-warning rounded"><i class="fa fa-file"></i></span>
-
+                            <a href="poli/data.php">
+                                <span class="info-box-icon bg-warning rounded"><i class="fa fa-heart"></i></span>
+                            </a>
                             <div class="info-box-content">
                                 <?php $hitungpoli = $qk->fetch_assoc(); ?>
                                 <span class="info-box-number"><?= $hitungpoli['hitung'] ?></span>
@@ -232,22 +238,27 @@ $qkb = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
                             <!-- /.info-box-content -->
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="info-box">
-                            <span class="info-box-icon bg-info rounded"><i class="fa fa-calendar"></i></span>
-
+                            <a href="kb/data.php">
+                                <span class="info-box-icon bg-info rounded"><i class="fa fa-calendar"></i></span>
+                            </a>
                             <div class="info-box-content">
-                                <?php $hitungkb = $qkb->fetch_assoc(); ?>
-                                <span class="info-box-number"><?= $hitungkb['hitung'] ?></span>
-                                <span class="info-box-text">Kunjungan</span>
+                                <?php
+                                $hitungkb = $qkb->fetch_assoc();
+                                $hitungini = $qkbini->fetch_assoc();
+                                ?>
+                                <span class="info-box-number"><?= $hitungkb['hitung'] ?> | <?= $hitungini['hitung'] ?></span>
+                                <span class="info-box-text">Total Kunjungan | Kunjungan hari ini</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="info-box">
-                            <span class="info-box-icon bg-success rounded"><i class="fa fa-heartbeat"></i></span>
-
+                            <a href="pasien/data.php">
+                                <span class="info-box-icon bg-success rounded"><i class="fa fa-wheelchair"></i></span>
+                            </a>
                             <div class="info-box-content">
                                 <?php $hitungpasien = $qc->fetch_assoc(); ?>
                                 <span class="info-box-number"><?= $hitungpasien['hitung'] ?></span>
@@ -257,35 +268,50 @@ $qkb = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
                         </div>
                     </div>
                 </div>
-                <section class="content">
-                    <div class="callout callout-info">
+                <div class="row">
+                    <div class="callout callout-info col-12">
                         <h4>Tip!</h4>
 
                         <p>Gunakan website di komputer untuk pengalaman pengguna yang lebih baik.</p>
                     </div>
-                </section>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <!-- LINE CHART -->
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Analatics</h3>
+
+                                <ul class="box-controls pull-right">
+                                </ul>
+                            </div>
+                            <div class="box-body chart-responsive">
+                                <div class="chart" id="line-chart" style="height: 300px;"></div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                </div>
             </section>
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            &copy; 2018 <a href="https://www.multipurposethemes.com/">Multi-Purpose Themes</a>. All Rights Reserved.
+            &copy; 2021 <a href="">Elvan Firdha Aldianto</a>. All Rights Reserved.
         </footer>
     </div>
 
     <script src="../js/jquery.min.js"></script>
 
-    <!-- popper -->
     <script src="../js/popper.min.js"></script>
 
-    <!-- Bootstrap 4.0-->
     <script src="../js/bootstrap.min.js"></script>
 
-    <!-- FastClick -->
-    <script src="../js/fastclick.js"></script>
-
-    <!-- Fab Admin App -->
     <script src="../js/template.js"></script>
 
+    <script src="../assets/raphael/raphael.min.js"></script>
+    <script src="../assets/morris.js/morris.min.js"></script>
+    <script src="../js/widget-morris-charts.js"></script>
 </body>
 
 </html>
