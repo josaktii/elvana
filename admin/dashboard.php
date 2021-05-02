@@ -65,7 +65,6 @@ $qkb = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
 
                         <!-- User Account-->
                         <li class="dropdown user user-menu">
-                        <?php echo $_SESSION[''] ?>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Halo, <?= $_SESSION['username'] ?></a>
                             <ul class="dropdown-menu scale-up">
                                 <li class="user-body">
