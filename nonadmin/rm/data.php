@@ -1,4 +1,6 @@
-<?php include_once('../../config/connect.php'); ?>
+<?php include_once('../../config/connect.php'); 
+error_reporting(0);
+ini_set('display_errors', 0);?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +13,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../images/favicon.ico">
 
-    <title>Fab Admin - Dashboard Fixed</title>
+    <title>Rekam Medis Pasien</title>
 
     <!-- Bootstrap 4.0-->
     <link rel="stylesheet" href="../../style/bootstrap.min.css">
@@ -161,7 +163,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            &copy; 2018 <a href="https://www.multipurposethemes.com/">Multi-Purpose Themes</a>. All Rights Reserved.
+            &copy; 2021 <a>Elvan Firdha Aldianto</a>. All Rights Reserved.
         </footer>
     </div>
 
