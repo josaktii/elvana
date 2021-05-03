@@ -3,7 +3,8 @@ session_start();
 include_once('../../config/connect.php'); 
 
 $dpoli = $_SESSION['poli'];
-
+error_reporting(0);
+ini_set('display_errors', 0);
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +18,7 @@ $dpoli = $_SESSION['poli'];
     <meta name="author" content="">
     <link rel="icon" href="../../../images/favicon.ico">
 
-    <title>Fab Admin - Dashboard Fixed</title>
+    <title>Tambah rekam medis</title>
 
     <!-- Bootstrap 4.0-->
     <link rel="stylesheet" href="../../style/bootstrap.min.css">
@@ -74,13 +75,7 @@ $dpoli = $_SESSION['poli'];
                                             <div class="form-group">
                                                 <h5>Pasien <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <?php $qpasien = $connect->query("SELECT * FROM pasien"); ?>
-                                                    <select name="idpasien" class="form-control">
-                                                        <option hidden>Pilih pasien</option>
-                                                        <?php while ($dpasien = $qpasien->fetch_assoc()) : ?>
-                                                            <option value="<?= $dpasien['id_pasien']; ?>"><?= $dpasien['nm_pasien']; ?></option>
-                                                        <?php endwhile; ?>
-                                                    </select>
+                                                    <input type="text" name="idpasien" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -201,7 +196,7 @@ $dpoli = $_SESSION['poli'];
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            &copy; 2018 <a href="https://www.multipurposethemes.com/">Multi-Purpose Themes</a>. All Rights Reserved.
+            &copy; 2021 <a>Elvan Firdha Aldianto</a>. All Rights Reserved.
         </footer>
     </div>
 
