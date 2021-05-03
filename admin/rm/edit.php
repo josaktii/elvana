@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../images/favicon.ico">
 
-    <title>Fab Admin - Dashboard Fixed</title>
+    <title>Edit Rekam Medis</title>
 
     <!-- Bootstrap 4.0-->
     <link rel="stylesheet" href="../../style/bootstrap.min.css">
@@ -78,12 +78,9 @@
                                                         <div class="controls">
                                                             <input type="text" class="form-control" name="kdrm" value="<?= $d['kd_rekammedis'] ?>" hidden>
                                                             <?php $qpasien = $connect->query("SELECT * FROM pasien"); ?>
-                                                            <select name="idpasien" class="form-control">
-                                                                <option value="<?= $d['id_pasien']; ?>" hidden><?= $d['nm_pasien']; ?></option>
-                                                                <?php while ($dpasien = $qpasien->fetch_assoc()) :                                                ?>
-                                                                    <option value="<?= $dpasien['id_pasien']; ?>"><?= $dpasien['nm_pasien']; ?></option>
-                                                                <?php endwhile; ?>
-                                                            </select>
+                                                            <?php while ($pasien = $qpasien->fetch_assoc()) :                                                ?>
+                                                                    <input type="text" name="idpasien" class="form-control" value="<?= $pasien['nm_pasien'] ?>">
+                                                            <?php endwhile; ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -228,7 +225,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            &copy; 2018 <a href="https://www.multipurposethemes.com/">Multi-Purpose Themes</a>. All Rights Reserved.
+            &copy; 2021 <a href="">Elvan Firdha Aldianto</a>. All Rights Reserved.
         </footer>
     </div>
 
