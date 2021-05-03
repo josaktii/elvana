@@ -1,7 +1,5 @@
 <?php include_once('../config/connect.php'); ?>
 
-<?php include_once('../../config/connect.php'); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../images/favicon.ico">
 
-    <title>Fab Admin - Dashboard Fixed</title>
+    <title>Rekam Medis Pasien</title>
 
     <!-- Bootstrap 4.0-->
     <link rel="stylesheet" href="../style/bootstrap.min.css">
@@ -84,15 +82,9 @@
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
-                                <form method="POST">
-                                    <div class="input-group input-group-newsletter col-md-10 mx-auto">
-                                        <input class="form-control" type="text" name="idrm" placeholder="Masukkan ID.."> &nbsp;
-                                        <div class="input-group-append"><input class="btn btn-secondary" id="submit-button" type="submit" name="csubmit"></div>
-                                    </div>
-                                </form><br>
                                 <div class="row">
                                     <div class="table-responsive">
-                                        <table id="example2" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                        <table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
                                             <thead>
                                                 <tr>
                                                     <th>Nama Pasien</th>
@@ -114,7 +106,7 @@
                                                     $idcar = $_POST['idpas'];
                                                     $tgl = $_POST['tgl'];
 
-                                                    $q = $connect->query("SELECT * FROM rm JOIN pasien USING(id_pasien) WHERE id_pasien = '$idcar' AND tgl_lahirp = '$tgl' ");
+                                                    $q = $connect->query("SELECT * FROM rm JOIN pasien USING(id_pasien) JOIN dokter USING(id_dokter) JOIN karyawan USING(id_karyawan) WHERE id_pasien = '$idcar' AND tgl_lahirp = '$tgl' ");
                                                     if (mysqli_num_rows($q) != 0) {
                                                         foreach ($q as $d) :
                                                 ?>
@@ -152,7 +144,6 @@
                                                                 <td><?= $d['tanggal'] ?></td>
                                                             </tr>
                                                 <?php
-                                                            $no++;
                                                         endforeach;
                                                     } else {
                                                         header("location:view.php?pesan=gagal");
