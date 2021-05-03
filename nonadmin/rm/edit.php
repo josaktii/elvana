@@ -80,13 +80,7 @@
                                                         <h5>Pasien <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="text" class="form-control" name="kdrm" value="<?= $d['kd_rekammedis'] ?>" hidden>
-                                                            <?php $qpasien = $connect->query("SELECT * FROM pasien"); ?>
-                                                            <select name="idpasien" class="form-control">
-                                                                <option value="<?= $d['id_pasien']; ?>" hidden><?= $d['nm_pasien']; ?></option>
-                                                                <?php while ($dpasien = $qpasien->fetch_assoc()) :                                                ?>
-                                                                    <option value="<?= $dpasien['id_pasien']; ?>"><?= $dpasien['nm_pasien']; ?></option>
-                                                                <?php endwhile; ?>
-                                                            </select>
+                                                            <input type="text" class="form-control" name="kdrm" value="<?= $d['id_pasien']; ?>">
                                                         </div>
                                                     </div>
                                                 </div>
