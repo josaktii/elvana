@@ -67,6 +67,7 @@
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
+						<th>ID Pasien</th>
                                                 <th>Nama Pasien</th>
                                                 <th>Poli</th>
                                                 <th>Tanggal Kunjungan</th>
@@ -82,6 +83,7 @@
                                             ?>
                                                 <tr>
                                                     <td><?= $no ?></td>
+						                            <td><?= $d['id_pasien'];?></td>
                                                     <td><?= $d['nm_pasien'] ?></td>
                                                     <td><?= $d['nm_poli'] ?></td>
                                                     <td><?= $d['tgl_kunjungan'] ?></td>
@@ -144,7 +146,6 @@
 
     <script src="../../js/widget-flot-charts.js"></script>
     <script src="../../js/data-table.js"></script>
-
 </body>
 
 </html>
