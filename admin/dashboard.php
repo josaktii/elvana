@@ -191,6 +191,18 @@ $qkbini = $connect->query("SELECT COUNT(*) AS hitung FROM kb WHERE tgl_kunjungan
                             <li><a href="kb/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
                         </ul>
                     </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-file"></i> <span>Laporan</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="laporan/datakartu.php"><i class="fa fa-circle-thin"></i>Kartu Berobat</a></li>
+                            <li><a href="laporan/datakb.php"><i class="fa fa-circle-thin"></i>Kunjungan</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </section>
         </aside>
@@ -212,7 +224,7 @@ $qkbini = $connect->query("SELECT COUNT(*) AS hitung FROM kb WHERE tgl_kunjungan
             <!-- Main content -->
             <section class="content">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="info-box">
                             <a href="dokter/data.php">
                                 <span class="info-box-icon bg-primary rounded"><i class="fa fa-book"></i></span>
@@ -225,7 +237,7 @@ $qkbini = $connect->query("SELECT COUNT(*) AS hitung FROM kb WHERE tgl_kunjungan
                             <!-- /.info-box-content -->
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="info-box">
                             <a href="poli/data.php">
                                 <span class="info-box-icon bg-warning rounded"><i class="fa fa-heart"></i></span>
@@ -234,6 +246,19 @@ $qkbini = $connect->query("SELECT COUNT(*) AS hitung FROM kb WHERE tgl_kunjungan
                                 <?php $hitungpoli = $qk->fetch_assoc(); ?>
                                 <span class="info-box-number"><?= $hitungpoli['hitung'] ?></span>
                                 <span class="info-box-text">Poli</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="info-box">
+                            <a href="pasien/data.php">
+                                <span class="info-box-icon bg-success rounded"><i class="fa fa-wheelchair"></i></span>
+                            </a>
+                            <div class="info-box-content">
+                                <?php $hitungpasien = $qc->fetch_assoc(); ?>
+                                <span class="info-box-number"><?= $hitungpasien['hitung'] ?></span>
+                                <span class="info-box-text">Pasien</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -250,19 +275,6 @@ $qkbini = $connect->query("SELECT COUNT(*) AS hitung FROM kb WHERE tgl_kunjungan
                                 ?>
                                 <span class="info-box-number"><?= $hitungkb['hitung'] ?> | <?= $hitungini['hitung'] ?></span>
                                 <span class="info-box-text">Total Kunjungan | Kunjungan hari ini</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="info-box">
-                            <a href="pasien/data.php">
-                                <span class="info-box-icon bg-success rounded"><i class="fa fa-wheelchair"></i></span>
-                            </a>
-                            <div class="info-box-content">
-                                <?php $hitungpasien = $qc->fetch_assoc(); ?>
-                                <span class="info-box-number"><?= $hitungpasien['hitung'] ?></span>
-                                <span class="info-box-text">Pasien</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>

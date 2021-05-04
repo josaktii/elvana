@@ -216,6 +216,18 @@ if ($_POST['submit']) {
                             <li><a href="kb/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
                         </ul>
                     </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-file"></i> <span>Laporan</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="laporan/datakartu.php"><i class="fa fa-circle-thin"></i>Kartu Berobat</a></li>
+                            <li><a href="laporan/datakb.php"><i class="fa fa-circle-thin"></i>Kunjungan</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </section>
         </aside>

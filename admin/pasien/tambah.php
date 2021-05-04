@@ -22,6 +22,7 @@
 
     <!-- Fab Admin skins -->
     <link rel="stylesheet" href="../../style/_all-skins.css">
+    <link rel="stylesheet" href="../../assets/bootstrap-select-1.13.14/dist/css/bootstrap-select.css">
 
 </head>
 
@@ -61,23 +62,31 @@
                             <div class="col">
                                 <form method="POST" action="prosestambah.php">
                                     <div class="row">
+                                        <div class="col-lg-12 col-12">
+                                            <div class="form-group">
+                                                <h5>NIK <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <input type="number" class="form-control selectpicker" name="nik" required>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
                                                 <h5>Nama Pasien <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="text" class="form-control" name="nmpasien" placeholder="Nama pasien" required>
+                                                    <input type="text" class="form-control  selectpicker" name="nmpasien" placeholder="Nama pasien" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <h5>Tempat Lahir <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="text" class="form-control" name="tmptpasien" placeholder="Tempat lahir pasien" required>
+                                                    <input type="text" class="form-control  selectpicker" name="tmptpasien" placeholder="Tempat lahir pasien" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <h5>Jalur Pendaftaran <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <select class="form-control" name="jalur" required>
+                                                    <select class="form-control selectpicker" data-live-search="true" name="jalur" required>
                                                         <option value="" hidden>Pilih jalur</option>
                                                         <option value="1">Mandiri</option>
                                                         <option value="2">BPJS</option>
@@ -91,19 +100,19 @@
                                             <div class="form-group">
                                                 <h5>Contact <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="text" class="form-control" name="notlpp" placeholder="Nomor telepon pasien">
+                                                    <input type="text" class="form-control  selectpicker" name="notlpp" placeholder="Nomor telepon pasien">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <h5>Tanggal Lahir <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="date" class="form-control" name="tglpasien">
+                                                    <input type="date" class="form-control  selectpicker" name="tglpasien">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <h5>Jenis Kelamin <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <select class="form-control" name="jkel">
+                                                    <select class="form-control  selectpicker" name="jkel">
                                                         <option hidden>Jenis Kelamin</option>
                                                         <option value="1">Perempuan</option>
                                                         <option value="2">Laki-laki</option>
@@ -117,7 +126,7 @@
                                             <div class="form-group">
                                                 <h5>Alamat <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <textarea type="text" name="alamat" class="form-control" required data-validation-required-message="This field is required"></textarea>
+                                                    <textarea type="text" name="alamat" class="form-control  selectpicker" required data-validation-required-message="This field is required"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -159,6 +168,7 @@
     <!-- Fab Admin App -->
     <script src="../../js/template.js"></script>
     <script src="../../js/validation.js"></script>
+    <script src="../../assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.js"></script>
     <script>
         ! function(window, document, $) {
             "use strict";

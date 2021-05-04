@@ -75,16 +75,16 @@
                                 ?>
                                         <form method="POST" action="prosesedit.php">
                                             <div class="row">
-                                                <div class="col-lg-4">
+                                                <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <h5>Pasien <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="text" class="form-control" name="kdrm" value="<?= $d['kd_rekammedis'] ?>" hidden>
-                                                            <input type="text" class="form-control" name="kdrm" value="<?= $d['id_pasien']; ?>">
+                                                            <input name="idpasien" class="form-control select2" value="<?= $d['id_pasien'] ?>">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-4">
+                                                <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <h5>Dokter <span class="text-danger">*</span></h5>
                                                         <div class="controls">
@@ -95,44 +95,6 @@
                                                                     <option value="<?= $dokter['id_dokter']; ?>"><?= $dokter['nm_dokter']; ?></option>
                                                                 <?php endwhile; ?>
                                                             </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <h5>Karyawan <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <?php $qkarya = $connect->query("SELECT * FROM karyawan"); ?>
-                                                            <select name="idkarya" class="form-control">
-                                                                <option hidden value="<?= $d['id_karyawan']; ?>"><?= $d['nm_karyawan']; ?></option>
-                                                                <?php while ($dkarya = $qkarya->fetch_assoc()) :                                                ?>
-                                                                    <option value="<?= $dkarya['id_karyawan']; ?>"><?= $dkarya['nm_karyawan']; ?></option>
-                                                                <?php endwhile; ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <h5>Tinggi Badan <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="number" class="form-control" name="tb" value="<?= $d['tinggi_badan']; ?>">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <h5>Berat Badan <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="number" class="form-control" name="bb" value="<?= $d['berat_badan']; ?>">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <h5>Tensi <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="text" class="form-control" name="tensi" value="<?= $d['tensi']; ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -179,6 +141,30 @@
                                                                 <option value="1">Obat</option>
                                                                 <option value="2">Tindak</option>
                                                             </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <h5>Tinggi Badan <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="number" class="form-control" name="tb" value="<?= $d['tinggi_badan']; ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <h5>Berat Badan <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="number" class="form-control" name="bb" value="<?= $d['berat_badan']; ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <h5>Tensi <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="text" class="form-control" name="tensi" value="<?= $d['tensi']; ?>">
                                                         </div>
                                                     </div>
                                                 </div>

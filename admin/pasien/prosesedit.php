@@ -11,6 +11,7 @@ if (isset($_POST['pasubmit'])) {
     $jk = $_POST['jkel'];
     $jalur = $_POST['jalur'];
     $almt = $_POST['alamat'];
+    $nik = $_POST['nik'];
 
     $tglSekarang  = new DateTime();
     $interlahir = date_diff(new DateTime($tgpas), $tglSekarang);
@@ -18,7 +19,7 @@ if (isset($_POST['pasubmit'])) {
     $lahir = $interlahir->format("%R%a");
 
     if ($lahir >= 1) {
-        $qpa = $connect->query("UPDATE pasien SET nm_pasien = '$nmpas', jen_kelamin = '$jk', jalur = '$jalur', alamatp = '$almt', tempat_lahirp = '$tmpas', tgl_lahirp = '$tgpas', telp_pasien = '$nopas' WHERE id_pasien = '$idpa'");
+        $qpa = $connect->query("UPDATE pasien SET nm_pasien = '$nmpas', nik = '$nik', jen_kelamin = '$jk', jalur = '$jalur', alamatp = '$almt', tempat_lahirp = '$tmpas', tgl_lahirp = '$tgpas', telp_pasien = '$nopas' WHERE id_pasien = '$idpa'");
 
         if ($qpa) {
             echo "<script>window.location.href='data.php'</script>";

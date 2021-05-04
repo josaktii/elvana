@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once('../../config/connect.php');
 
 if (isset($_POST['submit'])) {
@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $diag = $_POST['diagnose'];
     $tindak = $_POST['tindak'];
     $terapi = $_POST['terapi'];
-    $idk = $_POST['idkarya'];
+    $idk = $_SESSION['karyawan'];
 
     $tglnow = date('Y-m-d');
 
@@ -22,8 +22,8 @@ if (isset($_POST['submit'])) {
         if ($qd) {
             echo "<script>alert('Data rekam medis berhasil ditambahkan'); window.location.href='data.php'</script>";
         } else {
-            echo "<script>alert('Data rekam medis gagal ditambahkan'); window.location.href='data.php'</script>";
-            // echo "Error :".$qd."<br>".mysqli_error($connect);
+            // echo "<script>alert('Data rekam medis gagal ditambahkan'); window.location.href='data.php'</script>";
+            echo "Error :".$qd."<br>".mysqli_error($connect);
         }
     } else {
         echo "<script>alert('Input data tidak valid'); window.location.href='tambah.php'</script>";

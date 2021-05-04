@@ -24,6 +24,7 @@
 
     <!-- Fab Admin skins -->
     <link rel="stylesheet" href="../../style/_all-skins.css">
+    <link rel="stylesheet" href="../../assets/bootstrap-select-1.13.14/dist/css/bootstrap-select.css">
 
 </head>
 
@@ -65,11 +66,15 @@
                                 <form method="POST" action="prosestambah.php">
                                     <div class="row">
                                         <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <h5>Pasien <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <input type="text" name="idpasien" class="form-control">
-                                                </div>
+                                            <div class="controls">
+                                            <h5>Pasien <span class="text-danger">*</span></h5>
+                                                <?php $qpasien = $connect->query("SELECT * FROM pasien"); ?>
+                                                <select name="idpasien" class="form-control selectpicker" data-live-search="true">
+                                                    <option hidden>Pilih Pasien</option>
+                                                    <?php while ($pasien = $qpasien->fetch_assoc()) : ?>
+                                                        <option value="<?= $pasien['id_pasien']; ?>"><?= $pasien['id_pasien']; ?></option>
+                                                    <?php endwhile; ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
@@ -77,7 +82,7 @@
                                                 <h5>Dokter <span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <?php $qdokter = $connect->query("SELECT * FROM dokter"); ?>
-                                                    <select name="iddokter" class="form-control">
+                                                    <select name="iddokter" class="form-control selectpicker">
                                                         <option hidden>Pilih dokter</option>
                                                         <?php while ($dokter = $qdokter->fetch_assoc()) : ?>
                                                             <option value="<?= $dokter['id_dokter']; ?>"><?= $dokter['nm_dokter']; ?></option>
@@ -91,7 +96,7 @@
                                                 <h5>Karyawan <span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <?php $qkarya = $connect->query("SELECT * FROM karyawan"); ?>
-                                                    <select name="idkarya" class="form-control">
+                                                    <select name="idkarya" class="form-control selectpicker">
                                                         <option hidden>Pilih Karyawan</option>
                                                         <?php while ($dkarya = $qkarya->fetch_assoc()) : ?>
                                                             <option value="<?= $dkarya['id_karyawan']; ?>"><?= $dkarya['nm_karyawan']; ?></option>
@@ -128,7 +133,7 @@
                                             <div class="form-group">
                                                 <h5>Tindak Lanjut <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <select class="form-control" name="tindak">
+                                                    <select class="form-control selectpicker" name="tindak">
                                                         <option hidden>Tindak Lanjut</option>
                                                         <option value="1">Pulang sehat</option>
                                                         <option value="2">Rawat jalan</option>
@@ -142,7 +147,7 @@
                                             <div class="form-group">
                                                 <h5>Terapi <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <select class="form-control" name="terapi">
+                                                    <select class="form-control selectpicker" name="terapi">
                                                         <option hidden>Terapi</option>
                                                         <option value="1">Obat</option>
                                                         <option value="2">Tindak</option>
@@ -206,6 +211,7 @@
 
     <!-- Fab Admin App -->
     <script src="../../js/template.js"></script>
+    <script src="../../assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.js"></script>
     <script src="../../js/validation.js"></script>
     <script>
         ! function(window, document, $) {

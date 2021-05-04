@@ -29,6 +29,11 @@ $poli = $_SESSION['poli'];
                         <li class="user-body">
                             <div class="row no-gutters">
                                 <div class="col-12 text-left">
+                                    <a href="../ubahpassword.php"><i class="fa fa-lock"></i> Ubah Password</a>
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-12 text-left">
                                     <a href="../../config/logout.php"><i class="fa fa-power-off"></i> Logout</a>
                                 </div>
                             </div>

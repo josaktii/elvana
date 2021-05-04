@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once('../../config/connect.php');
 
 if (isset($_POST['submit'])) {
@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     $diag = $_POST['diagnose'];
     $tindak = $_POST['tindak'];
     $terapi = $_POST['terapi'];
-    $idk = $_POST['idkarya'];
+    $idk = $_SESSION['karyawan'];
 
 
     if ($tb > 0 && $bb > 0) {

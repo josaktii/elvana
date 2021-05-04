@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once('../../config/connect.php'); 
+include_once('../../config/connect.php');
 
 $dpoli = $_SESSION['poli'];
 error_reporting(0);
@@ -71,15 +71,16 @@ ini_set('display_errors', 0);
                             <div class="col">
                                 <form method="POST" action="prosestambah.php">
                                     <div class="row">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-6">
                                             <div class="form-group">
                                                 <h5>Pasien <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <input type="text" name="idpasien" class="form-control">
+                                                    <?php $qpasien = $connect->query("SELECT * FROM pasien"); ?>
+                                                    <input name="idpasien" class="form-control select2">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-6">
                                             <div class="form-group">
                                                 <h5>Dokter <span class="text-danger">*</span></h5>
                                                 <div class="controls">
@@ -90,44 +91,6 @@ ini_set('display_errors', 0);
                                                             <option value="<?= $dokter['id_dokter']; ?>"><?= $dokter['nm_dokter']; ?></option>
                                                         <?php endwhile; ?>
                                                     </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <h5>Karyawan <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <?php $qkarya = $connect->query("SELECT * FROM karyawan"); ?>
-                                                    <select name="idkarya" class="form-control">
-                                                        <option hidden>Pilih Karyawan</option>
-                                                        <?php while ($dkarya = $qkarya->fetch_assoc()) : ?>
-                                                            <option value="<?= $dkarya['id_karyawan']; ?>"><?= $dkarya['nm_karyawan']; ?></option>
-                                                        <?php endwhile; ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <h5>Tinggi Badan <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <input type="number" class="form-control" name="tb">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <h5>Berat Badan <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <input type="number" class="form-control" name="bb">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <h5>Tensi <span class="text-danger">*</span></h5>
-                                                <div class="controls">
-                                                    <input type="text" class="form-control" name="tensi">
                                                 </div>
                                             </div>
                                         </div>
@@ -154,6 +117,30 @@ ini_set('display_errors', 0);
                                                         <option value="1">Obat</option>
                                                         <option value="2">Tindak</option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <h5>Tinggi Badan <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <input type="number" class="form-control" name="tb">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <h5>Berat Badan <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <input type="number" class="form-control" name="bb">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <h5>Tensi <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <input type="text" class="form-control" name="tensi">
                                                 </div>
                                             </div>
                                         </div>

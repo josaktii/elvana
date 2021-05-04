@@ -74,6 +74,14 @@
 
                                         <form method="POST" action="prosesedit.php">
                                             <div class="row">
+                                                <div class="col-lg-12 col-12">
+                                                    <div class="form-group">
+                                                        <h5>NIK <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="number" class="form-control" name="nik" value="<?= $dpa['id_pasien'] ?>" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="col-lg-6 col-12">
                                                     <div class="form-group">
                                                         <h5>Nama Pasien <span class="text-danger">*</span></h5>
