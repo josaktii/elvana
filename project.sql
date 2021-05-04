@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 03, 2021 at 12:20 AM
+-- Generation Time: May 04, 2021 at 09:23 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -90,11 +90,7 @@ CREATE TABLE `kb` (
 --
 
 INSERT INTO `kb` (`kd_kunjungan`, `id_pasien`, `kd_poli`, `tgl_kunjungan`, `status`) VALUES
-(2, 259750121, 454, '2021-04-25', '2'),
-(3, 259750121, 347, '2021-04-25', '2'),
-(4, 402353452, 112, '2021-04-25', '2'),
-(5, 444960275, 403, '2021-04-28', '1'),
-(6, 97980281, 112, '2021-04-29', '1');
+(7, 934618507, 347, '2021-05-03', '2');
 
 -- --------------------------------------------------------
 
@@ -105,6 +101,7 @@ INSERT INTO `kb` (`kd_kunjungan`, `id_pasien`, `kd_poli`, `tgl_kunjungan`, `stat
 CREATE TABLE `pasien` (
   `id_pasien` int(9) NOT NULL,
   `nm_pasien` varchar(50) NOT NULL,
+  `nik` text NOT NULL,
   `jen_kelamin` enum('1','2') NOT NULL,
   `jalur` enum('1','2','3','4') NOT NULL,
   `alamatp` text NOT NULL,
@@ -118,12 +115,8 @@ CREATE TABLE `pasien` (
 -- Dumping data for table `pasien`
 --
 
-INSERT INTO `pasien` (`id_pasien`, `nm_pasien`, `jen_kelamin`, `jalur`, `alamatp`, `tempat_lahirp`, `tgl_lahirp`, `telp_pasien`, `tgl_daftar`) VALUES
-(97980281, 'Numayey', '2', '3', 'Rumah numanuma', 'rimbajuga', '2013-02-15', '08451222365', '2015-07-06'),
-(259750121, 'Numanuma', '1', '2', 'Rumahnya', 'rimba', '2003-05-20', '02179187676', '2020-05-04'),
-(402353452, 'Joshua', '2', '4', 'Rumahnya', 'rumah', '2005-02-20', '02179187676', '2006-02-20'),
-(444960275, 'Numayey', '2', '3', 'Rumah adumama sayange', 'rimbajuga', '2013-02-15', '08451222365', '2021-04-26'),
-(834406711, 'Elvana', '2', '1', 'alalalalalaalala', 'rumahnya', '2002-02-01', '1554245878', '2021-04-26');
+INSERT INTO `pasien` (`id_pasien`, `nm_pasien`, `nik`, `jen_kelamin`, `jalur`, `alamatp`, `tempat_lahirp`, `tgl_lahirp`, `telp_pasien`, `tgl_daftar`) VALUES
+(934618507, 'Wandi', '64010420021998', '1', '2', 'Antara cokro sama padat karya', 'rumahnya', '1998-10-20', '1554245878', '2021-05-03');
 
 -- --------------------------------------------------------
 
@@ -174,9 +167,7 @@ CREATE TABLE `rm` (
 --
 
 INSERT INTO `rm` (`kd_rekammedis`, `id_pasien`, `id_dokter`, `tinggi_badan`, `berat_badan`, `tensi`, `anamnesa`, `diagnose`, `tindak_lanjut`, `terapi`, `tanggal`, `id_karyawan`) VALUES
-(3, 97980281, 2, '180', '55', '140/45', 'Sakit co', 'Iya sakit', '1', '2', '2021-04-21', 1),
-(4, 444960275, 4, '155', '211', '144/88', 'Sakit cuy', 'Serius deh sakit', '1', '1', '2021-04-28', 3),
-(5, 259750121, 3, '112', '21', '140', 'Sakit', 'Sakit je', '1', '2', '2021-05-02', 2);
+(6, 934618507, 3, '210', '58', '140', 'Sakit co', 'mati aja sudah', '2', '2', '2021-05-03', 3);
 
 -- --------------------------------------------------------
 
@@ -231,7 +222,8 @@ ALTER TABLE `kb`
 -- Indexes for table `pasien`
 --
 ALTER TABLE `pasien`
-  ADD PRIMARY KEY (`id_pasien`);
+  ADD PRIMARY KEY (`id_pasien`),
+  ADD UNIQUE KEY `nik` (`nik`) USING HASH;
 
 --
 -- Indexes for table `poli`
@@ -277,13 +269,13 @@ ALTER TABLE `karyawan`
 -- AUTO_INCREMENT for table `kb`
 --
 ALTER TABLE `kb`
-  MODIFY `kd_kunjungan` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `kd_kunjungan` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `rm`
 --
 ALTER TABLE `rm`
-  MODIFY `kd_rekammedis` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `kd_rekammedis` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`

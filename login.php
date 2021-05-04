@@ -13,15 +13,7 @@
 </head>
 
 <body>
-  <?php
-  if (isset($_GET['pesan'])) {
-    if ($_GET['pesan'] == "gagal") {
-      echo "<div class='alert-danger my-4'>Username dan Password tidak sesuai!</div>";
-    } else if ($_GET['pesan'] == "belum_login") {
-      echo "<div class='alert-danger my-4'>Anda harus login untuk mengakses halaman!</div>";
-    }
-  }
-  ?>
+
   <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
     <div class="container">
       <div class="card login-card">
@@ -43,8 +35,15 @@
                 </div>
                 <button name="submit" id="login" class="btn btn-block login-btn mb-4">Sign in</button>
               </form>
-              <a href="#!" class="forgot-password-link">Forgot password?</a>
-              <p class="login-card-footer-text">Don't have an account? <a href="#!" class="text-reset">Register here</a></p>
+              <?php
+              if (isset($_GET['pesan'])) {
+                if ($_GET['pesan'] == "gagal") {
+                  echo "<div class='text-danger my-4'>Username dan Password tidak sesuai!</div>";
+                } else if ($_GET['pesan'] == "belum_login") {
+                  echo "<div class='text-danger my-4'>Anda harus login untuk mengakses halaman!</div>";
+                }
+              }
+              ?>
               <nav class="login-card-footer-nav">
                 <a href="#!">Terms of use.</a>
                 <a href="#!">Privacy policy</a>
