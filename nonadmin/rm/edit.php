@@ -37,12 +37,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Kunjungan berobat
+                    Rekam medis
                     <small>Data</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="breadcrumb-item">Kunjungan berobat</li>
+                    <li class="breadcrumb-item">rekam medis</li>
                     <li class="breadcrumb-item active">Tambah</li>
                 </ol>
             </section>
@@ -53,8 +53,8 @@
                 <!-- Basic Forms -->
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Form tambah data kunjungan berobat</h3>
-                        <h6 class="box-subtitle">Form yang digunakan untuk menambah data kunjungan berobat di Rumah Sakit XXX</h6>
+                        <h3 class="box-title">Form tambah data rekam medis</h3>
+                        <h6 class="box-subtitle">Form yang digunakan untuk menambah data rekam medis di Klinik RH Medika</h6>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -80,7 +80,12 @@
                                                         <h5>Pasien <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="text" class="form-control" name="kdrm" value="<?= $d['kd_rekammedis'] ?>" hidden>
-                                                            <input name="idpasien" class="form-control select2" value="<?= $d['id_pasien'] ?>">
+                                                            <?php $qpasien = $connect->query("SELECT * FROM pasien"); ?>
+                                                            <select name="idpasien" class="form-control selectpicker" data-live-search="true">
+                                                                <?php while ($pasien = $qpasien->fetch_assoc()) : ?>
+                                                                    <option value="<?= $pasien['id_pasien']; ?>"><?= $pasien['nm_pasien']; ?></option>
+                                                                <?php endwhile; ?>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -89,7 +94,7 @@
                                                         <h5>Dokter <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <?php $qdokter = $connect->query("SELECT * FROM dokter WHERE kd_poli ='$dpoli'"); ?>
-                                                            <select name="iddokter" class="form-control">
+                                                            <select name="iddokter" class=" form-control selectpicker">
                                                                 <option hidden value="<?= $d['id_dokter']; ?>"><?= $d['nm_dokter']; ?></option>
                                                                 <?php while ($dokter = $qdokter->fetch_assoc()) :                                                ?>
                                                                     <option value="<?= $dokter['id_dokter']; ?>"><?= $dokter['nm_dokter']; ?></option>
@@ -102,7 +107,7 @@
                                                     <div class="form-group">
                                                         <h5>Tindak Lanjut <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <select class="form-control" name="tindak">
+                                                            <select class=" form-control selectpicker" name="tindak">
                                                                 <option value="<?= $d['tindak_lanjut']; ?>" hidden>
                                                                     <?php
                                                                     if ($d['tindak_lanjut'] == '1') {
@@ -128,7 +133,7 @@
                                                     <div class="form-group">
                                                         <h5>Terapi <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <select class="form-control" name="terapi">
+                                                            <select class=" form-control selectpicker" name="terapi">
                                                                 <option value="<?= $d['terapi']; ?>" hidden>
                                                                     <?php
                                                                     if ($d['terapi'] == '1') {
@@ -190,7 +195,8 @@
                                                 </div>
                                             </div>
                                             <div class="text-xs-right">
-                                                <button type="submit" class="btn btn-info" name="submit">Submit</button>
+                                                <button type="submit" class="btn btn-info" name="submit">Ubah</button>
+                                                <a href="data.php" class="btn btn-danger">Kembali</a>
                                             </div>
                                         </form>
                                 <?php

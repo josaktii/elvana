@@ -43,7 +43,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                     <li class="breadcrumb-item">Kunjungan berobat</li>
-                    <li class="breadcrumb-item active">Tambah</li>
+                    <li class="breadcrumb-item active">Edit</li>
                 </ol>
             </section>
 
@@ -54,7 +54,7 @@
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Form tambah data kunjungan berobat</h3>
-                        <h6 class="box-subtitle">Form yang digunakan untuk menambah data kunjungan berobat di Rumah Sakit XXX</h6>
+                        <h6 class="box-subtitle">Form yang digunakan untuk menambah data kunjungan berobat di Klinik RH Medika</h6>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -107,7 +107,8 @@
                                                 </div>
                                             </div>
                                             <div class="text-xs-right">
-                                                <button type="submit" class="btn btn-info" name="submit">Submit</button>
+                                                <button type="submit" class="btn btn-info" name="submit">Ubah</button>
+                                                <a href="data.php" class="btn btn-danger">Kembali</a>
                                             </div>
                                         </form>
 

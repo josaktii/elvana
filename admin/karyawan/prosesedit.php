@@ -8,6 +8,8 @@ if (isset($_POST['submit'])) {
     $tmpt = $_POST['tmptkarya'];
     $tgl = $_POST['tglkarya'];
     $jabat = $_POST['jabat'];
+    $telp = $_POST['notlp'];
+    $alamat = $_POST['alamat'];
 
     $tglSekarang  = new DateTime();
     $interval = date_diff(new DateTime($tgl), $tglSekarang);
@@ -15,7 +17,7 @@ if (isset($_POST['submit'])) {
     $intervalHari = $interval->format("%R%a");
 
     if ($intervalHari >= 6209) {
-        $qk = $connect->query("UPDATE karyawan SET jabatan = '$jabat', nm_karyawan = '$nmkarya', tempat_lahirk = '$tmpt', tgl_lahirk = '$tgl' WHERE id_karyawan = '$idk'");
+        $qk = $connect->query("UPDATE karyawan SET jabatan = '$jabat', nm_karyawan = '$nmkarya', tempat_lahirk = '$tmpt', tgl_lahirk = '$tgl', alamatk = '$alamat', telp_karyawan = '$telp' WHERE id_karyawan = '$idk'");
 
         if ($qk) {
             echo "<script>alert('Data karyawan berhasil ditambahkan'); window.location.href='data.php'</script>";

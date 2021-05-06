@@ -30,6 +30,7 @@ ini_set('display_errors', 0);
     <link rel="stylesheet" href="../../style/master_style.css">
 
     <!-- Fab Admin skins -->
+    <link rel="stylesheet" href="../../assets/bootstrap-select-1.13.14/dist/css/bootstrap-select.css">
     <link rel="stylesheet" href="../../style/_all-skins.css">
 
 </head>
@@ -63,7 +64,7 @@ ini_set('display_errors', 0);
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Form tambah data rekam medis</h3>
-                        <h6 class="box-subtitle">Form yang digunakan untuk menambah data rekam medis di Rumah Sakit XXX</h6>
+                        <h6 class="box-subtitle">Form yang digunakan untuk menambah data rekam medis di Klinik RH Medika</h6>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -76,7 +77,12 @@ ini_set('display_errors', 0);
                                                 <h5>Pasien <span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <?php $qpasien = $connect->query("SELECT * FROM pasien"); ?>
-                                                    <input name="idpasien" class="form-control select2">
+                                                    <select name="idpasien" class="form-control selectpicker" data-live-search="true">
+                                                        <option hidden></option>
+                                                        <?php while ($pasien = $qpasien->fetch_assoc()) : ?>
+                                                            <option value="<?= $pasien['id_pasien']; ?>"><?= $pasien['nm_pasien']; ?></option>
+                                                        <?php endwhile; ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,7 +91,7 @@ ini_set('display_errors', 0);
                                                 <h5>Dokter <span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <?php $qdokter = $connect->query("SELECT * FROM dokter WHERE kd_poli = '$dpoli'"); ?>
-                                                    <select name="iddokter" class="form-control">
+                                                    <select name="iddokter" class=" form-control selectpicker">
                                                         <option hidden>Pilih dokter</option>
                                                         <?php while ($dokter = $qdokter->fetch_assoc()) : ?>
                                                             <option value="<?= $dokter['id_dokter']; ?>"><?= $dokter['nm_dokter']; ?></option>
@@ -98,7 +104,7 @@ ini_set('display_errors', 0);
                                             <div class="form-group">
                                                 <h5>Tindak Lanjut <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <select class="form-control" name="tindak">
+                                                    <select class=" form-control selectpicker" name="tindak">
                                                         <option hidden>Tindak Lanjut</option>
                                                         <option value="1">Pulang sehat</option>
                                                         <option value="2">Rawat jalan</option>
@@ -112,7 +118,7 @@ ini_set('display_errors', 0);
                                             <div class="form-group">
                                                 <h5>Terapi <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <select class="form-control" name="terapi">
+                                                    <select class=" form-control selectpicker" name="terapi">
                                                         <option hidden>Terapi</option>
                                                         <option value="1">Obat</option>
                                                         <option value="2">Tindak</option>
@@ -200,6 +206,7 @@ ini_set('display_errors', 0);
 
     <!-- Fab Admin App -->
     <script src="../../js/template.js"></script>
+    <script src="../../assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.js"></script>
     <script src="../../js/validation.js"></script>
     <script>
         ! function(window, document, $) {

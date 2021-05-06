@@ -54,7 +54,7 @@
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Form tambah data poli</h3>
-                        <h6 class="box-subtitle">Form yang digunakan untuk menambah data poli di Rumah Sakit XXX</h6>
+                        <h6 class="box-subtitle">Form yang digunakan untuk menambah data poli di Klinik RH Medika</h6>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -98,7 +98,7 @@
                                         </div>
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
-                                                <h5>Contact <span class="text-danger">*</span></h5>
+                                                <h5>No. Telepon <span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <input type="text" class="form-control  selectpicker" name="notlpp" placeholder="Nomor telepon pasien">
                                                 </div>
@@ -150,7 +150,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            &copy; 2018 <a href="https://www.multipurposethemes.com/">Multi-Purpose Themes</a>. All Rights Reserved.
+            &copy; 2021 <a href="">Elvan Firdha Aldianto</a>. All Rights Reserved.
         </footer>
     </div>
 

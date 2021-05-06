@@ -54,7 +54,7 @@
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Form tambah data poli</h3>
-                        <h6 class="box-subtitle">Form yang digunakan untuk menambah data poli di Rumah Sakit XXX</h6>
+                        <h6 class="box-subtitle">Form yang digunakan untuk menambah data poli di Klinik RH Medika</h6>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -124,7 +124,7 @@
                                                 </div>
                                                 <div class="col-lg-6 col-12">
                                                     <div class="form-group">
-                                                        <h5>Contact <span class="text-danger">*</span></h5>
+                                                        <h5>No. Telepon <span class="text-danger">*</span></h5>
                                                         <div class="controls">
                                                             <input type="text" class="form-control" name="notlpp" value="<?= $dpa['telp_pasien']; ?>">
                                                         </div>
@@ -166,7 +166,8 @@
                                                 </div>
                                             </div>
                                             <div class="text-xs-right">
-                                                <button type="submit" class="btn btn-info" name="pasubmit">Submit</button>
+                                                <button type="submit" class="btn btn-info" name="pasubmit">Ubah</button>
+                                                <a href="data.php" class="btn btn-danger">Kembali</a>
                                             </div>
                                         </form>
 

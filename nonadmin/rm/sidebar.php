@@ -35,6 +35,7 @@
                     <li><a href="../rm/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
                 </ul>
             </li>
+            <li class="header nav-small-cap">Data Laporan</li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-file"></i> <span>Laporan</span>

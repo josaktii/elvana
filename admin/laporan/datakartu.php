@@ -57,10 +57,15 @@
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Tabel data pasien</h3>
-                                <h6 class="box-subtitle">Tabel berisi data pasien di Rumah Sakit XXX</h6>
+                                <h6 class="box-subtitle">Tabel berisi data pasien di Klinik RH Medika</h6>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
+                                <div class="row">
+                                    <div class="box-label">
+                                        <a class="btn btn-info mx-lg-30 mb-15" href="../../config/cetakpasien.php" target="_blank"><i class="fa fa-print"></i> Print</a>
+                                    </div>
+                                </div>
                                 <div class="table-responsive">
                                     <table id="example6" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
                                         <thead>
@@ -72,7 +77,6 @@
                                                 <th>Tanggal Lahir</th>
                                                 <th>Contact</th>
                                                 <th>Jenis Kelamin</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -96,11 +100,6 @@
                                                             echo "Perempuan";
                                                         }
                                                         ?>
-                                                    </td>
-                                                    <td>
-                                                        <div class="input-group">
-                                                            <a href="../../config/cetakkartu.php?id=<?= $dpa['id_pasien'] ?>" target="_blank" class="btn btn-info fa fa-print"></a>
-                                                        </div>
                                                     </td>
                                                 </tr>
                                             <?php

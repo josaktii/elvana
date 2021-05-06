@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 04, 2021 at 09:23 AM
+-- Generation Time: May 06, 2021 at 03:04 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -59,17 +59,19 @@ CREATE TABLE `karyawan` (
   `jabatan` enum('1','2','3','4') NOT NULL,
   `nm_karyawan` varchar(50) NOT NULL,
   `tempat_lahirk` varchar(30) NOT NULL,
-  `tgl_lahirk` date NOT NULL
+  `tgl_lahirk` date NOT NULL,
+  `alamatk` text NOT NULL,
+  `telp_karyawan` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `karyawan`
 --
 
-INSERT INTO `karyawan` (`id_karyawan`, `jabatan`, `nm_karyawan`, `tempat_lahirk`, `tgl_lahirk`) VALUES
-(1, '4', 'Josaktii', 'Tajos', '1999-02-20'),
-(2, '3', 'Elvana', 'Tajos', '2000-01-20'),
-(3, '2', 'Wandi', 'rumahnya lah', '2003-12-20');
+INSERT INTO `karyawan` (`id_karyawan`, `jabatan`, `nm_karyawan`, `tempat_lahirk`, `tgl_lahirk`, `alamatk`, `telp_karyawan`) VALUES
+(7, '1', 'josaktii', 'rumahnya', '2000-02-20', 'rumahnya cok', '0217557475'),
+(8, '2', 'Elvan', 'rumahnya', '1998-05-05', 'rumahnya', '0217554510254'),
+(9, '2', 'Wandi', 'rumah kita', '1995-05-20', 'gatau', '08214554445');
 
 -- --------------------------------------------------------
 
@@ -101,7 +103,7 @@ INSERT INTO `kb` (`kd_kunjungan`, `id_pasien`, `kd_poli`, `tgl_kunjungan`, `stat
 CREATE TABLE `pasien` (
   `id_pasien` int(9) NOT NULL,
   `nm_pasien` varchar(50) NOT NULL,
-  `nik` text NOT NULL,
+  `kd_jamkes` text NOT NULL,
   `jen_kelamin` enum('1','2') NOT NULL,
   `jalur` enum('1','2','3','4') NOT NULL,
   `alamatp` text NOT NULL,
@@ -115,7 +117,7 @@ CREATE TABLE `pasien` (
 -- Dumping data for table `pasien`
 --
 
-INSERT INTO `pasien` (`id_pasien`, `nm_pasien`, `nik`, `jen_kelamin`, `jalur`, `alamatp`, `tempat_lahirp`, `tgl_lahirp`, `telp_pasien`, `tgl_daftar`) VALUES
+INSERT INTO `pasien` (`id_pasien`, `nm_pasien`, `kd_jamkes`, `jen_kelamin`, `jalur`, `alamatp`, `tempat_lahirp`, `tgl_lahirp`, `telp_pasien`, `tgl_daftar`) VALUES
 (934618507, 'Wandi', '64010420021998', '1', '2', 'Antara cokro sama padat karya', 'rumahnya', '1998-10-20', '1554245878', '2021-05-03');
 
 -- --------------------------------------------------------
@@ -162,13 +164,6 @@ CREATE TABLE `rm` (
   `id_karyawan` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `rm`
---
-
-INSERT INTO `rm` (`kd_rekammedis`, `id_pasien`, `id_dokter`, `tinggi_badan`, `berat_badan`, `tensi`, `anamnesa`, `diagnose`, `tindak_lanjut`, `terapi`, `tanggal`, `id_karyawan`) VALUES
-(6, 934618507, 3, '210', '58', '140', 'Sakit co', 'mati aja sudah', '2', '2', '2021-05-03', 3);
-
 -- --------------------------------------------------------
 
 --
@@ -189,9 +184,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `access`, `id_karyawan`, `kd_poli`) VALUES
-(4, 'josaktii', 'semangka', '1', 1, 744),
-(5, 'blabla', 'semangka', '2', 2, 112),
-(17, 'kandungan', 'kandungan', '2', 3, 347);
+(18, 'josaktii', 'admin', '1', 7, 744),
+(19, 'elvan', 'kandungan', '2', 8, 347);
 
 --
 -- Indexes for dumped tables
@@ -223,7 +217,7 @@ ALTER TABLE `kb`
 --
 ALTER TABLE `pasien`
   ADD PRIMARY KEY (`id_pasien`),
-  ADD UNIQUE KEY `nik` (`nik`) USING HASH;
+  ADD UNIQUE KEY `nik` (`kd_jamkes`) USING HASH;
 
 --
 -- Indexes for table `poli`
@@ -263,7 +257,7 @@ ALTER TABLE `dokter`
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `kb`
@@ -281,7 +275,7 @@ ALTER TABLE `rm`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_user` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables

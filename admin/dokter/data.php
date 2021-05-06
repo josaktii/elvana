@@ -58,12 +58,12 @@
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Tabel data dokter</h3>
-                                <h6 class="box-subtitle">Tabel berisi data dokter di Rumah Sakit XXX</h6>
+                                <h6 class="box-subtitle">Tabel berisi data dokter di Klinik RH Medika</h6>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
-                                    <table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                    <table id="example6" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
@@ -117,7 +117,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            &copy; 2018 <a href="https://www.multipurposethemes.com/">Multi-Purpose Themes</a>. All Rights Reserved.
+            &copy; 2021 <a href="">Elvan Firdha Aldianto</a>. All Rights Reserved.
         </footer>
     </div>
 

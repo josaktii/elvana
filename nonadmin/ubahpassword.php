@@ -69,7 +69,7 @@ if ($_POST['submit']) {
 
         <header class="main-header">
             <!-- Logo -->
-            <a href="index.html" class="logo">
+            <a href="#" class="logo">
                 <!-- mini logo -->
                 <b class="logo-mini">
                     <span class="light-logo">MEDIS 1</span>
@@ -170,12 +170,12 @@ if ($_POST['submit']) {
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Dashboard
+                    Ubah Password
                     <small>Control panel</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item active">Ubah Password</li>
                 </ol>
             </section>
 

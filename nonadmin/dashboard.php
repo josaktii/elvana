@@ -49,7 +49,7 @@ $qt = $connect->query("SELECT COUNT(*) AS hitung FROM kb");
 
         <header class="main-header">
             <!-- Logo -->
-            <a href="index.html" class="logo">
+            <a href="#" class="logo">
                 <!-- mini logo -->
                 <b class="logo-mini">
                     <span class="light-logo">MEDIS 1</span>

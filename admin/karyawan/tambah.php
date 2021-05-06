@@ -93,6 +93,22 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                <h5>No. Telepon <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <input type="text" class="form-control" name="notlp" placeholder="" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h5>Alamat <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <textarea type="text" name="alamat" class="form-control" required data-validation-required-message="This field is required"></textarea>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="text-xs-right">

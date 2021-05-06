@@ -34,12 +34,12 @@
         <div class="content-wrapper">
             <section class="content-header">
                 <h1>
-                    Pasien
+                    Karyawan
                     <small>Data</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="breadcrumb-item active">Pasien</li>
+                    <li class="breadcrumb-item active">Karyawan</li>
                 </ol>
             </section>
             <section class="content">
@@ -50,11 +50,11 @@
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Tabel data karyawan</h3>
-                                <h6 class="box-subtitle">Tabel berisi data karyawan di Rumah Sakit XXX</h6>
+                                <h6 class="box-subtitle">Tabel berisi data karyawan di Klinik RH Medika</h6>
                             </div>
                             <div class="box-body">
                                 <div class="table-responsive">
-                                    <table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                    <table id="example6" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
@@ -62,6 +62,8 @@
                                                 <th>Nama Karyawan</th>
                                                 <th>Tempat Lahir Karyawan</th>
                                                 <th>Tanggal Lahir Karyawan</th>
+                                                <th>Alamat Karyawan</th>
+                                                <th>No. Telepon</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -89,6 +91,8 @@
                                                     <td><?= $du['nm_karyawan'] ?></td>
                                                     <td><?= $du['tempat_lahirk'] ?></td>
                                                     <td><?= $du['tgl_lahirk'] ?></td>
+                                                    <td><?= $du['alamatk'] ?></td>
+                                                    <td><?= $du['telp_karyawan'] ?></td>
                                                     <td>
                                                         <div class="input-group">
                                                             <a href="edit.php?id=<?= $du['id_karyawan'] ?>" class="btn btn-success fa fa-edit"></a>

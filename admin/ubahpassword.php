@@ -216,6 +216,7 @@ if ($_POST['submit']) {
                             <li><a href="kb/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
                         </ul>
                     </li>
+                    <li class="header nav-small-cap">Data Laporan</li>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-file"></i> <span>Laporan</span>
@@ -237,12 +238,12 @@ if ($_POST['submit']) {
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Dashboard
+                    Ubah Password
                     <small>Control panel</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item active">Ubah password</li>
                 </ol>
             </section>
 

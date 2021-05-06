@@ -54,7 +54,7 @@
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Form ubah data poli</h3>
-                        <h6 class="box-subtitle">Form yang digunakan untuk mengubah data poli di Rumah Sakit XXX</h6>
+                        <h6 class="box-subtitle">Form yang digunakan untuk mengubah data poli di Klinik RH Medika</h6>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -84,7 +84,8 @@
                                                 </div>
                                             </div>
                                             <div class="text-xs-right">
-                                                <button type="submit" class="btn btn-info" name="psubmit">Submit</button>
+                                                <button type="submit" class="btn btn-info" name="psubmit">Ubah</button>
+                                                <a href="data.php" class="btn btn-danger">Kembali</a>
                                             </div>
                                         </form>
                                 <?php
@@ -105,7 +106,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            &copy; 2018 <a href="https://www.multipurposethemes.com/">Multi-Purpose Themes</a>. All Rights Reserved.
+            &copy; 2021 <a href="">Elvan Firdha Aldianto</a>. All Rights Reserved.
         </footer>
     </div>
 

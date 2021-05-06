@@ -58,12 +58,12 @@
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Tabel data poli</h3>
-                                <h6 class="box-subtitle">Tabel berisi data poli di Rumah Sakit XXX</h6>
+                                <h6 class="box-subtitle">Tabel berisi data poli di Klinik RH Medika</h6>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="table-responsive">
-                                    <table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                    <table id="example6" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
                                         <thead>
                                             <tr>
                                                 <th>Number</th>
@@ -72,7 +72,7 @@
                                                 <th>Tempat Lahir</th>
                                                 <th>Tanggal Lahir</th>
                                                 <th>Tanggal Daftar</th>
-                                                <th>Contact</th>
+                                                <th>No. Telepon</th>
                                                 <th>Jenis Kelamin</th>
                                                 <th>Jalur</th>
                                                 <th>Alamat</th>
@@ -120,7 +120,9 @@
                                                         <div class="input-group">
                                                             <a href="edit.php?id=<?= $dpa['id_pasien'] ?>" class="btn btn-success fa fa-edit"></a>
                                                             <a href="hapus.php?id=<?= $dpa['id_pasien'] ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')" class="btn btn-danger fa fa-trash"></a>
+                                                            <a href="../../config/cetakkartu.php?id=<?= $dpa['id_pasien'] ?>" target="_blank" class="btn btn-info fa fa-print"></a>
                                                         </div>
+                                                    </td>
                                                     </td>
                                                 </tr>
                                             <?php
@@ -141,7 +143,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            &copy; 2018 <a href="https://www.multipurposethemes.com/">Multi-Purpose Themes</a>. All Rights Reserved.
+            &copy; 2021 <a href="">Elvan Firdha Aldianto</a>. All Rights Reserved.
         </footer>
     </div>
 

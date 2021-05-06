@@ -98,15 +98,15 @@
                                                             <select class="form-control" name="jabat" required>
                                                                 <option value="<?= $dk['jabatan'] ?>" hidden>
                                                                     <?php
-                                                                        if ($dk['jabatan']==1) {
-                                                                            echo 'Admin';
-                                                                        } elseif ($dk['jabatan']==2) {
-                                                                            echo 'Medis 1';
-                                                                        } elseif ($dk['jabatan']==3) {
-                                                                            echo 'Auditor BPJS';
-                                                                        } elseif ($dk['jabatan']==4) {
-                                                                            echo 'Auditor Inhealth/Buma';
-                                                                        }
+                                                                    if ($dk['jabatan'] == 1) {
+                                                                        echo 'Admin';
+                                                                    } elseif ($dk['jabatan'] == 2) {
+                                                                        echo 'Medis 1';
+                                                                    } elseif ($dk['jabatan'] == 3) {
+                                                                        echo 'Auditor BPJS';
+                                                                    } elseif ($dk['jabatan'] == 4) {
+                                                                        echo 'Auditor Inhealth/Buma';
+                                                                    }
                                                                     ?>
                                                                 </option>
                                                                 <option value="1">Admin</option>
@@ -114,6 +114,22 @@
                                                                 <option value="3">Auditor BPJS</option>
                                                                 <option value="4">Auditor Inhealth/Buma</option>
                                                             </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <h5>No. Telepon <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="text" class="form-control" name="notlp" value="<?= $dk['telp_karyawan'] ?>" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <h5>Alamat <span class="text-danger">*</span></h5>
+                                                        <div class="controls">
+                                                            <textarea type="text" name="alamat" class="form-control" required data-validation-required-message="This field is required"><?= $dk['alamatk'] ?></textarea>
                                                         </div>
                                                     </div>
                                                 </div>

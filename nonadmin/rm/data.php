@@ -60,7 +60,7 @@ ini_set('display_errors', 0);?>
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Tabel data rekam medis</h3>
-                                <h6 class="box-subtitle">Tabel berisi data rekam medis di Rumah Sakit XXX</h6>
+                                <h6 class="box-subtitle">Tabel berisi data rekam medis di Klinik RH Medika</h6>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
