@@ -68,6 +68,7 @@
                                             <tr>
                                                 <th>Number</th>
                                                 <th>ID Pasien</th>
+                                                <th>Kode Registrasi</th>
                                                 <th>Nama Pasien</th>
                                                 <th>Tempat Lahir</th>
                                                 <th>Tanggal Lahir</th>
@@ -88,6 +89,7 @@
                                                 <tr>
                                                     <td><?= $no ?></td>
                                                     <td><?= $dpa['id_pasien'] ?></td>
+                                                    <td><?= $dpa['kd_registrasi'] ?></td>
                                                     <td><?= $dpa['nm_pasien'] ?></td>
                                                     <td><?= $dpa['tempat_lahirp'] ?></td>
                                                     <td><?= $dpa['tgl_lahirp'] ?></td>
@@ -131,10 +133,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
-                            <!-- /.box-body -->
+                            </div>>
                         </div>
-                        <!-- /.box -->
                     </div>
                 </div>
                 <!-- /.row -->
