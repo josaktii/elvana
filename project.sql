@@ -103,7 +103,7 @@ INSERT INTO `kb` (`kd_kunjungan`, `id_pasien`, `kd_poli`, `tgl_kunjungan`, `stat
 CREATE TABLE `pasien` (
   `id_pasien` int(9) NOT NULL,
   `nm_pasien` varchar(50) NOT NULL,
-  `kd_jamkes` text NOT NULL,
+  `kd_registrasi` text NOT NULL,
   `jen_kelamin` enum('1','2') NOT NULL,
   `jalur` enum('1','2','3','4') NOT NULL,
   `alamatp` text NOT NULL,
@@ -117,7 +117,7 @@ CREATE TABLE `pasien` (
 -- Dumping data for table `pasien`
 --
 
-INSERT INTO `pasien` (`id_pasien`, `nm_pasien`, `kd_jamkes`, `jen_kelamin`, `jalur`, `alamatp`, `tempat_lahirp`, `tgl_lahirp`, `telp_pasien`, `tgl_daftar`) VALUES
+INSERT INTO `pasien` (`id_pasien`, `nm_pasien`, `kd_registrasi`, `jen_kelamin`, `jalur`, `alamatp`, `tempat_lahirp`, `tgl_lahirp`, `telp_pasien`, `tgl_daftar`) VALUES
 (934618507, 'Wandi', '64010420021998', '1', '2', 'Antara cokro sama padat karya', 'rumahnya', '1998-10-20', '1554245878', '2021-05-03');
 
 -- --------------------------------------------------------
