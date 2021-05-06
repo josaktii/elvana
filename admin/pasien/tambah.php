@@ -64,7 +64,7 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-12">
                                             <div class="form-group">
-                                                <h5>NIK <span class="text-danger">*</span></h5>
+                                                <h5>Kode Registrasi <span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <input type="number" class="form-control selectpicker" name="nik" required>
                                                 </div>

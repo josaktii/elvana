@@ -1,4 +1,8 @@
-<?php include('../../config/connect.php'); ?>
+<?php
+include('../../config/connect.php');
+$query2 = mysqli_query($connect, "SELECT YEAR(tgl_daftar) as tahun FROM pasien GROUP BY tahun");
+$query3 = mysqli_query($connect, "SELECT MONTH(tgl_daftar) as bulan FROM pasien GROUP BY bulan");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,20 +66,80 @@
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="row">
-                                    <div class="box-label">
-                                        <a class="btn btn-info mx-lg-30 mb-15" href="../../config/cetakpasien.php" target="_blank"><i class="fa fa-print"></i> Print</a>
+                                    <div class="col">
+                                        <form method="GET" action="../../config/cetakpasien.php" target="_blank">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-12">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <select class="form-control" name="tahun">
+                                                                <option hidden>Filter Data Berdasarkan Tahun</option>
+                                                                <?php while ($row2 = mysqli_fetch_array($query2)) { ?>
+                                                                    <option value="<?php echo $row2['tahun']; ?>"><?php echo $row2['tahun']; ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-12">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <select class="form-control" name="bulan">
+                                                                <option hidden>Filter Data Berdasarkan Bulan</option>
+                                                                <?php while ($row3 = mysqli_fetch_array($query3)) { ?>
+                                                                    <option value="<?php echo $row3['bulan']; ?>">
+                                                                        <?php
+                                                                        if ($row3['bulan'] == 1) {
+                                                                            echo 'Januari';
+                                                                        } else if ($row3['bulan'] == 2) {
+                                                                            echo 'Februari';
+                                                                        } else if ($row3['bulan'] == 3) {
+                                                                            echo 'Maret';
+                                                                        } else if ($row3['bulan'] == 4) {
+                                                                            echo 'April';
+                                                                        } else if ($row3['bulan'] == 5) {
+                                                                            echo 'Mei';
+                                                                        } else if ($row3['bulan'] == 6) {
+                                                                            echo 'Juni';
+                                                                        } else if ($row3['bulan'] == 7) {
+                                                                            echo 'Juli';
+                                                                        } else if ($row3['bulan'] == 8) {
+                                                                            echo 'Agustus';
+                                                                        } else if ($row3['bulan'] == 9) {
+                                                                            echo 'September';
+                                                                        } else if ($row3['bulan'] == 10) {
+                                                                            echo 'Oktober';
+                                                                        } else if ($row3['bulan'] == 11) {
+                                                                            echo 'November';
+                                                                        } else if ($row3['bulan'] == 12) {
+                                                                            echo 'Desember';
+                                                                        }
+                                                                        ?>
+                                                                    </option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-xs-right">
+                                                    <input type="submit" name="submit" class="btn-sm btn-primary" value="Print">
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
-                                    <table id="example6" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                    <table id="example7" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
                                         <thead>
                                             <tr>
                                                 <th>Number</th>
                                                 <th>ID Pasien</th>
+                                                <th>Kode Registrasi</th>
                                                 <th>Nama Pasien</th>
                                                 <th>Tempat Lahir</th>
                                                 <th>Tanggal Lahir</th>
-                                                <th>Contact</th>
+                                                <th>Tanggal Daftar</th>
+                                                <th>No. Telepon</th>
                                                 <th>Jenis Kelamin</th>
                                             </tr>
                                         </thead>
@@ -88,9 +152,11 @@
                                                 <tr>
                                                     <td><?= $no ?></td>
                                                     <td><?= $dpa['id_pasien'] ?></td>
+                                                    <td><?= $dpa['kd_registrasi'] ?></td>
                                                     <td><?= $dpa['nm_pasien'] ?></td>
                                                     <td><?= $dpa['tempat_lahirp'] ?></td>
                                                     <td><?= $dpa['tgl_lahirp'] ?></td>
+                                                    <td><?= $dpa['tgl_daftar'] ?></td>
                                                     <td><?= $dpa['telp_pasien'] ?></td>
                                                     <td>
                                                         <?php

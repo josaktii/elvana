@@ -142,22 +142,11 @@ $query3 = mysqli_query($connect, "SELECT MONTH(tgl_kunjungan) as bulan FROM kb G
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>ID Pasien</th>
-                                                <th>Nama Pasien</th>
-                                                <th>Poli</th>
-                                                <th>Tanggal Kunjungan</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </tfoot>
                                         <tbody>
                                             <?php
                                             $q = $connect->query("SELECT * FROM kb JOIN pasien USING(id_pasien) JOIN poli USING(kd_poli)");
                                             $no = 1;
                                             foreach ($q as $d) :
-                                                $id = $d['id_pasien'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no ?></td>

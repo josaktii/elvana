@@ -110,7 +110,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="../laporan/datakartu.php"><i class="fa fa-circle-thin"></i>Kartu Berobat</a></li>
+                    <li><a href="../laporan/datakartu.php"><i class="fa fa-circle-thin"></i>Pasien Berobat</a></li>
                     <li><a href="../laporan/datakb.php"><i class="fa fa-circle-thin"></i>Kunjungan</a></li>
                 </ul>
             </li>

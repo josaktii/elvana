@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../images/favicon.ico">
 
-    <title>Data Kunjungan</title>
+    <title>Data Pasien Berobat</title>
     <link rel="stylesheet" href="../style/bootstrap.min.css">
 </head>
 
@@ -47,39 +47,47 @@
                                         <tr>
                                             <th>Number</th>
                                             <th>ID Pasien</th>
+                                            <th>Kode Registrasi</th>
                                             <th>Nama Pasien</th>
                                             <th>Tempat Lahir</th>
                                             <th>Tanggal Lahir</th>
-                                            <th>Contact</th>
+                                            <th>Tanggal Daftar</th>
+                                            <th>No Telepon</th>
                                             <th>Jenis Kelamin</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $q = $connect->query("SELECT * FROM pasien");
-                                        $no = 1;
-                                        foreach ($q as $dpa) :
+                                        if (isset($_GET['submit'])) {
+                                            $thn = $_GET['tahun'];
+                                            $bln = $_GET['bulan'];
+                                            $q = $connect->query("SELECT * FROM pasien WHERE YEAR(tgl_daftar)='$thn' AND MONTH(tgl_daftar) = '$bln'");
+                                            $no = 1;
+                                            foreach ($q as $dpa) :
                                         ?>
-                                            <tr>
-                                                <td><?= $no ?></td>
-                                                <td><?= $dpa['id_pasien'] ?></td>
-                                                <td><?= $dpa['nm_pasien'] ?></td>
-                                                <td><?= $dpa['tempat_lahirp'] ?></td>
-                                                <td><?= $dpa['tgl_lahirp'] ?></td>
-                                                <td><?= $dpa['telp_pasien'] ?></td>
-                                                <td>
-                                                    <?php
-                                                    if ($dpa['jen_kelamin'] == '2') {
-                                                        echo "Laki-laki";
-                                                    } else {
-                                                        echo "Perempuan";
-                                                    }
-                                                    ?>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td><?= $no ?></td>
+                                                    <td><?= $dpa['id_pasien'] ?></td>
+                                                    <td><?= $dpa['kd_registrasi'] ?></td>
+                                                    <td><?= $dpa['nm_pasien'] ?></td>
+                                                    <td><?= $dpa['tempat_lahirp'] ?></td>
+                                                    <td><?= $dpa['tgl_lahirp'] ?></td>
+                                                    <td><?= $dpa['tgl_daftar'] ?></td>
+                                                    <td><?= $dpa['telp_pasien'] ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($dpa['jen_kelamin'] == '2') {
+                                                            echo "Laki-laki";
+                                                        } else {
+                                                            echo "Perempuan";
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                </tr>
                                         <?php
-                                            $no++;
-                                        endforeach; ?>
+                                                $no++;
+                                            endforeach;
+                                        } ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -128,9 +128,6 @@ $query3 = mysqli_query($connect, "SELECT MONTH(tgl_kunjungan) as bulan FROM kb G
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="box-label">
-                                        <a class="btn btn-info mx-lg-30 mb-15" href="../../config/cetakkunjungan.php" target="_blank"><i class="fa fa-print"></i> Print</a>
-                                    </div>
                                 </div>
                                 <div class="table-responsive">
                                     <table id="example2" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
