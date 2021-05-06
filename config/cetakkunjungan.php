@@ -1,4 +1,5 @@
-<?php include('connect.php'); ?>
+<?php include('connect.php'); 
+session_start();?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,31 +56,41 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $q = $connect->query("SELECT * FROM kb JOIN pasien USING(id_pasien) JOIN poli USING(kd_poli)");
-                                        $no = 1;
-                                        foreach ($q as $d) :
+                                        if (isset($_GET['submit'])) {
+                                            $thn = $_GET['tahun'];
+                                            $bln = $_GET['bulan'];
+                                            $polis = $_SESSION['poli'];
+                                            // echo $polis;
+                                            if ($_SESSION['namapoli'] == 'klinik') {
+                                                $q = $connect->query("SELECT * FROM kb JOIN pasien USING(id_pasien) JOIN poli USING(kd_poli) WHERE YEAR(tgl_kunjungan)='$thn' AND MONTH(tgl_kunjungan) = '$bln' ");
+                                            } else {
+                                                $q = $connect->query("SELECT * FROM kb JOIN pasien USING(id_pasien) JOIN poli USING(kd_poli) WHERE YEAR(tgl_kunjungan)='$thn' AND MONTH(tgl_kunjungan) = '$bln' AND kd_poli = '$polis' ");
+                                            }
+                                            $no = 1;
+                                            foreach ($q as $d) :
                                         ?>
-                                            <tr>
-                                                <td><?= $no ?></td>
-                                                <td><?= $d['id_pasien']; ?></td>
-                                                <td><?= $d['nm_pasien'] ?></td>
-                                                <td><?= $d['nm_poli'] ?></td>
-                                                <td><?= $d['tgl_kunjungan'] ?></td>
-                                                <td>
-                                                    <?php
-                                                    if ($d['status'] == '1') {
-                                                        echo "Menunggu";
-                                                    } elseif ($d['status'] == '2') {
-                                                        echo "Tertangani";
-                                                    } else {
-                                                        echo "-";
-                                                    }
-                                                    ?>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td><?= $no ?></td>
+                                                    <td><?= $d['id_pasien']; ?></td>
+                                                    <td><?= $d['nm_pasien'] ?></td>
+                                                    <td><?= $d['nm_poli'] ?></td>
+                                                    <td><?= $d['tgl_kunjungan'] ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($d['status'] == '1') {
+                                                            echo "Menunggu";
+                                                        } elseif ($d['status'] == '2') {
+                                                            echo "Tertangani";
+                                                        } else {
+                                                            echo "-";
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                </tr>
                                         <?php
-                                            $no++;
-                                        endforeach; ?>
+                                                $no++;
+                                            endforeach;
+                                        } ?>
                                     </tbody>
                                 </table>
                             </div>

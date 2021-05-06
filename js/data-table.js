@@ -44,8 +44,8 @@ $(function () {
     // DataTable
     var table = $('#example7').DataTable({
 		dom: 'Bfrtip',
+        'searching' : false,
 		buttons: [
-			'copy', 'pdf', 'print'
 		]
 	} );
  

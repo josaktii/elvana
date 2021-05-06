@@ -53,8 +53,8 @@
                 <!-- Basic Forms -->
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Form tambah data poli</h3>
-                        <h6 class="box-subtitle">Form yang digunakan untuk menambah data poli di Klinik RH Medika</h6>
+                        <h3 class="box-title">Form tambah data pasien</h3>
+                        <h6 class="box-subtitle">Form yang digunakan untuk menambah data pasien di Klinik RH Medika</h6>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">

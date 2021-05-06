@@ -1,4 +1,8 @@
-<?php include('../../config/connect.php'); ?>
+<?php
+include('../../config/connect.php');
+$query2 = mysqli_query($connect, "SELECT YEAR(tgl_kunjungan) as tahun FROM kb GROUP BY tahun");
+$query3 = mysqli_query($connect, "SELECT MONTH(tgl_kunjungan) as bulan FROM kb GROUP BY bulan");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +28,7 @@
 
     <!-- Fab Admin skins -->
     <link rel="stylesheet" href="../../style/_all-skins.css">
+    <link rel="stylesheet" href="../../assets/bootstrap-select-1.13.14/dist/css/bootstrap-select.css">
     <link rel="stylesheet" href="../../assets/datatable/datatables.min.css">
 
 </head>
@@ -62,13 +67,71 @@
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
-                            <div class="row">
-                                <div class="box-label">
-                                    <a class="btn btn-info mx-lg-30 mb-15" href="../../config/cetakkunjungan.php" target="_blank"><i class="fa fa-print"></i> Print</a>
+                                <div class="row">
+                                    <div class="col">
+                                        <form method="GET" action="../../config/cetakkunjungan.php" target="_blank">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-12">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <select class="form-control" name="tahun">
+                                                                <option hidden>Filter Data Berdasarkan Tahun</option>
+                                                                <?php while ($row2 = mysqli_fetch_array($query2)) { ?>
+                                                                    <option value="<?php echo $row2['tahun']; ?>"><?php echo $row2['tahun']; ?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-12">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <select class="form-control" name="bulan">
+                                                                <option hidden>Filter Data Berdasarkan Bulan</option>
+                                                                <?php while ($row3 = mysqli_fetch_array($query3)) { ?>
+                                                                    <option value="<?php echo $row3['bulan']; ?>">
+                                                                        <?php
+                                                                        if ($row3['bulan'] == 1) {
+                                                                            echo 'Januari';
+                                                                        } else if ($row3['bulan'] == 2) {
+                                                                            echo 'Februari';
+                                                                        } else if ($row3['bulan'] == 3) {
+                                                                            echo 'Maret';
+                                                                        } else if ($row3['bulan'] == 4) {
+                                                                            echo 'April';
+                                                                        } else if ($row3['bulan'] == 5) {
+                                                                            echo 'Mei';
+                                                                        } else if ($row3['bulan'] == 6) {
+                                                                            echo 'Juni';
+                                                                        } else if ($row3['bulan'] == 7) {
+                                                                            echo 'Juli';
+                                                                        } else if ($row3['bulan'] == 8) {
+                                                                            echo 'Agustus';
+                                                                        } else if ($row3['bulan'] == 9) {
+                                                                            echo 'September';
+                                                                        } else if ($row3['bulan'] == 10) {
+                                                                            echo 'Oktober';
+                                                                        } else if ($row3['bulan'] == 11) {
+                                                                            echo 'November';
+                                                                        } else if ($row3['bulan'] == 12) {
+                                                                            echo 'Desember';
+                                                                        }
+                                                                        ?>
+                                                                    </option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-xs-right">
+                                                    <input type="submit" name="submit" class="btn-sm btn-primary" value="Print">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                                <div class="table-responsive">
-                                    <table id="example" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
+                                <div class="table-responsive" id="form2">
+                                    <table id="example7" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
@@ -79,12 +142,22 @@
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>ID Pasien</th>
+                                                <th>Nama Pasien</th>
+                                                <th>Poli</th>
+                                                <th>Tanggal Kunjungan</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </tfoot>
                                         <tbody>
                                             <?php
                                             $q = $connect->query("SELECT * FROM kb JOIN pasien USING(id_pasien) JOIN poli USING(kd_poli)");
                                             $no = 1;
                                             foreach ($q as $d) :
-                                            $id = $d['id_pasien'];
+                                                $id = $d['id_pasien'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no ?></td>
@@ -143,6 +216,32 @@
     <script src="../../assets/datatable/datatables.min.js"></script>
 
     <script src="../../js/data-table.js"></script>
+    <script>
+        $(document).ready(function() {
+            var table = $('#example6').DataTable();
+
+            // Event listener to the two range filtering inputs to redraw on input
+            $('#mois, #annee').change(function() {
+                table.draw();
+            });
+
+            $.fn.dataTable.ext.search.push(
+                function(settings, data, dataIndex) {
+                    var month = parseInt($('#mois').val(), 10);
+                    var year = parseInt($('#annee').val(), 10);
+                    var date = data[1].split('-');
+                    if ((isNaN(year) && isNaN(month)) ||
+                        (isNaN(month) && year == date[0]) ||
+                        (date[1] == month && isNaN(year)) ||
+                        (date[1] == month && year == date[0])
+                    ) {
+                        return true;
+                    }
+                    return false;
+                }
+            );
+        });
+    </script>
 </body>
 
 </html>

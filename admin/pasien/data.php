@@ -57,8 +57,8 @@
 
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Tabel data poli</h3>
-                                <h6 class="box-subtitle">Tabel berisi data poli di Klinik RH Medika</h6>
+                                <h3 class="box-title">Tabel data pasien</h3>
+                                <h6 class="box-subtitle">Tabel berisi data pasien di Klinik RH Medika</h6>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">

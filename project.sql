@@ -217,7 +217,7 @@ ALTER TABLE `kb`
 --
 ALTER TABLE `pasien`
   ADD PRIMARY KEY (`id_pasien`),
-  ADD UNIQUE KEY `nik` (`kd_jamkes`) USING HASH;
+  ADD UNIQUE KEY `nik` (`kd_registrasi`) USING HASH;
 
 --
 -- Indexes for table `poli`
