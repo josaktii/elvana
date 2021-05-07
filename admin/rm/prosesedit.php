@@ -14,10 +14,11 @@ if (isset($_POST['submit'])) {
     $tindak = $_POST['tindak'];
     $terapi = $_POST['terapi'];
     $idk = $_POST['idkarya'];
+    $dio = $_POST['obat'];
 
 
     if ($tb > 0 && $bb > 0) {
-        $qd = $connect->query("UPDATE rm SET id_pasien = '$idp', id_dokter = '$idd', tinggi_badan = '$tb', berat_badan = '$bb', tensi = '$tensi', anamnesa = '$anam', diagnose = '$diag', tindak_lanjut = '$tindak', terapi = '$terapi', id_karyawan = '$idk' WHERE kd_rekammedis = '$kdrm'");
+        $qd = $connect->query("UPDATE rm SET id_pasien = '$idp', id_dokter = '$idd', tinggi_badan = '$tb', berat_badan = '$bb', tensi = '$tensi', anamnesa = '$anam', diagnose = '$diag', tindak_lanjut = '$tindak', terapi = '$terapi', id_karyawan = '$idk', kd_obat = '$dio' WHERE kd_rekammedis = '$kdrm'");
 
         if ($qd) {
             echo "<script>alert('Data rekam medis berhasil diubah'); window.location.href='data.php'</script>";

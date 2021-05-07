@@ -60,7 +60,7 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col">
-                                <?php require_once '../../config/connect.php';                                ?>
+                                <?php require_once '../../config/connect.php'; ?>
                                 <form method="POST" action="prosestambah.php">
                                     <div class="row">
                                         <div class="col-lg-12 col-12">
@@ -70,7 +70,7 @@
                                                     <?php $qpasien = $connect->query("SELECT * FROM pasien"); ?>
                                                     <select name="idpasien" class="form-control">
                                                         <option hidden>Pilih pasien</option>
-                                                        <?php while ($dpasien = $qpasien->fetch_assoc()) :                ?>
+                                                        <?php while ($dpasien = $qpasien->fetch_assoc()) : ?>
                                                             <option value="<?= $dpasien['id_pasien']; ?>"><?= $dpasien['nm_pasien']; ?></option>
                                                         <?php endwhile; ?>
                                                     </select>
@@ -79,16 +79,16 @@
                                             <div class="form-group">
                                                 <h5>Poli <span class="text-danger">*</span></h5>
                                                 <div class="controls">
-                                                    <?php $qpoli = $connect->query("SELECT * FROM poli"); ?>
+                                                    <?php $qpoli = $connect->query("SELECT * FROM poli WHERE nm_poli != 'klinik'"); ?>
                                                     <select name="kdpoli" class="form-control">
                                                         <option hidden>Pilih poli</option>
-                                                        <?php while ($dpoli = $qpoli->fetch_assoc()) :                ?>
+                                                        <?php while ($dpoli = $qpoli->fetch_assoc()) : ?>
                                                             <option value="<?= $dpoli['kd_poli']; ?>"><?= $dpoli['nm_poli']; ?></option>
                                                         <?php endwhile; ?>
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <h5>Status Kunjungan <span class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <select class="form-control" name="status">
@@ -97,7 +97,7 @@
                                                         <option value="2">Tertangani</option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="text-xs-right">

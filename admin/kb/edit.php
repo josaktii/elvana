@@ -98,24 +98,6 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <h5>Status Kunjungan <span class="text-danger">*</span></h5>
-                                                        <div class="controls">
-                                                            <select class="form-control" name="status">
-                                                                <option value="<?= $d['status']; ?>" hidden>
-                                                                    <?php
-                                                                    if ($d['status'] == '1') {
-                                                                        echo "Menunggu";
-                                                                    } elseif ($d['status'] == '2') {
-                                                                        echo "Tertangani";
-                                                                    }
-                                                                    ?>
-                                                                </option>
-                                                                <option value="1">Menunggu</option>
-                                                                <option value="2">Tertangani</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="text-xs-right">

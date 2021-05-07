@@ -67,7 +67,7 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="controls">
-                                            <h5>Pasien <span class="text-danger">*</span></h5>
+                                                <h5>Pasien <span class="text-danger">*</span></h5>
                                                 <?php $qpasien = $connect->query("SELECT * FROM pasien"); ?>
                                                 <select name="idpasien" class="form-control selectpicker" data-live-search="true">
                                                     <option hidden>Pilih Pasien</option>
@@ -129,7 +129,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-group">
                                                 <h5>Tindak Lanjut <span class="text-danger">*</span></h5>
                                                 <div class="controls">
@@ -143,7 +143,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-group">
                                                 <h5>Terapi <span class="text-danger">*</span></h5>
                                                 <div class="controls">
@@ -151,6 +151,24 @@
                                                         <option hidden>Terapi</option>
                                                         <option value="1">Obat</option>
                                                         <option value="2">Tindak</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <h5>Obat <span class="text-danger">*</span></h5>
+                                                <div class="controls">
+                                                    <select class="form-control selectpicker" name="obat">
+                                                        <option hidden>Pilih Obat</option>
+                                                        <?php
+                                                        $qobat = $connect->query("SELECT * FROM obat");
+                                                        while ($do = $qobat->fetch_assoc()) {
+                                                        ?>
+                                                            <option value="<?= $do['kd_obat'] ?>"><?= $do['nm_obat'] ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>

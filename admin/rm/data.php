@@ -77,13 +77,14 @@
                                                 <th>Diagnosa</th>
                                                 <th>Tindak Lanjut</th>
                                                 <th>Terapi</th>
+                                                <th>Obat</th>
                                                 <th>Tanggal</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $q = $connect->query("SELECT * FROM rm JOIN pasien USING(id_pasien) JOIN dokter USING(id_dokter) JOIN karyawan USING(id_karyawan)");
+                                            $q = $connect->query("SELECT * FROM rm JOIN pasien USING(id_pasien) JOIN dokter USING(id_dokter) JOIN karyawan USING(id_karyawan) JOIN obat USING(kd_obat)");
                                             $no = 1;
                                             foreach ($q as $d) :
                                             ?>
@@ -119,6 +120,7 @@
                                                         }
                                                         ?>
                                                     </td>
+                                                    <td><?= $d['nm_obat'] ?></td>
                                                     <td><?= $d['tanggal'] ?></td>
                                                     <td>
                                                         <div class="input-group">

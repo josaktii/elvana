@@ -6,7 +6,7 @@ if (isset($_POST['submit'])) {
     $kdk = $_POST['kdkb'];
     $idp = $_POST['idpasien'];
     $kdpoli = $_POST['kdpoli'];
-    $status = $_POST['status'];
+    $status = 1;
 
     $tglnow = date('Y-m-d');
 
