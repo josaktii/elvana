@@ -52,6 +52,18 @@
                     <li><a href="../karyawan/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-medkit"></i> <span>Obat</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../obat/data.php"><i class="fa fa-circle-thin"></i>Tabel data</a></li>
+                    <li><a href="../obat/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
+                </ul>
+            </li>
             <li class="header nav-small-cap">DATA TURUNAN</li>
             <li class="treeview active">
                 <a href="#">

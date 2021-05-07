@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="header nav-small-cap">DATA MASTER</li>
-            <li class="treeview">
+            <li class="treeview ">
                 <a href="#">
                     <i class="fa fa-heart"></i>
                     <span>Poli</span>
@@ -52,7 +52,7 @@
                     <li><a href="../karyawan/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview active">
                 <a href="#">
                     <i class="fa fa-medkit"></i> <span>Obat</span>
                     <span class="pull-right-container">
@@ -101,7 +101,7 @@
                     <li><a href="../rm/tambah.php"><i class="fa fa-circle-thin"></i>Tambah</a></li>
                 </ul>
             </li>
-            <li class="treeview active">
+            <li class="treeview ">
                 <a href="#">
                     <i class="fa fa-calendar"></i> <span>Kunjungan</span>
                     <span class="pull-right-container">
