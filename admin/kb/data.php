@@ -77,7 +77,7 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $q = $connect->query("SELECT * FROM kb JOIN pasien USING(id_pasien) JOIN poli USING(kd_poli) ORDER BY kd_kunjungan");
+                                            $q = $connect->query("SELECT * FROM kb JOIN pasien USING(id_pasien) JOIN poli USING(kd_poli) ORDER BY kd_kunjungan DESC");
                                             $no = 1;
                                             foreach ($q as $d) :
                                             $id = $d['id_pasien'];
